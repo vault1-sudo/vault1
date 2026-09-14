@@ -464,21 +464,6 @@ export default function Login() {
               </Pressable>
             </Animated.View>
 
-            {/* REGISTER */}
-            <View style={styles.registerRow}>
-              <Text style={styles.registerText}>
-                New to Vault1?
-              </Text>
-
-              <Pressable
-                onPress={() => router.push("/register")}
-              >
-                <Text style={styles.registerLink}>
-                  Create account
-                </Text>
-              </Pressable>
-            </View>
-
             {/* BOTTOM */}
             <View style={styles.loginBottom}>
               <Text style={styles.bottomText}>
@@ -1170,29 +1155,6 @@ const styles = StyleSheet.create({
   loginArrow: {
     color: "#594263",
     fontSize: 20,
-  },
-
-  /* ======================================================= */
-  /* REGISTER */
-  /* ======================================================= */
-
-  registerRow: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 30,
-  },
-
-  registerText: {
-    color: "#6D6074",
-    fontSize: 12,
-  },
-
-  registerLink: {
-    color: "#B28ACF",
-    fontSize: 12,
-    fontWeight: "800",
-    marginLeft: 6,
   },
 
   /* ======================================================= */
