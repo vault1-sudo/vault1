@@ -25,6 +25,7 @@ import {
   recordGrowthMissionTrade,
   closeGrowthMissionTrade,
   refreshMissionAggregates,
+  deleteGrowthMission,
 } from "../services/growthMissions/growthMissionService";
 
 import {
@@ -309,6 +310,33 @@ export default function GrowthMissionsScreen() {
     }
   }
 
+  async function handleDeleteMission(mission: GrowthMission) {
+    const confirmed =
+      typeof window === "undefined"
+        ? true
+        : window.confirm(
+            `Delete "${mission.name}"? This will permanently remove the mission, its target map and recorded trades.`
+          );
+
+    if (!confirmed) return;
+
+    try {
+      setSaving(true);
+      setError("");
+      await deleteGrowthMission(mission.id);
+      if (activeMission?.id === mission.id) {
+        setDays([]);
+        setTrades([]);
+        setSelectedDayId("");
+      }
+      await loadMissions();
+    } catch (err: any) {
+      setError(err?.message || "Unable to delete mission.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
   async function handleRecordTrade() {
     if (!activeMission || !selectedDay || !userId) return;
     try {
@@ -359,7 +387,7 @@ export default function GrowthMissionsScreen() {
         exitPrice: Number(exitPrice),
         fees: fees ? Number(fees) : 0,
         exitReason: exitReason as any,
-        exitReasonNotes: exitNotes,
+        exitNotes: exitNotes,
       });
       setCloseVisible(false);
       setClosingTrade(null);
@@ -751,7 +779,15 @@ export default function GrowthMissionsScreen() {
                       <Text style={styles.missionCardTitle}>{mission.name}</Text>
                       <Text style={styles.missionCardDescription} numberOfLines={2}>{mission.description}</Text>
                     </View>
-                    <StatusBadge status={mission.status} />
+                    <View style={styles.missionCardActions}>
+                      <StatusBadge status={mission.status} />
+                      <Pressable
+                        onPress={() => handleDeleteMission(mission)}
+                        style={styles.deleteIconButton}
+                      >
+                        <Text style={styles.deleteIconButtonText}>DELETE</Text>
+                      </Pressable>
+                    </View>
                   </View>
 
                   <View style={styles.targetRow}>
@@ -1091,6 +1127,26 @@ function FoundationPoint({ title, text }: { title: string; text: string }) {
 }
 
 const styles = StyleSheet.create({
+
+  missionCardActions: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  deleteIconButton: {
+    marginLeft: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 7,
+    borderWidth: 1,
+    borderColor: "#E7CACA",
+    borderRadius: 6,
+    backgroundColor: "#FFF7F7",
+  },
+  deleteIconButtonText: {
+    color: "#C43B3B",
+    fontSize: 10,
+    fontWeight: "700",
+    letterSpacing: 0.5,
+  },
   root: { flex: 1, flexDirection: "row", backgroundColor: "#FFFFFF" },
   sidebar: { width: 270, backgroundColor: "#FFFFFF", borderRightWidth: 1, borderRightColor: "#E5E5E2", paddingTop: 32, paddingBottom: 26, paddingHorizontal: 22, justifyContent: "space-between" },
   brandContainer: { paddingHorizontal: 8 },
