@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import {
+import { Image,
   Animated,
   Easing,
   Platform,
@@ -10,10 +10,10 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { router } from "expo-router";
+import { LinearGradient  } from "expo-linear-gradient";
+import { router  } from "expo-router";
 
-import { useAuth } from "../../services/auth/AuthProvider";
+import { useAuth  } from "../../services/auth/AuthProvider";
 
 /* ========================================================= */
 /* ANIMATED MARKET LINE */
@@ -227,9 +227,11 @@ export default function Login() {
                     style={StyleSheet.absoluteFill}
                   />
 
-                  <Text style={styles.brandMarkText}>
-                    V
-                  </Text>
+                  <Image
+                    source={require("../../assets/vault1.png")}
+                    style={styles.loginBrandIcon}
+                    resizeMode="contain"
+                  />
                 </View>
 
                 <View>
@@ -349,9 +351,11 @@ export default function Login() {
             {isCompact && (
               <View style={styles.mobileBrandBlock}>
                 <View style={styles.mobileBrandMark}>
-                  <Text style={styles.mobileBrandMarkText}>
-                    V
-                  </Text>
+                  <Image
+                    source={require("../../assets/vault1.png")}
+                    style={styles.mobileBrandIcon}
+                    resizeMode="contain"
+                  />
                 </View>
 
                 <Text style={styles.mobileBrand}>
@@ -590,6 +594,16 @@ const styles = StyleSheet.create({
         elevation: 6,
       },
     }),
+  },
+
+  loginBrandIcon: {
+    width: 38,
+    height: 38,
+  },
+
+  mobileBrandIcon: {
+    width: 30,
+    height: 30,
   },
 
   brandMarkText: {

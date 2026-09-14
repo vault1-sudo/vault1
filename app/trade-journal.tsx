@@ -1942,7 +1942,7 @@ const styles = StyleSheet.create({
   },
 
   brandMarkText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 13,
     fontWeight: "900",
   },
@@ -2209,14 +2209,14 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 9,
     fontWeight: "900",
     letterSpacing: 1.1,
   },
 
   primaryButtonArrow: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 18,
     fontWeight: "600",
     marginLeft: 10,
@@ -2495,7 +2495,7 @@ const styles = StyleSheet.create({
   },
 
   saveButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 8,
     fontWeight: "900",
     letterSpacing: 1.1,

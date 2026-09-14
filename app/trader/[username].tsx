@@ -395,7 +395,7 @@ const styles = StyleSheet.create({
   },
 
   brand: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 20,
     fontWeight: "900",
     letterSpacing: 2,
@@ -552,7 +552,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 10,
     fontWeight: "900",
     letterSpacing: 1,

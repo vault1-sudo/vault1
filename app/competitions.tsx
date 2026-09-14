@@ -1204,7 +1204,7 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
     },
 
     content: {
@@ -1257,7 +1257,7 @@ const styles =
     },
 
     primaryButtonText: {
-      color: "#FFF",
+      color: "#111111",
       fontSize: 11,
       fontWeight:
         "900",
@@ -1432,7 +1432,7 @@ const styles =
       borderColor:
         "#4C3772",
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       paddingHorizontal: 14,
       paddingVertical: 10,
       borderRadius: 8,
@@ -1497,7 +1497,7 @@ const styles =
       height: 64,
       borderRadius: 32,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       alignItems:
         "center",
       justifyContent:
@@ -1612,7 +1612,7 @@ const styles =
 
     input: {
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       borderWidth: 1,
       borderColor:
         "#292929",
@@ -1650,7 +1650,7 @@ const styles =
       borderColor:
         "#8B5CF6",
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
     },
 
     chipText: {
@@ -1685,7 +1685,7 @@ const styles =
       borderColor:
         "#8B5CF6",
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
     },
 
     visibilityText: {
@@ -1704,7 +1704,7 @@ const styles =
       borderColor:
         "#3A3150",
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       padding: 15,
       marginTop: 25,
       borderRadius: 8,
@@ -1737,7 +1737,7 @@ const styles =
     },
 
     createButtonText: {
-      color: "#FFF",
+      color: "#111111",
       fontSize: 10,
       fontWeight:
         "900",

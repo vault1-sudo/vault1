@@ -1525,7 +1525,7 @@ const styles = StyleSheet.create({
   },
 
   brandMarkText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 13,
     fontWeight: "900",
   },
@@ -1789,14 +1789,14 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 9,
     fontWeight: "900",
     letterSpacing: 1.1,
   },
 
   primaryButtonArrow: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 18,
     marginLeft: 10,
   },
@@ -1835,7 +1835,7 @@ const styles = StyleSheet.create({
   },
 
   heroValue: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 46,
     lineHeight: 54,
     fontWeight: "900",

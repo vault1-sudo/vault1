@@ -846,14 +846,14 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 9,
     fontWeight: "900",
     letterSpacing: 1.2,
   },
 
   primaryButtonArrow: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 16,
     fontWeight: "600",
     marginLeft: 10,
@@ -894,7 +894,7 @@ const styles = StyleSheet.create({
   },
 
   heroValue: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 48,
     lineHeight: 55,
     fontWeight: "900",

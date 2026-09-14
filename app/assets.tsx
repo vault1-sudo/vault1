@@ -1819,7 +1819,7 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 10,
     fontWeight: "900",
     letterSpacing: 1.4,
@@ -2045,7 +2045,7 @@ const styles = StyleSheet.create({
   },
 
   saveButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 10,
     fontWeight: "900",
     letterSpacing: 1.3,

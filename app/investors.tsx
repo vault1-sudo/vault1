@@ -1620,7 +1620,7 @@ const styles = StyleSheet.create({
   },
 
   createButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 9,
     fontWeight: "900",
     letterSpacing: 1.2,

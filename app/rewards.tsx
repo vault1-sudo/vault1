@@ -1153,7 +1153,7 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
     },
 
     content: {
@@ -1310,7 +1310,7 @@ const styles =
     progressTrack: {
       height: 7,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       borderRadius: 4,
       marginTop: 20,
       overflow:
@@ -1452,7 +1452,7 @@ const styles =
 
     filterActive: {
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       borderColor:
         "#684999",
     },
@@ -1500,7 +1500,7 @@ const styles =
       height: 48,
       borderRadius: 9,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       borderWidth: 1,
       borderColor:
         "#392A4C",
@@ -1608,7 +1608,7 @@ const styles =
       height: 40,
       borderRadius: 8,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       alignItems:
         "center",
       justifyContent:

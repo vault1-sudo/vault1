@@ -1427,7 +1427,7 @@ const styles = StyleSheet.create({
     height: 42,
     borderRadius: 11,
     backgroundColor: violet,
-    color: "#FFFFFF",
+    color: "#111111",
     textAlign: "center",
     textAlignVertical: "center",
     fontSize: 15,
@@ -1436,7 +1436,7 @@ const styles = StyleSheet.create({
   },
 
   brandTitle: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 18,
     fontWeight: "900",
     letterSpacing: 2,
@@ -1541,7 +1541,7 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 11,
     fontWeight: "900",
     letterSpacing: 1.1,

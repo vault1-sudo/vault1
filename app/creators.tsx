@@ -1642,7 +1642,7 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
     },
 
     content: {
@@ -1696,7 +1696,7 @@ const styles =
 
     primaryButton: {
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       borderWidth: 1,
       borderColor:
         "#7150A6",
@@ -1764,7 +1764,7 @@ const styles =
       borderColor:
         "#292929",
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       borderRadius: 8,
       paddingHorizontal: 13,
     },
@@ -1798,7 +1798,7 @@ const styles =
 
     categoryChipActive: {
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       borderColor:
         "#6947A1",
     },
@@ -1863,7 +1863,7 @@ const styles =
         "32.35%" as any,
       minHeight: 245,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       borderWidth: 1,
       borderColor:
         "#292929",
@@ -1886,7 +1886,7 @@ const styles =
       height: 48,
       borderRadius: 24,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       alignItems:
         "center",
       justifyContent:
@@ -1999,7 +1999,7 @@ const styles =
       height: 38,
       borderRadius: 19,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       alignItems:
         "center",
       justifyContent:
@@ -2077,7 +2077,7 @@ const styles =
 
     tag: {
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       borderWidth: 1,
       borderColor:
         "#29202F",
@@ -2231,7 +2231,7 @@ const styles =
       borderColor:
         "#292929",
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       color: "#5F5F5B",
       borderRadius: 7,
       paddingHorizontal: 12,
@@ -2272,7 +2272,7 @@ const styles =
       borderColor:
         "#6B4A9A",
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
     },
 
     typeText: {
@@ -2291,7 +2291,7 @@ const styles =
       marginTop: 20,
       height: 47,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       borderWidth: 1,
       borderColor:
         "#7654AA",

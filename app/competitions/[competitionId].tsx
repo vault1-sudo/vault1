@@ -847,13 +847,13 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
     },
 
     loadingScreen: {
       flex: 1,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       alignItems:
         "center",
       justifyContent:
@@ -984,7 +984,7 @@ const styles =
     },
 
     joinText: {
-      color: "#FFF",
+      color: "#111111",
       fontSize: 10,
       fontWeight:
         "900",
@@ -1104,7 +1104,7 @@ const styles =
 
     highlightedRow: {
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
     },
 
     rank: {
@@ -1132,7 +1132,7 @@ const styles =
       height: 38,
       borderRadius: 19,
       backgroundColor:
-        "#FFFFFF",
+        "#111111",
       alignItems:
         "center",
       justifyContent:

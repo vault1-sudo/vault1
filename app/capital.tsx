@@ -975,7 +975,7 @@ const styles = StyleSheet.create({
   },
 
   brand: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 29,
     fontWeight: "900",
     letterSpacing: 4.5,
@@ -1092,7 +1092,7 @@ const styles = StyleSheet.create({
   },
 
   avatarText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 14,
     fontWeight: "800",
   },
@@ -1219,7 +1219,7 @@ const styles = StyleSheet.create({
   },
 
   heroTitle: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 44,
     fontWeight: "800",
     letterSpacing: -1.3,
@@ -1248,7 +1248,7 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 11,
     fontWeight: "800",
     letterSpacing: 1.4,
@@ -1302,7 +1302,7 @@ const styles = StyleSheet.create({
   },
 
   capitalValue: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 48,
     fontWeight: "800",
     letterSpacing: -1.8,
@@ -1865,7 +1865,7 @@ const styles = StyleSheet.create({
   },
 
   saveButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 11,
     fontWeight: "800",
     letterSpacing: 1.5,

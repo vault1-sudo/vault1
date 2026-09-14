@@ -1445,7 +1445,7 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 12,
     fontWeight: "900",
     letterSpacing: 1.1,
@@ -2101,7 +2101,7 @@ const styles = StyleSheet.create({
   },
 
   modalPrimaryText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 11,
     fontWeight: "900",
     letterSpacing: 1,

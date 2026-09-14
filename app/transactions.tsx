@@ -1973,7 +1973,7 @@ const styles = StyleSheet.create({
   },
 
   brand: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 25,
     fontWeight: "900",
     letterSpacing: 4,
@@ -2105,7 +2105,7 @@ const styles = StyleSheet.create({
   },
 
   avatarText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 12,
     fontWeight: "900",
   },
@@ -2210,14 +2210,14 @@ const styles = StyleSheet.create({
   },
 
   createButtonText: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 9,
     fontWeight: "900",
     letterSpacing: 1.1,
   },
 
   createButtonArrow: {
-    color: "#FFFFFF",
+    color: "#111111",
     fontSize: 19,
     marginLeft: 12,
     fontWeight: "500",
