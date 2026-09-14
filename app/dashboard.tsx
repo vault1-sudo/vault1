@@ -10,6 +10,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 
 import { useAuth } from "../services/auth/AuthProvider";
+import { canAccessModule } from "../services/auth/permissions";
 import VaultSurface from "../components/ui/VaultSurface";
 import VaultMetric from "../components/ui/VaultMetric";
 
@@ -191,6 +192,15 @@ export default function Dashboard() {
   const router = useRouter();
   const { profile, logout } = useAuth();
 
+  const visibleNavigation = navigation
+    .map((group) => ({
+      ...group,
+      items: group.items.filter((item) =>
+        canAccessModule(profile?.role, item, profile?.permissions)
+      ),
+    }))
+    .filter((group) => group.items.length > 0);
+
   const handleLogout = async () => {
     try {
       await logout();
@@ -262,7 +272,7 @@ export default function Dashboard() {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.sidebarNavigation}
         >
-          {navigation.map((group) => (
+          {visibleNavigation.map((group) => (
             <View
               key={group.section}
               style={styles.navGroup}

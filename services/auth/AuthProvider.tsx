@@ -8,7 +8,6 @@ import {
   User,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 import {
@@ -33,6 +32,7 @@ export type Vault1User = {
   email: string | null;
   displayName: string;
   role: Vault1Role;
+  permissions?: string[];
 };
 
 type AuthContextType = {
@@ -50,6 +50,13 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const isVault1Role = (value: unknown): value is Vault1Role =>
+  value === "SUPER_ADMIN" ||
+  value === "ADMIN" ||
+  value === "MANAGER" ||
+  value === "VIEWER" ||
+  value === "INVESTOR";
+
 export function AuthProvider({
   children,
 }: {
@@ -61,14 +68,36 @@ export function AuthProvider({
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      setUser(firebaseUser);
+      try {
+        setUser(firebaseUser);
 
-      if (firebaseUser) {
+        if (!firebaseUser) {
+          setProfile(null);
+          return;
+        }
+
         const userRef = doc(db, "users", firebaseUser.uid);
         const userSnap = await getDoc(userRef);
 
         if (userSnap.exists()) {
-          setProfile(userSnap.data() as Vault1User);
+          const data = userSnap.data();
+
+          setProfile({
+            uid: firebaseUser.uid,
+            email: firebaseUser.email,
+            displayName:
+              typeof data.displayName === "string" &&
+              data.displayName.trim().length > 0
+                ? data.displayName
+                : firebaseUser.displayName || "Vault1 User",
+            role: isVault1Role(data.role) ? data.role : "VIEWER",
+            permissions: Array.isArray(data.permissions)
+              ? data.permissions.filter(
+                  (permission: unknown): permission is string =>
+                    typeof permission === "string"
+                )
+              : undefined,
+          });
         } else {
           const newProfile: Vault1User = {
             uid: firebaseUser.uid,
@@ -84,44 +113,33 @@ export function AuthProvider({
 
           setProfile(newProfile);
         }
-      } else {
+      } catch (error) {
+        console.error("Vault1 authentication profile load failed:", error);
         setProfile(null);
+      } finally {
+        setLoading(false);
       }
-
-      setLoading(false);
     });
 
     return unsubscribe;
   }, []);
 
   const login = async (email: string, password: string) => {
-    await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(
+      auth,
+      email.trim().toLowerCase(),
+      password
+    );
   };
 
   const register = async (
-    email: string,
-    password: string,
-    displayName: string
+    _email: string,
+    _password: string,
+    _displayName: string
   ) => {
-    const credential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
+    throw new Error(
+      "Vault1 account creation is invitation-only. Please contact a Vault1 administrator."
     );
-
-    const newProfile: Vault1User = {
-      uid: credential.user.uid,
-      email: credential.user.email,
-      displayName,
-      role: "VIEWER",
-    };
-
-    await setDoc(doc(db, "users", credential.user.uid), {
-      ...newProfile,
-      createdAt: serverTimestamp(),
-    });
-
-    setProfile(newProfile);
   };
 
   const logout = async () => {
