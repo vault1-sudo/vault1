@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-} from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
 type VaultMetricProps = {
   label: string;
@@ -34,10 +30,7 @@ export default function VaultMetric({
 
         <View>
           <Text style={styles.value}>{value}</Text>
-
-          <Text style={styles.change}>
-            {change}
-          </Text>
+          <Text style={styles.change}>{change}</Text>
         </View>
       </View>
     </View>
@@ -48,9 +41,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     minHeight: 138,
-    backgroundColor: "#111114",
+
+    backgroundColor: "#FFFFFF",
+
     borderWidth: 1,
-    borderColor: "#27272C",
+    borderColor: "#E5E5E2",
     borderRadius: 8,
   },
 
@@ -67,7 +62,7 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    color: "#77777F",
+    color: "#858581",
     fontFamily: "Inter",
     fontSize: 11,
     fontWeight: "600",
@@ -78,15 +73,15 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#3A3A42",
+    backgroundColor: "#D0D0CC",
   },
 
   indicatorAccent: {
-    backgroundColor: "#8B5CF6",
+    backgroundColor: "#6D45D8",
   },
 
   value: {
-    color: "#F5F5F7",
+    color: "#111111",
     fontFamily: "Inter",
     fontSize: 32,
     fontWeight: "700",
@@ -94,7 +89,7 @@ const styles = StyleSheet.create({
   },
 
   change: {
-    color: "#77777F",
+    color: "#858581",
     fontFamily: "Inter",
     fontSize: 12,
     fontWeight: "400",

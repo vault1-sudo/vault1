@@ -1419,12 +1419,12 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#060606",
+    backgroundColor: "#FFFFFF",
   },
 
   loadingScreen: {
     flex: 1,
-    backgroundColor: "#060606",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
     gap: 16,
@@ -1436,7 +1436,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 1,
     borderColor: "#3A3155",
-    backgroundColor: "#100D16",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -1457,7 +1457,7 @@ const styles = StyleSheet.create({
 
   sidebar: {
     width: 246,
-    backgroundColor: "#080808",
+    backgroundColor: "#FFFFFF",
     borderRightWidth: 1,
     borderRightColor: "#191919",
     paddingTop: 26,
@@ -1475,7 +1475,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 11,
-    backgroundColor: "#111111",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#3A3150",
     alignItems: "center",
@@ -1489,7 +1489,7 @@ const styles = StyleSheet.create({
   },
 
   brandName: {
-    color: "#F4F4F4",
+    color: "#3F3F3B",
     fontSize: 17,
     fontWeight: "900",
     letterSpacing: 2.5,
@@ -1505,7 +1505,7 @@ const styles = StyleSheet.create({
 
   sidebarDivider: {
     height: 1,
-    backgroundColor: "#181818",
+    backgroundColor: "#FFFFFF",
     marginTop: 25,
     marginHorizontal: 18,
   },
@@ -1538,7 +1538,7 @@ const styles = StyleSheet.create({
   },
 
   navItemActive: {
-    backgroundColor: "#14101C",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#282038",
   },
@@ -1567,7 +1567,7 @@ const styles = StyleSheet.create({
   },
 
   navTextActive: {
-    color: "#E8E2F6",
+    color: "#5F5F5B",
   },
 
   navArrow: {
@@ -1590,7 +1590,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 10,
-    backgroundColor: "#141217",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#302B39",
     alignItems: "center",
@@ -1653,7 +1653,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: "#F3F3F3",
+    color: "#3F3F3B",
     fontSize: 44,
     fontWeight: "900",
     letterSpacing: -1.4,
@@ -1679,7 +1679,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "#29232F",
-    backgroundColor: "#0E0D10",
+    backgroundColor: "#FFFFFF",
     flexDirection: "row",
     alignItems: "center",
     gap: 7,
@@ -1754,7 +1754,7 @@ const styles = StyleSheet.create({
   },
 
   heroValue: {
-    color: "#F2EFF7",
+    color: "#3F3F3B",
     fontSize: 48,
     fontWeight: "900",
     letterSpacing: -1.8,
@@ -1785,7 +1785,7 @@ const styles = StyleSheet.create({
   heroDivider: {
     width: 1,
     height: 30,
-    backgroundColor: "#2B2730",
+    backgroundColor: "#FFFFFF",
   },
 
   qualityCard: {
@@ -1819,7 +1819,7 @@ const styles = StyleSheet.create({
   },
 
   qualityNumber: {
-    color: "#EDE9F2",
+    color: "#4A4A46",
     fontSize: 42,
     fontWeight: "900",
     letterSpacing: -1.4,
@@ -1892,7 +1892,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#363636",
+    backgroundColor: "#FFFFFF",
   },
 
   metricDotPositive: {
@@ -1904,7 +1904,7 @@ const styles = StyleSheet.create({
   },
 
   metricValue: {
-    color: "#E4E4E4",
+    color: "#5F5F5B",
     fontSize: 25,
     fontWeight: "900",
     letterSpacing: -0.7,
@@ -1956,7 +1956,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 4,
     borderRadius: 10,
-    backgroundColor: "#0C0C0C",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#1D1D1D",
   },
@@ -1968,7 +1968,7 @@ const styles = StyleSheet.create({
   },
 
   periodButtonActive: {
-    backgroundColor: "#18131F",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#302443",
   },
@@ -2006,7 +2006,7 @@ const styles = StyleSheet.create({
   },
 
   flowValue: {
-    color: "#E5E5E5",
+    color: "#5F5F5B",
     fontSize: 31,
     fontWeight: "900",
     marginTop: 8,
@@ -2050,7 +2050,7 @@ const styles = StyleSheet.create({
   progressTrack: {
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#191919",
+    backgroundColor: "#FFFFFF",
     overflow: "hidden",
   },
 
@@ -2162,7 +2162,7 @@ const styles = StyleSheet.create({
     width: 7,
     height: 7,
     borderRadius: 4,
-    backgroundColor: "#3B3B3B",
+    backgroundColor: "#FFFFFF",
   },
 
   eventIndicatorPositive: {
@@ -2289,7 +2289,7 @@ const styles = StyleSheet.create({
     width: 35,
     height: 35,
     borderRadius: 9,
-    backgroundColor: "#111111",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2B2538",
     alignItems: "center",
@@ -2368,7 +2368,7 @@ const styles = StyleSheet.create({
   },
 
   emptyTitle: {
-    color: "#E7E7E7",
+    color: "#5F5F5B",
     fontSize: 27,
     fontWeight: "900",
     marginTop: 10,

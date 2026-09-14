@@ -1642,7 +1642,7 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#060606",
+        "#FFFFFF",
     },
 
     content: {
@@ -1671,7 +1671,7 @@ const styles =
     },
 
     title: {
-      color: "#F4F4F4",
+      color: "#3F3F3B",
       fontSize: 44,
       fontWeight:
         "900",
@@ -1696,7 +1696,7 @@ const styles =
 
     primaryButton: {
       backgroundColor:
-        "#25183D",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#7150A6",
@@ -1737,7 +1737,7 @@ const styles =
     },
 
     metricValue: {
-      color: "#EEEEEE",
+      color: "#4A4A46",
       fontSize: 29,
       fontWeight:
         "900",
@@ -1764,7 +1764,7 @@ const styles =
       borderColor:
         "#292929",
       backgroundColor:
-        "#101010",
+        "#FFFFFF",
       borderRadius: 8,
       paddingHorizontal: 13,
     },
@@ -1779,7 +1779,7 @@ const styles =
 
     searchInput: {
       flex: 1,
-      color: "#E5E5E5",
+      color: "#5F5F5B",
       fontSize: 13,
     },
 
@@ -1798,7 +1798,7 @@ const styles =
 
     categoryChipActive: {
       backgroundColor:
-        "#191122",
+        "#FFFFFF",
       borderColor:
         "#6947A1",
     },
@@ -1828,7 +1828,7 @@ const styles =
     },
 
     sectionTitle: {
-      color: "#EEEEEE",
+      color: "#4A4A46",
       fontSize: 22,
       fontWeight:
         "800",
@@ -1863,7 +1863,7 @@ const styles =
         "32.35%" as any,
       minHeight: 245,
       backgroundColor:
-        "#101010",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#292929",
@@ -1886,7 +1886,7 @@ const styles =
       height: 48,
       borderRadius: 24,
       backgroundColor:
-        "#1A1422",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:
@@ -1919,7 +1919,7 @@ const styles =
     },
 
     creatorName: {
-      color: "#E1E1E1",
+      color: "#5F5F5B",
       fontSize: 16,
       fontWeight:
         "800",
@@ -1999,7 +1999,7 @@ const styles =
       height: 38,
       borderRadius: 19,
       backgroundColor:
-        "#1A1422",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:
@@ -2049,7 +2049,7 @@ const styles =
     },
 
     postTitle: {
-      color: "#E8E8E8",
+      color: "#5F5F5B",
       fontSize: 23,
       lineHeight: 29,
       fontWeight:
@@ -2077,7 +2077,7 @@ const styles =
 
     tag: {
       backgroundColor:
-        "#151119",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#29202F",
@@ -2198,7 +2198,7 @@ const styles =
     },
 
     modalTitle: {
-      color: "#EFEFEF",
+      color: "#4A4A46",
       fontSize: 25,
       fontWeight:
         "900",
@@ -2231,8 +2231,8 @@ const styles =
       borderColor:
         "#292929",
       backgroundColor:
-        "#0B0B0B",
-      color: "#E5E5E5",
+        "#FFFFFF",
+      color: "#5F5F5B",
       borderRadius: 7,
       paddingHorizontal: 12,
       fontSize: 12,
@@ -2272,7 +2272,7 @@ const styles =
       borderColor:
         "#6B4A9A",
       backgroundColor:
-        "#191121",
+        "#FFFFFF",
     },
 
     typeText: {
@@ -2291,7 +2291,7 @@ const styles =
       marginTop: 20,
       height: 47,
       backgroundColor:
-        "#281A42",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#7654AA",

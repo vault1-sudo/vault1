@@ -1351,12 +1351,12 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#060606",
+    backgroundColor: "#FFFFFF",
   },
 
   loadingScreen: {
     flex: 1,
-    backgroundColor: "#060606",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
     gap: 16,
@@ -1366,7 +1366,7 @@ const styles = StyleSheet.create({
     width: 58,
     height: 58,
     borderRadius: 16,
-    backgroundColor: "#100D16",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#3A3155",
     alignItems: "center",
@@ -1389,7 +1389,7 @@ const styles = StyleSheet.create({
 
   sidebar: {
     width: 246,
-    backgroundColor: "#080808",
+    backgroundColor: "#FFFFFF",
     borderRightWidth: 1,
     borderRightColor: "#191919",
     paddingTop: 26,
@@ -1407,7 +1407,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 11,
-    backgroundColor: "#111111",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#3A3150",
     alignItems: "center",
@@ -1421,7 +1421,7 @@ const styles = StyleSheet.create({
   },
 
   brandName: {
-    color: "#F4F4F4",
+    color: "#3F3F3B",
     fontSize: 17,
     fontWeight: "900",
     letterSpacing: 2.5,
@@ -1437,7 +1437,7 @@ const styles = StyleSheet.create({
 
   sidebarDivider: {
     height: 1,
-    backgroundColor: "#181818",
+    backgroundColor: "#FFFFFF",
     marginTop: 25,
     marginHorizontal: 18,
   },
@@ -1470,7 +1470,7 @@ const styles = StyleSheet.create({
   },
 
   navItemActive: {
-    backgroundColor: "#14101C",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#282038",
   },
@@ -1499,7 +1499,7 @@ const styles = StyleSheet.create({
   },
 
   navTextActive: {
-    color: "#E8E2F6",
+    color: "#5F5F5B",
   },
 
   navArrow: {
@@ -1522,7 +1522,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 10,
-    backgroundColor: "#141217",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#302B39",
     alignItems: "center",
@@ -1590,7 +1590,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: "#F3F3F3",
+    color: "#3F3F3B",
     fontSize: 44,
     fontWeight: "900",
     letterSpacing: -1.4,
@@ -1674,7 +1674,7 @@ const styles = StyleSheet.create({
   },
 
   formTitle: {
-    color: "#E2E2E2",
+    color: "#5F5F5B",
     fontSize: 23,
     fontWeight: "900",
     marginTop: 7,
@@ -1716,7 +1716,7 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     borderWidth: 1,
     borderColor: "#242124",
-    backgroundColor: "#0B0B0B",
+    backgroundColor: "#FFFFFF",
     color: "#D8D8D8",
     paddingHorizontal: 13,
     fontSize: 12,
@@ -1742,13 +1742,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "#242124",
-    backgroundColor: "#0B0B0B",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
   },
 
   riskButtonActive: {
-    backgroundColor: "#18131F",
+    backgroundColor: "#FFFFFF",
     borderColor: "#443363",
   },
 
@@ -1790,7 +1790,7 @@ const styles = StyleSheet.create({
     minHeight: 40,
     paddingHorizontal: 18,
     borderRadius: 8,
-    backgroundColor: "#241B34",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#473366",
     alignItems: "center",
@@ -1843,11 +1843,11 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#473A5B",
+    backgroundColor: "#FFFFFF",
   },
 
   metricValue: {
-    color: "#E1E1E1",
+    color: "#5F5F5B",
     fontSize: 24,
     fontWeight: "900",
     letterSpacing: -0.6,
@@ -1904,7 +1904,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "#232323",
-    backgroundColor: "#0A0A0A",
+    backgroundColor: "#FFFFFF",
     color: "#CFCFCF",
     paddingHorizontal: 12,
     fontSize: 10,
@@ -1924,13 +1924,13 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     borderWidth: 1,
     borderColor: "#202020",
-    backgroundColor: "#0A0A0A",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
   },
 
   filterButtonActive: {
-    backgroundColor: "#17121F",
+    backgroundColor: "#FFFFFF",
     borderColor: "#3C2D56",
   },
 
@@ -1956,7 +1956,7 @@ const styles = StyleSheet.create({
   tableHeader: {
     height: 47,
     paddingHorizontal: 18,
-    backgroundColor: "#0B0B0B",
+    backgroundColor: "#FFFFFF",
     borderBottomWidth: 1,
     borderBottomColor: "#1A1A1A",
     flexDirection: "row",
@@ -1991,7 +1991,7 @@ const styles = StyleSheet.create({
     width: 34,
     height: 34,
     borderRadius: 10,
-    backgroundColor: "#141018",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#322743",
     alignItems: "center",
@@ -2047,7 +2047,7 @@ const styles = StyleSheet.create({
     minHeight: 25,
     paddingHorizontal: 8,
     borderRadius: 6,
-    backgroundColor: "#121212",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#242424",
     flexDirection: "row",
@@ -2056,12 +2056,12 @@ const styles = StyleSheet.create({
   },
 
   statusBadgeActive: {
-    backgroundColor: "#15111B",
+    backgroundColor: "#FFFFFF",
     borderColor: "#302644",
   },
 
   statusBadgePending: {
-    backgroundColor: "#141313",
+    backgroundColor: "#FFFFFF",
     borderColor: "#292629",
   },
 
@@ -2069,7 +2069,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#494949",
+    backgroundColor: "#FFFFFF",
   },
 
   statusDotActive: {
@@ -2161,7 +2161,7 @@ const styles = StyleSheet.create({
     width: 90,
     height: 4,
     borderRadius: 2,
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#FFFFFF",
     overflow: "hidden",
   },
 
@@ -2182,7 +2182,7 @@ const styles = StyleSheet.create({
     width: 54,
     height: 54,
     borderRadius: 15,
-    backgroundColor: "#111011",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#30263D",
     alignItems: "center",
@@ -2216,7 +2216,7 @@ const styles = StyleSheet.create({
     minHeight: 38,
     paddingHorizontal: 16,
     borderRadius: 8,
-    backgroundColor: "#191320",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#3A2C51",
     alignItems: "center",

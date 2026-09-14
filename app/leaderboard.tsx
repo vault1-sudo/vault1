@@ -972,7 +972,7 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#060606",
+        "#FFFFFF",
     },
 
     content: {
@@ -1001,7 +1001,7 @@ const styles =
     },
 
     title: {
-      color: "#F4F4F4",
+      color: "#3F3F3B",
       fontSize: 44,
       fontWeight:
         "900",
@@ -1024,7 +1024,7 @@ const styles =
       alignItems:
         "center",
       backgroundColor:
-        "#101010",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#292929",
@@ -1086,7 +1086,7 @@ const styles =
       borderColor:
         "#8B5CF6",
       backgroundColor:
-        "#181121",
+        "#FFFFFF",
     },
 
     chipText: {
@@ -1111,7 +1111,7 @@ const styles =
       flex: 1,
       minHeight: 205,
       backgroundColor:
-        "#111111",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#282828",
@@ -1127,7 +1127,7 @@ const styles =
       borderColor:
         "#59418A",
       backgroundColor:
-        "#120E18",
+        "#FFFFFF",
     },
 
     podiumRank: {
@@ -1145,7 +1145,7 @@ const styles =
       height: 52,
       borderRadius: 26,
       backgroundColor:
-        "#1B1523",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:
@@ -1322,7 +1322,7 @@ const styles =
       height: 40,
       borderRadius: 20,
       backgroundColor:
-        "#19131F",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:
@@ -1432,7 +1432,7 @@ const styles =
       height: 58,
       borderRadius: 29,
       backgroundColor:
-        "#17131F",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:
@@ -1483,7 +1483,7 @@ const styles =
       borderColor:
         "#292929",
       backgroundColor:
-        "#0C0C0C",
+        "#FFFFFF",
       padding: 18,
       marginTop: 20,
       borderRadius: 8,

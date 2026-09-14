@@ -45,7 +45,7 @@ function RouteAccessGuard({ children }: { children: React.ReactNode }) {
       <View
         style={{
           flex: 1,
-          backgroundColor: "#09090B",
+          backgroundColor: "#FFFFFF",
           alignItems: "center",
           justifyContent: "center",
         }}
@@ -96,7 +96,7 @@ export default function RootLayout() {
             headerShown: false,
             animation: "none",
             contentStyle: {
-              backgroundColor: "#09090B",
+              backgroundColor: "#FFFFFF",
             },
           }}
         />

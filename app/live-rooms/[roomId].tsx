@@ -1244,13 +1244,13 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#060606",
+        "#FFFFFF",
     },
 
     loadingScreen: {
       flex: 1,
       backgroundColor:
-        "#060606",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:
@@ -1367,7 +1367,7 @@ const styles =
         "center",
       padding: 40,
       backgroundColor:
-        "#08070B",
+        "#FFFFFF",
     },
 
     broadcastIcon: {
@@ -1375,7 +1375,7 @@ const styles =
       height: 76,
       borderRadius: 38,
       backgroundColor:
-        "#17111F",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:
@@ -1477,7 +1477,7 @@ const styles =
       borderColor:
         "#574184",
       backgroundColor:
-        "#17111F",
+        "#FFFFFF",
     },
 
     controlDanger: {
@@ -1555,7 +1555,7 @@ const styles =
       height: 30,
       borderRadius: 15,
       backgroundColor:
-        "#19131F",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:
@@ -1703,7 +1703,7 @@ const styles =
       flex: 1,
       height: 40,
       backgroundColor:
-        "#0A0A0A",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#292929",

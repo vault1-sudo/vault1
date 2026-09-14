@@ -1903,7 +1903,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#070707",
+    backgroundColor: "#FFFFFF",
   },
 
 
@@ -1913,7 +1913,7 @@ const styles = StyleSheet.create({
 
   sidebar: {
     width: 260,
-    backgroundColor: "#0A0A0A",
+    backgroundColor: "#FFFFFF",
     borderRightWidth: 1,
     borderRightColor: "#202020",
     paddingTop: 26,
@@ -1947,7 +1947,7 @@ const styles = StyleSheet.create({
   },
 
   brandName: {
-    color: "#F5F5F5",
+    color: "#3F3F3B",
     fontSize: 16,
     fontWeight: "900",
     letterSpacing: 2,
@@ -1968,7 +1968,7 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     paddingHorizontal: 11,
     borderRadius: 7,
-    backgroundColor: "#101010",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#1C1C1C",
   },
@@ -2017,7 +2017,7 @@ const styles = StyleSheet.create({
   },
 
   sidebarItemActive: {
-    backgroundColor: "#15111E",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#292038",
   },
@@ -2040,7 +2040,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 2.5,
-    backgroundColor: "#343434",
+    backgroundColor: "#FFFFFF",
     marginRight: 11,
   },
 
@@ -2066,7 +2066,7 @@ const styles = StyleSheet.create({
   userCard: {
     minHeight: 62,
     borderRadius: 10,
-    backgroundColor: "#111111",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#222222",
     flexDirection: "row",
@@ -2078,7 +2078,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 9,
-    backgroundColor: "#201934",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#38285B",
     alignItems: "center",
@@ -2116,7 +2116,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#181818",
+    backgroundColor: "#FFFFFF",
   },
 
   logoutButtonPressed: {
@@ -2136,7 +2136,7 @@ const styles = StyleSheet.create({
 
   main: {
     flex: 1,
-    backgroundColor: "#080808",
+    backgroundColor: "#FFFFFF",
   },
 
   contentContainer: {
@@ -2169,7 +2169,7 @@ const styles = StyleSheet.create({
   },
 
   pageTitle: {
-    color: "#F5F5F5",
+    color: "#3F3F3B",
     fontSize: 44,
     lineHeight: 50,
     fontWeight: "900",
@@ -2246,7 +2246,7 @@ const styles = StyleSheet.create({
   },
 
   metricValue: {
-    color: "#F3F3F3",
+    color: "#3F3F3B",
     fontSize: 30,
     fontWeight: "900",
     marginTop: 20,
@@ -2283,7 +2283,7 @@ const styles = StyleSheet.create({
   },
 
   formTitle: {
-    color: "#EEEEEE",
+    color: "#4A4A46",
     fontSize: 25,
     fontWeight: "900",
     marginTop: 7,
@@ -2333,11 +2333,11 @@ const styles = StyleSheet.create({
 
   input: {
     minHeight: 46,
-    backgroundColor: "#0D0D0D",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#292929",
     borderRadius: 8,
-    color: "#E8E8E8",
+    color: "#5F5F5B",
     paddingHorizontal: 14,
     fontSize: 13,
     fontWeight: "600",
@@ -2367,7 +2367,7 @@ const styles = StyleSheet.create({
     height: 39,
     paddingHorizontal: 13,
     borderRadius: 7,
-    backgroundColor: "#0E0E0E",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#272727",
     alignItems: "center",
@@ -2375,7 +2375,7 @@ const styles = StyleSheet.create({
   },
 
   selectorActive: {
-    backgroundColor: "#1C142C",
+    backgroundColor: "#FFFFFF",
     borderColor: "#6D49A9",
   },
 
@@ -2403,7 +2403,7 @@ const styles = StyleSheet.create({
     height: 36,
     paddingHorizontal: 12,
     borderRadius: 7,
-    backgroundColor: "#0D0D0D",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#252525",
     alignItems: "center",
@@ -2411,7 +2411,7 @@ const styles = StyleSheet.create({
   },
 
   emotionSelectorActive: {
-    backgroundColor: "#19132A",
+    backgroundColor: "#FFFFFF",
     borderColor: "#6747A1",
   },
 
@@ -2453,7 +2453,7 @@ const styles = StyleSheet.create({
     height: 43,
     paddingHorizontal: 18,
     borderRadius: 8,
-    backgroundColor: "#111111",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#292929",
     alignItems: "center",
@@ -2521,7 +2521,7 @@ const styles = StyleSheet.create({
   },
 
   bookTitle: {
-    color: "#EEEEEE",
+    color: "#4A4A46",
     fontSize: 23,
     fontWeight: "900",
     letterSpacing: -0.4,
@@ -2531,7 +2531,7 @@ const styles = StyleSheet.create({
     width: 260,
     height: 42,
     borderRadius: 8,
-    backgroundColor: "#101010",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#252525",
     flexDirection: "row",
@@ -2579,7 +2579,7 @@ const styles = StyleSheet.create({
   },
 
   summaryValue: {
-    color: "#E8E8E8",
+    color: "#5F5F5B",
     fontSize: 22,
     fontWeight: "900",
     marginTop: 7,
@@ -2614,7 +2614,7 @@ const styles = StyleSheet.create({
     width: 42,
     height: 42,
     borderRadius: 11,
-    backgroundColor: "#19132A",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#35245A",
     alignItems: "center",
@@ -2651,22 +2651,22 @@ const styles = StyleSheet.create({
   },
 
   outcomeWin: {
-    backgroundColor: "#102017",
+    backgroundColor: "#FFFFFF",
     borderColor: "#244E32",
   },
 
   outcomeLoss: {
-    backgroundColor: "#211313",
+    backgroundColor: "#FFFFFF",
     borderColor: "#552828",
   },
 
   outcomeBreakeven: {
-    backgroundColor: "#171717",
+    backgroundColor: "#FFFFFF",
     borderColor: "#303030",
   },
 
   outcomeOpen: {
-    backgroundColor: "#18132A",
+    backgroundColor: "#FFFFFF",
     borderColor: "#38285B",
   },
 
@@ -2679,7 +2679,7 @@ const styles = StyleSheet.create({
 
   journalDivider: {
     height: 1,
-    backgroundColor: "#242424",
+    backgroundColor: "#FFFFFF",
     marginVertical: 17,
   },
 
@@ -2732,7 +2732,7 @@ const styles = StyleSheet.create({
     height: 25,
     paddingHorizontal: 9,
     borderRadius: 5,
-    backgroundColor: "#15121B",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#282035",
     justifyContent: "center",
@@ -2765,7 +2765,7 @@ const styles = StyleSheet.create({
     height: 27,
     paddingHorizontal: 10,
     borderRadius: 6,
-    backgroundColor: "#151010",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#342020",
     alignItems: "center",
@@ -2813,7 +2813,7 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 14,
-    backgroundColor: "#171220",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2C2144",
     alignItems: "center",
@@ -2845,7 +2845,7 @@ const styles = StyleSheet.create({
     height: 40,
     paddingHorizontal: 15,
     borderRadius: 8,
-    backgroundColor: "#17111F",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#35254F",
     justifyContent: "center",
@@ -2880,7 +2880,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 13,
-    backgroundColor: "#17121F",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#302243",
     alignItems: "center",

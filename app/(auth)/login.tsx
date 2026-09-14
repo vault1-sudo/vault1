@@ -521,7 +521,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#090710",
+    backgroundColor: "#FFFFFF",
     minHeight:
       Platform.OS === "web"
         ? ("100vh" as any)
@@ -593,13 +593,13 @@ const styles = StyleSheet.create({
   },
 
   brandMarkText: {
-    color: "#F8F2FB",
+    color: "#3F3F3B",
     fontSize: 23,
     fontWeight: "900",
   },
 
   brand: {
-    color: "#F8F3FA",
+    color: "#3F3F3B",
     fontSize: 22,
     fontWeight: "900",
     letterSpacing: 5,
@@ -627,7 +627,7 @@ const styles = StyleSheet.create({
   },
 
   leftTitle: {
-    color: "#F7F2FA",
+    color: "#3F3F3B",
     fontSize: 62,
     lineHeight: 67,
     fontWeight: "800",
@@ -719,7 +719,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: "53%",
     height: 1,
-    backgroundColor: "#4B365C",
+    backgroundColor: "#FFFFFF",
   },
 
   backgroundHorizontalThree: {
@@ -728,7 +728,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: "79%",
     height: 1,
-    backgroundColor: "#392B48",
+    backgroundColor: "#FFFFFF",
   },
 
   backgroundVerticalOne: {
@@ -737,7 +737,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: "38%",
     width: 1,
-    backgroundColor: "#3C2D4A",
+    backgroundColor: "#FFFFFF",
   },
 
   backgroundVerticalTwo: {
@@ -746,7 +746,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: "72%",
     width: 1,
-    backgroundColor: "#3C2D4A",
+    backgroundColor: "#FFFFFF",
   },
 
   marketGraphic: {
@@ -769,7 +769,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: 160,
     height: 1,
-    backgroundColor: "#372645",
+    backgroundColor: "#FFFFFF",
   },
 
   marketSegmentOne: {
@@ -881,7 +881,7 @@ const styles = StyleSheet.create({
 
   footerRule: {
     height: 1,
-    backgroundColor: "#261B31",
+    backgroundColor: "#FFFFFF",
     marginBottom: 14,
   },
 
@@ -909,7 +909,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 60,
     paddingVertical: 50,
-    backgroundColor: "rgba(5,4,9,0.55)",
+    backgroundColor: "#FFFFFF",
   },
 
   rightPanelCompact: {
@@ -987,7 +987,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 9,
-    backgroundColor: "#291A39",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#593A70",
     alignItems: "center",
@@ -1002,7 +1002,7 @@ const styles = StyleSheet.create({
   },
 
   mobileBrand: {
-    color: "#F5EFF9",
+    color: "#3F3F3B",
     fontSize: 20,
     fontWeight: "900",
     letterSpacing: 4,
@@ -1021,7 +1021,7 @@ const styles = StyleSheet.create({
   },
 
   loginTitle: {
-    color: "#F6F1F8",
+    color: "#3F3F3B",
     fontSize: 36,
     lineHeight: 42,
     fontWeight: "800",
@@ -1057,7 +1057,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "#392642",
-    backgroundColor: "#0B0810",
+    backgroundColor: "#FFFFFF",
     justifyContent: "center",
 
     ...Platform.select({
@@ -1089,7 +1089,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "#4C2D40",
-    backgroundColor: "#1B0E17",
+    backgroundColor: "#FFFFFF",
     marginBottom: 18,
   },
 
@@ -1142,7 +1142,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 17,
     borderWidth: 1,
-    borderColor: "#F8F2FB",
+    borderColor: "#3F3F3B",
   },
 
   loginButtonText: {

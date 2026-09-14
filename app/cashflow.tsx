@@ -1486,7 +1486,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#070707",
+    backgroundColor: "#FFFFFF",
   },
 
   /* ========================================================
@@ -1495,7 +1495,7 @@ const styles = StyleSheet.create({
 
   sidebar: {
     width: 260,
-    backgroundColor: "#0A0A0A",
+    backgroundColor: "#FFFFFF",
     borderRightWidth: 1,
     borderRightColor: "#202020",
     paddingTop: 26,
@@ -1530,7 +1530,7 @@ const styles = StyleSheet.create({
   },
 
   brandName: {
-    color: "#F5F5F5",
+    color: "#3F3F3B",
     fontSize: 16,
     fontWeight: "900",
     letterSpacing: 2,
@@ -1551,7 +1551,7 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     paddingHorizontal: 11,
     borderRadius: 7,
-    backgroundColor: "#101010",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#1C1C1C",
   },
@@ -1600,7 +1600,7 @@ const styles = StyleSheet.create({
   },
 
   sidebarItemActive: {
-    backgroundColor: "#15111E",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#292038",
   },
@@ -1623,7 +1623,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 2.5,
-    backgroundColor: "#343434",
+    backgroundColor: "#FFFFFF",
     marginRight: 11,
   },
 
@@ -1649,7 +1649,7 @@ const styles = StyleSheet.create({
   userCard: {
     minHeight: 62,
     borderRadius: 10,
-    backgroundColor: "#111111",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#222222",
     flexDirection: "row",
@@ -1661,7 +1661,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 9,
-    backgroundColor: "#201934",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#38285B",
     alignItems: "center",
@@ -1699,7 +1699,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#181818",
+    backgroundColor: "#FFFFFF",
   },
 
   logoutButtonPressed: {
@@ -1718,7 +1718,7 @@ const styles = StyleSheet.create({
 
   main: {
     flex: 1,
-    backgroundColor: "#080808",
+    backgroundColor: "#FFFFFF",
   },
 
   contentContainer: {
@@ -1750,7 +1750,7 @@ const styles = StyleSheet.create({
   },
 
   pageTitle: {
-    color: "#F5F5F5",
+    color: "#3F3F3B",
     fontSize: 44,
     lineHeight: 50,
     fontWeight: "900",
@@ -1911,7 +1911,7 @@ const styles = StyleSheet.create({
   },
 
   metricValue: {
-    color: "#F3F3F3",
+    color: "#3F3F3B",
     fontSize: 29,
     fontWeight: "900",
     marginTop: 20,
@@ -1945,7 +1945,7 @@ const styles = StyleSheet.create({
   },
 
   sectionTitle: {
-    color: "#EEEEEE",
+    color: "#4A4A46",
     fontSize: 23,
     fontWeight: "900",
     letterSpacing: -0.4,
@@ -1983,7 +1983,7 @@ const styles = StyleSheet.create({
   },
 
   breakdownValue: {
-    color: "#E8E8E8",
+    color: "#5F5F5B",
     fontSize: 27,
     fontWeight: "900",
     marginTop: 18,
@@ -1991,7 +1991,7 @@ const styles = StyleSheet.create({
 
   breakdownLine: {
     height: 1,
-    backgroundColor: "#252525",
+    backgroundColor: "#FFFFFF",
     marginTop: 18,
   },
 
@@ -2045,7 +2045,7 @@ const styles = StyleSheet.create({
   },
 
   incomeValue: {
-    color: "#E8E8E8",
+    color: "#5F5F5B",
     fontSize: 24,
     fontWeight: "900",
     marginTop: 20,
@@ -2172,7 +2172,7 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 14,
-    backgroundColor: "#171220",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2C2144",
     alignItems: "center",
@@ -2205,7 +2205,7 @@ const styles = StyleSheet.create({
     height: 40,
     paddingHorizontal: 15,
     borderRadius: 8,
-    backgroundColor: "#17111F",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#35254F",
     justifyContent: "center",
@@ -2239,7 +2239,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 13,
-    backgroundColor: "#17121F",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#302243",
     alignItems: "center",

@@ -1079,7 +1079,7 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#060606",
+        "#FFFFFF",
     },
 
     content: {
@@ -1107,7 +1107,7 @@ const styles =
     },
 
     title: {
-      color: "#F4F4F4",
+      color: "#3F3F3B",
       fontSize: 44,
       fontWeight:
         "900",
@@ -1183,7 +1183,7 @@ const styles =
     },
 
     sectionTitle: {
-      color: "#F1F1F1",
+      color: "#3F3F3B",
       fontSize: 22,
       fontWeight:
         "800",
@@ -1217,7 +1217,7 @@ const styles =
       height: 64,
       borderRadius: 32,
       backgroundColor:
-        "#17131F",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:
@@ -1369,7 +1369,7 @@ const styles =
       borderColor:
         "#493477",
       backgroundColor:
-        "#17121F",
+        "#FFFFFF",
       paddingHorizontal: 15,
       paddingVertical: 10,
       borderRadius: 8,
@@ -1439,7 +1439,7 @@ const styles =
     },
 
     modalTitle: {
-      color: "#F2F2F2",
+      color: "#3F3F3B",
       fontSize: 30,
       fontWeight:
         "900",
@@ -1464,7 +1464,7 @@ const styles =
 
     input: {
       backgroundColor:
-        "#0B0B0B",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#292929",
@@ -1502,7 +1502,7 @@ const styles =
       borderColor:
         "#8B5CF6",
       backgroundColor:
-        "#181121",
+        "#FFFFFF",
     },
 
     chipText: {
@@ -1537,7 +1537,7 @@ const styles =
       borderColor:
         "#8B5CF6",
       backgroundColor:
-        "#181121",
+        "#FFFFFF",
     },
 
     visibilityText: {

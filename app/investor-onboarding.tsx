@@ -2045,12 +2045,12 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#060606",
+    backgroundColor: "#FFFFFF",
   },
 
   sidebar: {
     width: 250,
-    backgroundColor: "#080808",
+    backgroundColor: "#FFFFFF",
     borderRightWidth: 1,
     borderRightColor: "#1B1B1B",
     paddingTop: 28,
@@ -2069,7 +2069,7 @@ const styles = StyleSheet.create({
     width: 42,
     height: 42,
     borderRadius: 12,
-    backgroundColor: "#16121F",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#3B2B68",
     alignItems: "center",
@@ -2084,7 +2084,7 @@ const styles = StyleSheet.create({
   },
 
   brand: {
-    color: "#F2F2F2",
+    color: "#3F3F3B",
     fontSize: 17,
     fontWeight: "900",
     letterSpacing: 3,
@@ -2126,7 +2126,7 @@ const styles = StyleSheet.create({
   },
 
   navItemActive: {
-    backgroundColor: "#121019",
+    backgroundColor: "#FFFFFF",
     borderLeftColor: "#8B6FE8",
   },
 
@@ -2138,7 +2138,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#343434",
+    backgroundColor: "#FFFFFF",
   },
 
   navDotActive: {
@@ -2152,7 +2152,7 @@ const styles = StyleSheet.create({
   },
 
   navTextActive: {
-    color: "#E5DFFF",
+    color: "#5F5F5B",
   },
 
   sidebarFooter: {
@@ -2214,7 +2214,7 @@ const styles = StyleSheet.create({
   },
 
   pageTitle: {
-    color: "#F4F4F4",
+    color: "#3F3F3B",
     fontSize: 44,
     fontWeight: "900",
     letterSpacing: -1.5,
@@ -2239,7 +2239,7 @@ const styles = StyleSheet.create({
   },
 
   errorTitle: {
-    color: "#E47D7D",
+    color: "#B24A57",
     fontSize: 10,
     fontWeight: "900",
     letterSpacing: 1.5,
@@ -2295,7 +2295,7 @@ const styles = StyleSheet.create({
   },
 
   metricValue: {
-    color: "#F2F2F2",
+    color: "#3F3F3B",
     fontSize: 32,
     fontWeight: "900",
     letterSpacing: -1,
@@ -2331,7 +2331,7 @@ const styles = StyleSheet.create({
   },
 
   cardTitle: {
-    color: "#EEEEEE",
+    color: "#4A4A46",
     fontSize: 23,
     fontWeight: "900",
     marginTop: 7,
@@ -2362,18 +2362,18 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 1,
     borderColor: "#292929",
-    backgroundColor: "#0D0D0D",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
   },
 
   stepCircleActive: {
-    backgroundColor: "#18132A",
+    backgroundColor: "#FFFFFF",
     borderColor: "#5A458C",
   },
 
   stepCircleComplete: {
-    backgroundColor: "#151E18",
+    backgroundColor: "#FFFFFF",
     borderColor: "#35543D",
   },
 
@@ -2411,7 +2411,7 @@ const styles = StyleSheet.create({
   stepLine: {
     flex: 1,
     height: 1,
-    backgroundColor: "#242424",
+    backgroundColor: "#FFFFFF",
     marginHorizontal: 4,
     marginBottom: 23,
   },
@@ -2449,7 +2449,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#272727",
     borderRadius: 8,
-    backgroundColor: "#0C0C0C",
+    backgroundColor: "#FFFFFF",
     color: "#D9D9D9",
     fontSize: 11,
     fontWeight: "600",
@@ -2468,7 +2468,7 @@ const styles = StyleSheet.create({
   },
 
   investorRowActive: {
-    backgroundColor: "#110E18",
+    backgroundColor: "#FFFFFF",
     borderLeftWidth: 2,
     borderLeftColor: "#765FB8",
   },
@@ -2488,7 +2488,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 10,
-    backgroundColor: "#15121F",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#392D5E",
     alignItems: "center",
@@ -2559,7 +2559,7 @@ const styles = StyleSheet.create({
   },
 
   detailTitle: {
-    color: "#EEEEEE",
+    color: "#4A4A46",
     fontSize: 28,
     fontWeight: "900",
     marginTop: 7,
@@ -2586,7 +2586,7 @@ const styles = StyleSheet.create({
     width: "23%",
     minHeight: 76,
     padding: 13,
-    backgroundColor: "#0D0D0D",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#242424",
   },
@@ -2627,7 +2627,7 @@ const styles = StyleSheet.create({
 
   actionGroup: {
     padding: 14,
-    backgroundColor: "#0C0C0C",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#202020",
     gap: 11,
@@ -2652,13 +2652,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "#292929",
-    backgroundColor: "#0D0D0D",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
   },
 
   actionButtonPrimary: {
-    backgroundColor: "#17122A",
+    backgroundColor: "#FFFFFF",
     borderColor: "#4B3977",
   },
 
@@ -2700,7 +2700,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "#292929",
-    backgroundColor: "#090909",
+    backgroundColor: "#FFFFFF",
     color: "#D9D9D9",
     fontSize: 11,
     fontWeight: "600",
@@ -2710,7 +2710,7 @@ const styles = StyleSheet.create({
     padding: 18,
     borderWidth: 1,
     borderColor: "#3D3262",
-    backgroundColor: "#141020",
+    backgroundColor: "#FFFFFF",
     gap: 9,
   },
 
@@ -2741,7 +2741,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 14,
-    backgroundColor: "#111111",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#282828",
     alignItems: "center",
@@ -2825,7 +2825,7 @@ const styles = StyleSheet.create({
   },
 
   modalTitle: {
-    color: "#EEEEEE",
+    color: "#4A4A46",
     fontSize: 28,
     fontWeight: "900",
     marginTop: 7,
@@ -2837,7 +2837,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     borderWidth: 1,
     borderColor: "#292929",
-    backgroundColor: "#0D0D0D",
+    backgroundColor: "#FFFFFF",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -2887,7 +2887,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "#292929",
-    backgroundColor: "#0C0C0C",
+    backgroundColor: "#FFFFFF",
     color: "#D9D9D9",
     fontSize: 12,
     fontWeight: "600",

@@ -355,7 +355,7 @@ function Stat({
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    backgroundColor: "#060606",
+    backgroundColor: "#FFFFFF",
   },
 
   container: {
@@ -368,14 +368,14 @@ const styles = StyleSheet.create({
 
   loading: {
     flex: 1,
-    backgroundColor: "#060606",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
     padding: 30,
   },
 
   notFoundTitle: {
-    color: "#F2F2F2",
+    color: "#3F3F3B",
     fontSize: 30,
     fontWeight: "900",
   },
@@ -419,7 +419,7 @@ const styles = StyleSheet.create({
 
   banner: {
     height: 170,
-    backgroundColor: "#17121F",
+    backgroundColor: "#FFFFFF",
     borderBottomWidth: 1,
     borderBottomColor: "#2A2038",
   },
@@ -433,7 +433,7 @@ const styles = StyleSheet.create({
     width: 108,
     height: 108,
     borderRadius: 28,
-    backgroundColor: "#211A2C",
+    backgroundColor: "#FFFFFF",
     borderWidth: 2,
     borderColor: "#60458A",
     alignItems: "center",
@@ -461,7 +461,7 @@ const styles = StyleSheet.create({
   },
 
   name: {
-    color: "#F5F5F5",
+    color: "#3F3F3B",
     fontSize: 34,
     fontWeight: "900",
   },
@@ -523,7 +523,7 @@ const styles = StyleSheet.create({
   },
 
   statValue: {
-    color: "#F0F0F0",
+    color: "#4A4A46",
     fontSize: 24,
     fontWeight: "900",
   },
@@ -562,7 +562,7 @@ const styles = StyleSheet.create({
     minHeight: 46,
     paddingHorizontal: 22,
     borderRadius: 9,
-    backgroundColor: "#241313",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#573030",
     alignItems: "center",
@@ -570,7 +570,7 @@ const styles = StyleSheet.create({
   },
 
   liveButtonText: {
-    color: "#E29393",
+    color: "#B24A57",
     fontSize: 10,
     fontWeight: "900",
     letterSpacing: 1,
@@ -596,7 +596,7 @@ const styles = StyleSheet.create({
   },
 
   cardTitle: {
-    color: "#EEEEEE",
+    color: "#4A4A46",
     fontSize: 21,
     fontWeight: "900",
     marginTop: 10,

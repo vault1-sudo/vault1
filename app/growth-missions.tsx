@@ -1934,12 +1934,12 @@ const styles =
     root: {
       flex: 1,
       flexDirection: "row",
-      backgroundColor: "#060609",
+      backgroundColor: "#FFFFFF",
     },
 
     sidebar: {
       width: 270,
-      backgroundColor: "#09090C",
+      backgroundColor: "#FFFFFF",
       borderRightWidth: 1,
       borderRightColor: "#1B1822",
       paddingTop: 32,
@@ -1984,7 +1984,7 @@ const styles =
 
     sidebarDivider: {
       height: 1,
-      backgroundColor: "#1A1820",
+      backgroundColor: "#FFFFFF",
       marginTop: 30,
       marginBottom: 28,
     },
@@ -2016,7 +2016,7 @@ const styles =
     },
 
     navItemActive: {
-      backgroundColor: "#15101D",
+      backgroundColor: "#FFFFFF",
       borderWidth: 1,
       borderColor: "#302342",
     },
@@ -2025,7 +2025,7 @@ const styles =
       width: 6,
       height: 6,
       borderRadius: 3,
-      backgroundColor: "#3A3740",
+      backgroundColor: "#FFFFFF",
       marginRight: 13,
     },
 
@@ -2044,7 +2044,7 @@ const styles =
     },
 
     navTextActive: {
-      color: "#F1ECFF",
+      color: "#3F3F3B",
       fontWeight: "700",
     },
 
@@ -2170,7 +2170,7 @@ const styles =
       borderRadius: 13,
       padding: 21,
       backgroundColor:
-        "#0E0D12",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#24202C",
@@ -2184,7 +2184,7 @@ const styles =
 
     metricCardAccent: {
       backgroundColor:
-        "#120E19",
+        "#FFFFFF",
       borderColor:
         "#34264A",
     },
@@ -2208,7 +2208,7 @@ const styles =
       height: 6,
       borderRadius: 3,
       backgroundColor:
-        "#3C3743",
+        "#FFFFFF",
     },
 
     metricDotAccent: {
@@ -2221,7 +2221,7 @@ const styles =
     },
 
     metricValue: {
-      color: "#F1ECF8",
+      color: "#3F3F3B",
       fontSize: 34,
       fontWeight: "900",
       letterSpacing: -0.8,
@@ -2235,7 +2235,7 @@ const styles =
 
     errorBanner: {
       backgroundColor:
-        "#24151B",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#57303D",
@@ -2245,7 +2245,7 @@ const styles =
     },
 
     errorBannerText: {
-      color: "#E39AAA",
+      color: "#B24A57",
       fontSize: 12,
     },
 
@@ -2253,7 +2253,7 @@ const styles =
       position: "relative",
       overflow: "hidden",
       backgroundColor:
-        "#100D15",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#493363",
@@ -2296,7 +2296,7 @@ const styles =
     },
 
     activeMissionTitle: {
-      color: "#F4EFFB",
+      color: "#3F3F3B",
       fontSize: 29,
       fontWeight: "900",
       letterSpacing: -0.5,
@@ -2316,7 +2316,7 @@ const styles =
       paddingHorizontal: 11,
       paddingVertical: 7,
       backgroundColor:
-        "#181222",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#4C3970",
@@ -2349,7 +2349,7 @@ const styles =
       minHeight: 100,
       padding: 17,
       backgroundColor:
-        "#0B0A0F",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#292230",
@@ -2410,7 +2410,7 @@ const styles =
     progressTrackLarge: {
       height: 9,
       backgroundColor:
-        "#211B29",
+        "#FFFFFF",
       borderRadius: 5,
       overflow: "hidden",
     },
@@ -2469,7 +2469,7 @@ const styles =
       borderColor:
         "#342B40",
       backgroundColor:
-        "#141118",
+        "#FFFFFF",
     },
 
     pauseButtonText: {
@@ -2488,7 +2488,7 @@ const styles =
     },
 
     sectionTitle: {
-      color: "#EEE8F5",
+      color: "#4A4A46",
       fontSize: 22,
       fontWeight: "900",
       letterSpacing: -0.4,
@@ -2517,7 +2517,7 @@ const styles =
       width: "calc(50% - 8px)" as any,
       minHeight: 330,
       backgroundColor:
-        "#0E0D12",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#28232F",
@@ -2543,7 +2543,7 @@ const styles =
     },
 
     missionCardTitle: {
-      color: "#F0EAF7",
+      color: "#4A4A46",
       fontSize: 21,
       fontWeight: "900",
     },
@@ -2563,7 +2563,7 @@ const styles =
       paddingVertical: 6,
       borderRadius: 7,
       backgroundColor:
-        "#141218",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#302A37",
@@ -2571,14 +2571,14 @@ const styles =
 
     statusBadgeActive: {
       backgroundColor:
-        "#181222",
+        "#FFFFFF",
       borderColor:
         "#493665",
     },
 
     statusBadgeCompleted: {
       backgroundColor:
-        "#151A18",
+        "#FFFFFF",
       borderColor:
         "#2D4839",
     },
@@ -2588,7 +2588,7 @@ const styles =
       height: 5,
       borderRadius: 3,
       backgroundColor:
-        "#5C5562",
+        "#FFFFFF",
     },
 
     statusDotActive: {
@@ -2675,7 +2675,7 @@ const styles =
     smallProgressTrack: {
       height: 5,
       backgroundColor:
-        "#1D1822",
+        "#FFFFFF",
       borderRadius: 3,
       overflow: "hidden",
     },
@@ -2716,7 +2716,7 @@ const styles =
       marginTop: 22,
       borderRadius: 8,
       backgroundColor:
-        "#171121",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#493665",
@@ -2746,7 +2746,7 @@ const styles =
         "#28232F",
       borderRadius: 14,
       backgroundColor:
-        "#0D0C11",
+        "#FFFFFF",
       alignItems: "center",
       justifyContent:
         "center",
@@ -2758,7 +2758,7 @@ const styles =
       height: 60,
       borderRadius: 16,
       backgroundColor:
-        "#171220",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#403058",
@@ -2775,7 +2775,7 @@ const styles =
     },
 
     emptyTitle: {
-      color: "#EEE8F5",
+      color: "#4A4A46",
       fontSize: 22,
       fontWeight: "900",
     },
@@ -2798,7 +2798,7 @@ const styles =
       borderColor:
         "#493665",
       backgroundColor:
-        "#171121",
+        "#FFFFFF",
       alignItems: "center",
       justifyContent:
         "center",
@@ -2815,7 +2815,7 @@ const styles =
       marginTop: 26,
       minHeight: 250,
       backgroundColor:
-        "#0F0D13",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#2B2533",
@@ -2843,7 +2843,7 @@ const styles =
     },
 
     foundationTitle: {
-      color: "#F0EBF7",
+      color: "#4A4A46",
       fontSize: 25,
       fontWeight: "900",
       marginTop: 8,
@@ -2928,7 +2928,7 @@ const styles =
       maxHeight: "92%",
       borderRadius: 17,
       backgroundColor:
-        "#0E0C12",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#3A3146",
@@ -2959,7 +2959,7 @@ const styles =
     },
 
     modalTitle: {
-      color: "#F2ECF8",
+      color: "#3F3F3B",
       fontSize: 30,
       fontWeight: "900",
       marginTop: 5,
@@ -2976,7 +2976,7 @@ const styles =
       height: 38,
       borderRadius: 10,
       backgroundColor:
-        "#17141C",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#302A38",
@@ -3007,11 +3007,11 @@ const styles =
       height: 48,
       borderRadius: 9,
       backgroundColor:
-        "#141118",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#2E2837",
-      color: "#F0EAF8",
+      color: "#4A4A46",
       fontSize: 14,
       paddingHorizontal: 14,
       outlineStyle:
@@ -3036,7 +3036,7 @@ const styles =
 
     previewCard: {
       backgroundColor:
-        "#15101D",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#39294D",
@@ -3078,7 +3078,7 @@ const styles =
 
     modalError: {
       backgroundColor:
-        "#24151B",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#57303D",
@@ -3088,7 +3088,7 @@ const styles =
     },
 
     modalErrorText: {
-      color: "#E39AAA",
+      color: "#B24A57",
       fontSize: 12,
       lineHeight: 18,
     },

@@ -955,12 +955,12 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#060609",
+    backgroundColor: "#FFFFFF",
   },
 
   sidebar: {
     width: 270,
-    backgroundColor: "#09090C",
+    backgroundColor: "#FFFFFF",
     borderRightWidth: 1,
     borderRightColor: "#1B1822",
     paddingTop: 32,
@@ -1002,7 +1002,7 @@ const styles = StyleSheet.create({
 
   sidebarDivider: {
     height: 1,
-    backgroundColor: "#1A1820",
+    backgroundColor: "#FFFFFF",
     marginTop: 30,
     marginBottom: 28,
   },
@@ -1034,7 +1034,7 @@ const styles = StyleSheet.create({
   },
 
   navItemActive: {
-    backgroundColor: "#15101D",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#302342",
   },
@@ -1043,7 +1043,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#3A3740",
+    backgroundColor: "#FFFFFF",
     marginRight: 13,
   },
 
@@ -1059,7 +1059,7 @@ const styles = StyleSheet.create({
   },
 
   navTextActive: {
-    color: "#F1ECFF",
+    color: "#3F3F3B",
     fontWeight: "700",
   },
 
@@ -1122,7 +1122,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#0D0C10",
+    backgroundColor: "#FFFFFF",
   },
 
   logoutText: {
@@ -1257,7 +1257,7 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     borderWidth: 1,
     borderColor: "#342449",
-    backgroundColor: "#09090C",
+    backgroundColor: "#FFFFFF",
     shadowColor: "#000000",
     shadowOpacity: 0.55,
     shadowRadius: 26,
@@ -1335,7 +1335,7 @@ const styles = StyleSheet.create({
     borderRadius: 46,
     borderWidth: 1,
     borderColor: "#45315D",
-    backgroundColor: "#100C15",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -1379,7 +1379,7 @@ const styles = StyleSheet.create({
     left: 15,
     right: 15,
     height: 1,
-    backgroundColor: "#292631",
+    backgroundColor: "#FFFFFF",
   },
 
   metricLineAccent: {
@@ -1394,7 +1394,7 @@ const styles = StyleSheet.create({
   },
 
   metricValue: {
-    color: "#F2EDF8",
+    color: "#3F3F3B",
     fontSize: 27,
     fontWeight: "800",
     letterSpacing: -0.6,
@@ -1410,7 +1410,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#45404B",
+    backgroundColor: "#FFFFFF",
     marginRight: 7,
   },
 
@@ -1433,7 +1433,7 @@ const styles = StyleSheet.create({
   ledgerCard: {
     flex: 1.7,
     minHeight: 430,
-    backgroundColor: "#0D0D11",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#211C29",
     borderRadius: 12,
@@ -1450,7 +1450,7 @@ const styles = StyleSheet.create({
   breakdownCard: {
     flex: 1,
     minHeight: 430,
-    backgroundColor: "#0D0D11",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#211C29",
     borderRadius: 12,
@@ -1479,7 +1479,7 @@ const styles = StyleSheet.create({
   },
 
   cardTitle: {
-    color: "#E5E0EA",
+    color: "#5F5F5B",
     fontSize: 21,
     fontWeight: "700",
   },
@@ -1487,7 +1487,7 @@ const styles = StyleSheet.create({
   recordBadge: {
     borderWidth: 1,
     borderColor: "#30233F",
-    backgroundColor: "#130F19",
+    backgroundColor: "#FFFFFF",
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 6,
@@ -1525,7 +1525,7 @@ const styles = StyleSheet.create({
     width: 54,
     height: 54,
     borderRadius: 12,
-    backgroundColor: "#17111F",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#39284A",
     alignItems: "center",
@@ -1557,7 +1557,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderWidth: 1,
     borderColor: "#45305D",
-    backgroundColor: "#15101D",
+    backgroundColor: "#FFFFFF",
     borderRadius: 8,
     paddingHorizontal: 16,
     paddingVertical: 10,
@@ -1606,7 +1606,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#514B59",
+    backgroundColor: "#FFFFFF",
     marginRight: 9,
   },
 
@@ -1650,7 +1650,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#48434E",
+    backgroundColor: "#FFFFFF",
     marginRight: 10,
   },
 
@@ -1688,7 +1688,7 @@ const styles = StyleSheet.create({
   },
 
   breakdownTotalValue: {
-    color: "#F0EAF7",
+    color: "#4A4A46",
     fontSize: 27,
     fontWeight: "800",
     marginTop: 8,
@@ -1775,7 +1775,7 @@ const styles = StyleSheet.create({
   },
 
   modalTitle: {
-    color: "#F3EEF8",
+    color: "#3F3F3B",
     fontSize: 29,
     fontWeight: "800",
     marginTop: 7,
@@ -1791,7 +1791,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 8,
-    backgroundColor: "#151219",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2A2331",
     alignItems: "center",
@@ -1820,7 +1820,7 @@ const styles = StyleSheet.create({
     height: 58,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#09090C",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2A2332",
     borderRadius: 9,
@@ -1836,14 +1836,14 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     height: 58,
-    color: "#F1ECF7",
+    color: "#3F3F3B",
     fontSize: 20,
     fontWeight: "700",
     paddingHorizontal: 14,
   },
 
   descriptionInput: {
-    backgroundColor: "#09090C",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2A2332",
     borderRadius: 9,

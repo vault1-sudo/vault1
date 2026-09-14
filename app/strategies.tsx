@@ -1253,12 +1253,12 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#08070B",
+    backgroundColor: "#FFFFFF",
   },
 
   sidebar: {
     width: 270,
-    backgroundColor: "#0B0A0F",
+    backgroundColor: "#FFFFFF",
     borderRightWidth: 1,
     borderRightColor: "#211D2A",
     paddingHorizontal: 24,
@@ -1276,7 +1276,7 @@ const styles = StyleSheet.create({
     width: 42,
     height: 42,
     borderRadius: 11,
-    backgroundColor: "#14111D",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#3A3150",
     alignItems: "center",
@@ -1294,7 +1294,7 @@ const styles = StyleSheet.create({
   },
 
   brand: {
-    color: "#F7F4FF",
+    color: "#3F3F3B",
     fontSize: 18,
     fontWeight: "900",
     letterSpacing: 2,
@@ -1310,7 +1310,7 @@ const styles = StyleSheet.create({
 
   sidebarLine: {
     height: 1,
-    backgroundColor: "#211D2A",
+    backgroundColor: "#FFFFFF",
     marginVertical: 28,
   },
 
@@ -1337,7 +1337,7 @@ const styles = StyleSheet.create({
   },
 
   navItemActive: {
-    backgroundColor: "#171321",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#332850",
   },
@@ -1346,7 +1346,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#403A48",
+    backgroundColor: "#FFFFFF",
   },
 
   navDotActive: {
@@ -1365,7 +1365,7 @@ const styles = StyleSheet.create({
   },
 
   navTextActive: {
-    color: "#EEE9FF",
+    color: "#4A4A46",
   },
 
   sidebarFooter: {
@@ -1414,7 +1414,7 @@ const styles = StyleSheet.create({
   },
 
   pageTitle: {
-    color: "#F8F5FF",
+    color: "#3F3F3B",
     fontSize: 44,
     lineHeight: 52,
     fontWeight: "900",
@@ -1459,7 +1459,7 @@ const styles = StyleSheet.create({
   metricCard: {
     flex: 1,
     minHeight: 148,
-    backgroundColor: "#111016",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#272230",
     borderRadius: 14,
@@ -1487,7 +1487,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#39333F",
+    backgroundColor: "#FFFFFF",
   },
 
   metricDotAccent: {
@@ -1498,7 +1498,7 @@ const styles = StyleSheet.create({
   },
 
   metricValue: {
-    color: "#F5F0FF",
+    color: "#3F3F3B",
     fontSize: 34,
     fontWeight: "900",
     letterSpacing: -0.8,
@@ -1519,7 +1519,7 @@ const styles = StyleSheet.create({
   searchBox: {
     flex: 1,
     height: 52,
-    backgroundColor: "#100E14",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#292331",
     borderRadius: 11,
@@ -1527,7 +1527,7 @@ const styles = StyleSheet.create({
   },
 
   searchInput: {
-    color: "#EEE9F8",
+    color: "#4A4A46",
     fontSize: 14,
     paddingHorizontal: 17,
     outlineStyle: "none",
@@ -1537,7 +1537,7 @@ const styles = StyleSheet.create({
     minWidth: 210,
     height: 52,
     borderRadius: 11,
-    backgroundColor: "#110F16",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#292331",
     paddingHorizontal: 16,
@@ -1571,7 +1571,7 @@ const styles = StyleSheet.create({
   },
 
   sectionTitle: {
-    color: "#F2EDF9",
+    color: "#3F3F3B",
     fontSize: 22,
     fontWeight: "900",
     letterSpacing: -0.4,
@@ -1599,7 +1599,7 @@ const styles = StyleSheet.create({
   strategyCard: {
     width: "calc(50% - 8px)" as any,
     minHeight: 340,
-    backgroundColor: "#111016",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#292330",
     borderRadius: 15,
@@ -1625,7 +1625,7 @@ const styles = StyleSheet.create({
   },
 
   strategyName: {
-    color: "#F6F1FF",
+    color: "#3F3F3B",
     fontSize: 23,
     fontWeight: "900",
     letterSpacing: -0.5,
@@ -1638,21 +1638,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 9,
     paddingVertical: 6,
     borderRadius: 8,
-    backgroundColor: "#15131A",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2C2733",
   },
 
   statusBadgeActive: {
     borderColor: "#41335D",
-    backgroundColor: "#181422",
+    backgroundColor: "#FFFFFF",
   },
 
   statusDot: {
     width: 5,
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#514B58",
+    backgroundColor: "#FFFFFF",
   },
 
   statusDotActive: {
@@ -1676,7 +1676,7 @@ const styles = StyleSheet.create({
 
   strategyDivider: {
     height: 1,
-    backgroundColor: "#24202B",
+    backgroundColor: "#FFFFFF",
     marginVertical: 18,
   },
 
@@ -1714,7 +1714,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 9,
     paddingVertical: 6,
     borderRadius: 7,
-    backgroundColor: "#17141D",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2A2532",
   },
@@ -1757,7 +1757,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#28232F",
     borderRadius: 15,
-    backgroundColor: "#0F0D13",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
     padding: 40,
@@ -1767,7 +1767,7 @@ const styles = StyleSheet.create({
     width: 58,
     height: 58,
     borderRadius: 16,
-    backgroundColor: "#171321",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#3A2E50",
     alignItems: "center",
@@ -1782,7 +1782,7 @@ const styles = StyleSheet.create({
   },
 
   emptyTitle: {
-    color: "#EDE7F7",
+    color: "#4A4A46",
     fontSize: 22,
     fontWeight: "900",
   },
@@ -1803,7 +1803,7 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     borderWidth: 1,
     borderColor: "#4A3B66",
-    backgroundColor: "#171321",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -1819,7 +1819,7 @@ const styles = StyleSheet.create({
     marginTop: 26,
     minHeight: 260,
     borderRadius: 15,
-    backgroundColor: "#100E14",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2C2636",
     overflow: "hidden",
@@ -1848,7 +1848,7 @@ const styles = StyleSheet.create({
   },
 
   foundationTitle: {
-    color: "#F0EBF8",
+    color: "#4A4A46",
     fontSize: 25,
     fontWeight: "900",
     marginTop: 8,
@@ -1909,7 +1909,7 @@ const styles = StyleSheet.create({
     width: "min(760px, 100%)" as any,
     maxHeight: "92%",
     borderRadius: 18,
-    backgroundColor: "#0E0C12",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#393145",
     shadowColor: "#000",
@@ -1937,7 +1937,7 @@ const styles = StyleSheet.create({
   },
 
   modalTitle: {
-    color: "#F3EDF9",
+    color: "#3F3F3B",
     fontSize: 30,
     fontWeight: "900",
     marginTop: 5,
@@ -1947,7 +1947,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 10,
-    backgroundColor: "#17141C",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2F2937",
     alignItems: "center",
@@ -1976,10 +1976,10 @@ const styles = StyleSheet.create({
   input: {
     height: 48,
     borderRadius: 9,
-    backgroundColor: "#141118",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2E2837",
-    color: "#F0EAF8",
+    color: "#4A4A46",
     fontSize: 14,
     paddingHorizontal: 14,
     outlineStyle: "none",
@@ -2002,7 +2002,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 13,
     height: 38,
     borderRadius: 8,
-    backgroundColor: "#141118",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2D2735",
     alignItems: "center",
@@ -2010,7 +2010,7 @@ const styles = StyleSheet.create({
   },
 
   optionButtonActive: {
-    backgroundColor: "#211832",
+    backgroundColor: "#FFFFFF",
     borderColor: "#684DA1",
   },
 
@@ -2036,13 +2036,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 8,
     borderRadius: 7,
-    backgroundColor: "#141118",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2D2735",
   },
 
   assetSelectorItemActive: {
-    backgroundColor: "#211832",
+    backgroundColor: "#FFFFFF",
     borderColor: "#684DA1",
   },
 
@@ -2066,7 +2066,7 @@ const styles = StyleSheet.create({
   },
 
   errorBox: {
-    backgroundColor: "#24151B",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#57303D",
     borderRadius: 9,
@@ -2075,7 +2075,7 @@ const styles = StyleSheet.create({
   },
 
   errorText: {
-    color: "#E29AAA",
+    color: "#B24A57",
     fontSize: 12,
     lineHeight: 18,
   },

@@ -1153,7 +1153,7 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#060606",
+        "#FFFFFF",
     },
 
     content: {
@@ -1182,7 +1182,7 @@ const styles =
     },
 
     title: {
-      color: "#F2F2F2",
+      color: "#3F3F3B",
       fontSize: 45,
       fontWeight:
         "900",
@@ -1293,7 +1293,7 @@ const styles =
     },
 
     progressTitle: {
-      color: "#E7E7E7",
+      color: "#5F5F5B",
       fontSize: 23,
       fontWeight:
         "800",
@@ -1310,7 +1310,7 @@ const styles =
     progressTrack: {
       height: 7,
       backgroundColor:
-        "#191919",
+        "#FFFFFF",
       borderRadius: 4,
       marginTop: 20,
       overflow:
@@ -1363,7 +1363,7 @@ const styles =
     },
 
     cardTitle: {
-      color: "#E5E5E5",
+      color: "#5F5F5B",
       fontSize: 21,
       fontWeight:
         "800",
@@ -1403,7 +1403,7 @@ const styles =
     },
 
     achievementNumber: {
-      color: "#EEEEEE",
+      color: "#4A4A46",
       fontSize: 28,
       fontWeight:
         "900",
@@ -1452,7 +1452,7 @@ const styles =
 
     filterActive: {
       backgroundColor:
-        "#1A1124",
+        "#FFFFFF",
       borderColor:
         "#684999",
     },
@@ -1500,7 +1500,7 @@ const styles =
       height: 48,
       borderRadius: 9,
       backgroundColor:
-        "#181220",
+        "#FFFFFF",
       borderWidth: 1,
       borderColor:
         "#392A4C",
@@ -1534,7 +1534,7 @@ const styles =
     },
 
     rewardName: {
-      color: "#E6E6E6",
+      color: "#5F5F5B",
       fontSize: 18,
       fontWeight:
         "800",
@@ -1608,7 +1608,7 @@ const styles =
       height: 40,
       borderRadius: 8,
       backgroundColor:
-        "#181220",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:

@@ -847,13 +847,13 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#060606",
+        "#FFFFFF",
     },
 
     loadingScreen: {
       flex: 1,
       backgroundColor:
-        "#060606",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:
@@ -933,7 +933,7 @@ const styles =
     },
 
     title: {
-      color: "#F4F4F4",
+      color: "#3F3F3B",
       fontSize: 42,
       fontWeight:
         "900",
@@ -1104,7 +1104,7 @@ const styles =
 
     highlightedRow: {
       backgroundColor:
-        "#110D18",
+        "#FFFFFF",
     },
 
     rank: {
@@ -1132,7 +1132,7 @@ const styles =
       height: 38,
       borderRadius: 19,
       backgroundColor:
-        "#19131F",
+        "#FFFFFF",
       alignItems:
         "center",
       justifyContent:

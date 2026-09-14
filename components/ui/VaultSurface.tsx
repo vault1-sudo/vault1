@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  ViewStyle,
-} from "react-native";
+import { View, StyleSheet, ViewStyle } from "react-native";
 
 type VaultSurfaceProps = {
   children: React.ReactNode;
@@ -24,9 +20,9 @@ export default function VaultSurface({
 
 const styles = StyleSheet.create({
   surface: {
-    backgroundColor: "#111114",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
-    borderColor: "#27272C",
+    borderColor: "#E5E5E2",
     borderRadius: 8,
     overflow: "hidden",
   },

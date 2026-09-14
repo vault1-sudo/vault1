@@ -1403,12 +1403,12 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#060606",
+    backgroundColor: "#FFFFFF",
   },
 
   sidebar: {
     width: 238,
-    backgroundColor: "#090909",
+    backgroundColor: "#FFFFFF",
     borderRightWidth: 1,
     borderRightColor: "#202020",
     paddingTop: 28,
@@ -1471,7 +1471,7 @@ const styles = StyleSheet.create({
   },
 
   navItemActive: {
-    backgroundColor: "#17121F",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2B1D42",
   },
@@ -1514,7 +1514,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: "#F5F5F5",
+    color: "#3F3F3B",
     fontSize: 46,
     fontWeight: "900",
     letterSpacing: -1.5,
@@ -1552,14 +1552,14 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     borderWidth: 1,
     borderColor: "#363636",
-    backgroundColor: "#151515",
+    backgroundColor: "#FFFFFF",
     justifyContent: "center",
     alignItems: "center",
   },
 
   activeButton: {
     borderColor: "#7250A7",
-    backgroundColor: "#21172E",
+    backgroundColor: "#FFFFFF",
   },
 
   secondaryButtonText: {
@@ -1575,13 +1575,13 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     borderWidth: 1,
     borderColor: "#5A3030",
-    backgroundColor: "#241212",
+    backgroundColor: "#FFFFFF",
     justifyContent: "center",
     alignItems: "center",
   },
 
   liveButtonText: {
-    color: "#E98D8D",
+    color: "#B24A57",
     fontSize: 10,
     fontWeight: "900",
     letterSpacing: 1,
@@ -1599,14 +1599,14 @@ const styles = StyleSheet.create({
   errorBox: {
     borderWidth: 1,
     borderColor: "#5B2929",
-    backgroundColor: "#1D0E0E",
+    backgroundColor: "#FFFFFF",
     borderRadius: 10,
     padding: 14,
     marginBottom: 18,
   },
 
   errorText: {
-    color: "#E68E8E",
+    color: "#B24A57",
     fontSize: 13,
     fontWeight: "700",
   },
@@ -1614,7 +1614,7 @@ const styles = StyleSheet.create({
   successBox: {
     borderWidth: 1,
     borderColor: "#294A37",
-    backgroundColor: "#0E1A13",
+    backgroundColor: "#FFFFFF",
     borderRadius: 10,
     padding: 14,
     marginBottom: 18,
@@ -1647,7 +1647,7 @@ const styles = StyleSheet.create({
   },
 
   metricValue: {
-    color: "#F4F4F4",
+    color: "#3F3F3B",
     fontSize: 32,
     fontWeight: "900",
     padding: 20,
@@ -1664,12 +1664,12 @@ const styles = StyleSheet.create({
 
   searchInput: {
     height: 52,
-    backgroundColor: "#111111",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#292929",
     borderRadius: 10,
     paddingHorizontal: 18,
-    color: "#F1F1F1",
+    color: "#3F3F3B",
     fontSize: 14,
   },
 
@@ -1694,7 +1694,7 @@ const styles = StyleSheet.create({
   },
 
   sectionTitle: {
-    color: "#EEEEEE",
+    color: "#4A4A46",
     fontSize: 21,
     fontWeight: "900",
   },
@@ -1713,7 +1713,7 @@ const styles = StyleSheet.create({
 
   traderCard: {
     flexDirection: "row",
-    backgroundColor: "#101010",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#242424",
     borderRadius: 12,
@@ -1723,14 +1723,14 @@ const styles = StyleSheet.create({
 
   traderCardActive: {
     borderColor: "#62449A",
-    backgroundColor: "#141016",
+    backgroundColor: "#FFFFFF",
   },
 
   avatar: {
     width: 54,
     height: 54,
     borderRadius: 15,
-    backgroundColor: "#211A2C",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#3C2A55",
     alignItems: "center",
@@ -1755,7 +1755,7 @@ const styles = StyleSheet.create({
   },
 
   traderName: {
-    color: "#EEEEEE",
+    color: "#4A4A46",
     fontSize: 16,
     fontWeight: "900",
   },
@@ -1769,7 +1769,7 @@ const styles = StyleSheet.create({
   livePill: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#241313",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#4A2929",
     borderRadius: 20,
@@ -1840,7 +1840,7 @@ const styles = StyleSheet.create({
   },
 
   emptyTitle: {
-    color: "#EEEEEE",
+    color: "#4A4A46",
     fontSize: 21,
     fontWeight: "900",
     marginBottom: 8,
@@ -1858,7 +1858,7 @@ const styles = StyleSheet.create({
 
   profileBanner: {
     height: 120,
-    backgroundColor: "#17121F",
+    backgroundColor: "#FFFFFF",
     borderBottomWidth: 1,
     borderBottomColor: "#2A2038",
   },
@@ -1872,7 +1872,7 @@ const styles = StyleSheet.create({
     width: 92,
     height: 92,
     borderRadius: 24,
-    backgroundColor: "#211A2C",
+    backgroundColor: "#FFFFFF",
     borderWidth: 2,
     borderColor: "#5B4080",
     alignItems: "center",
@@ -1894,7 +1894,7 @@ const styles = StyleSheet.create({
   },
 
   profileName: {
-    color: "#F4F4F4",
+    color: "#3F3F3B",
     fontSize: 27,
     fontWeight: "900",
   },
@@ -1954,7 +1954,7 @@ const styles = StyleSheet.create({
   },
 
   profileStatValue: {
-    color: "#EEEEEE",
+    color: "#4A4A46",
     fontSize: 19,
     fontWeight: "900",
   },
@@ -2005,7 +2005,7 @@ const styles = StyleSheet.create({
   },
 
   modalTitle: {
-    color: "#F4F4F4",
+    color: "#3F3F3B",
     fontSize: 27,
     fontWeight: "900",
     marginTop: 5,
@@ -2015,7 +2015,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 8,
-    backgroundColor: "#171717",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#303030",
     alignItems: "center",
@@ -2042,11 +2042,11 @@ const styles = StyleSheet.create({
 
   input: {
     minHeight: 48,
-    backgroundColor: "#0D0D0D",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#2A2A2A",
     borderRadius: 9,
-    color: "#EEEEEE",
+    color: "#4A4A46",
     paddingHorizontal: 14,
     fontSize: 14,
   },
@@ -2068,14 +2068,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 11,
     paddingVertical: 9,
     borderRadius: 8,
-    backgroundColor: "#111111",
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#292929",
   },
 
   categoryChipActive: {
     borderColor: "#6949A0",
-    backgroundColor: "#1C1427",
+    backgroundColor: "#FFFFFF",
   },
 
   categoryChipText: {
