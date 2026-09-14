@@ -191,6 +191,15 @@ export default function Dashboard() {
   const router = useRouter();
   const { profile, logout } = useAuth();
 
+  const handleLogout = async () => {
+    try {
+      await logout();
+      router.replace("/login");
+    } catch (error) {
+      console.error("Vault1 logout failed:", error);
+    }
+  };
+
   const handleNavigation = (label: string) => {
     const route = routeMap[label];
 
@@ -300,14 +309,14 @@ export default function Dashboard() {
             </View>
 
             <Pressable
-              onPress={logout}
+              onPress={handleLogout}
               style={({ pressed }) => [
                 styles.logoutButton,
                 pressed && styles.logoutButtonPressed,
               ]}
             >
               <Text style={styles.logoutText}>
-                ↗
+                SIGN OUT
               </Text>
             </Pressable>
 
