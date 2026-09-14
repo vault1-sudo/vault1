@@ -2022,7 +2022,6 @@ const styles = StyleSheet.create({
   },
 
   sidebar: {
-    display: "none",
     width: 246,
     backgroundColor: "#FFFFFF",
     borderRightWidth: 1,

@@ -404,7 +404,7 @@ export default function CommunityScreen() {
 
   return (
     <View style={styles.page}>
-      <View style={styles.sidebar} pointerEvents="none">
+      <View style={styles.sidebar}>
         <View style={styles.brand}>
           <Text style={styles.brandMark}>
             V1
@@ -1407,7 +1407,6 @@ const styles = StyleSheet.create({
   },
 
   sidebar: {
-    display: "none",
     width: 238,
     backgroundColor: "#FFFFFF",
     borderRightWidth: 1,

@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* ============================================================
+   VAULT1 GLOBAL WEB DESIGN SYSTEM
+   CLEAN / FLAT / PRECISION
+   ============================================================ */
+
+:root {
+  --v1-bg: #09090b;
+  --v1-bg-soft: #0d0d10;
+  --v1-surface: #111114;
+  --v1-surface-2: #151519;
+  --v1-surface-3: #19191e;
+
+  --v1-border: #27272c;
+  --v1-border-soft: #202025;
+  --v1-border-strong: #34343b;
+
+  --v1-text: #f5f5f7;
+  --v1-text-secondary: #b4b4bb;
+  --v1-text-muted: #77777f;
+  --v1-text-faint: #55555c;
+
+  --v1-violet: #8b5cf6;
+  --v1-violet-hover: #9d74f7;
+  --v1-violet-soft: rgba(139, 92, 246, 0.12);
+  --v1-violet-border: rgba(139, 92, 246, 0.35);
+
+  --v1-success: #22c55e;
+  --v1-danger: #ef4444;
+  --v1-warning: #f59e0b;
+  --v1-info: #60a5fa;
+
+  --v1-radius-sm: 6px;
+  --v1-radius-md: 8px;
+  --v1-radius-lg: 10px;
+
+  --v1-sidebar: 248px;
+  --v1-content-max: 1600px;
+}
+
+/* ============================================================
+   GLOBAL RESET
+   ============================================================ */
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background: var(--v1-bg);
+  color: var(--v1-text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* ============================================================
+   REMOVE OLD 3D / GLASS EFFECTS
+   ============================================================ */
+
+* {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+div,
+section,
+main,
+aside,
+header,
+footer {
+  background-image: none;
+}
+
+/* Keep images/icons from becoming strange inline elements */
+img,
+svg {
+  max-width: 100%;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 700 !important;
+  color: var(--v1-text) !important;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: 42px;
+  line-height: 1.08;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+p {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400;
+  color: var(--v1-text-secondary);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+button {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 600;
+  border-radius: var(--v1-radius-md);
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+button:hover {
+  filter: none;
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+input,
+textarea,
+select {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400;
+  color: var(--v1-text);
+  background: var(--v1-surface);
+  border: 1px solid var(--v1-border);
+  border-radius: var(--v1-radius-md);
+  outline: none;
+  box-shadow: none !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--v1-violet-border);
+  box-shadow: 0 0 0 3px var(--v1-violet-soft) !important;
+}
+
+/* ============================================================
+   LINKS
+   ============================================================ */
+
+a {
+  font-family: "Inter", sans-serif;
+  color: var(--v1-text);
+  text-decoration: none;
+}
+
+/* ============================================================
+   SCROLLBARS
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--v1-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a30;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a42;
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+
+::selection {
+  background: rgba(139, 92, 246, 0.25);
+  color: #ffffff;
+}
+
+/* ============================================================
+   FLAT SURFACE OVERRIDES
+   ============================================================ */
+
+[class*="surface"],
+[class*="card"],
+[class*="Card"],
+[class*="panel"],
+[class*="Panel"] {
+  box-shadow: none !important;
+}
+
+/* ============================================================
+   REMOVE GRADIENT-STYLE VISUAL NOISE
+   ============================================================ */
+
+[style*="linear-gradient"],
+[style*="radial-gradient"] {
+  background-image: none !important;
+}
+
+/* ============================================================
+   PRESSABLE / INTERACTIVE ELEMENTS
+   ============================================================ */
+
+[role="button"] {
+  font-family: "Inter", sans-serif !important;
+  box-shadow: none !important;
+}
+
+/* ============================================================
+   WEB RESPONSIVENESS
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 38px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+}

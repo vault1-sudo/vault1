@@ -483,7 +483,7 @@ export default function SettingsScreen() {
   return (
     <View style={styles.page}>
 
-      <View style={styles.sidebar} pointerEvents="none">
+      <View style={styles.sidebar}>
 
         <View style={styles.brandBlock}>
 
@@ -1321,7 +1321,6 @@ const styles = StyleSheet.create({
 
 
   sidebar: {
-    display: "none",
     width: 250,
     backgroundColor: "#FFFFFF",
     borderRightWidth: 1,

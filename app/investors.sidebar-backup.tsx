@@ -576,7 +576,7 @@ export default function InvestorsScreen() {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.sidebar} pointerEvents="none">
+      <View style={styles.sidebar}>
         <View style={styles.brand}>
           <View style={styles.brandMark}>
             <Text style={styles.brandMarkText}>
@@ -1388,7 +1388,6 @@ const styles = StyleSheet.create({
   },
 
   sidebar: {
-    display: "none",
     width: 246,
     backgroundColor: "#FFFFFF",
     borderRightWidth: 1,

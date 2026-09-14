@@ -319,7 +319,7 @@ export default function PortfolioScreen() {
           SIDEBAR
       ===================================================== */}
 
-      <View style={styles.sidebar} pointerEvents="none">
+      <View style={styles.sidebar}>
 
         <View style={styles.brandBlock}>
           <Text style={styles.brand}>
@@ -1742,7 +1742,6 @@ const styles = StyleSheet.create({
   },
 
   sidebar: {
-    display: "none",
     width: 250,
     backgroundColor: "#FFFFFF",
     borderRightWidth: 1,

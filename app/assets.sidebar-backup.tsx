@@ -1652,7 +1652,6 @@ const styles = StyleSheet.create({
   },
 
   sidebar: {
-    display: "none",
     width: 250,
     backgroundColor: "#FFFFFF",
     borderRightWidth: 1,

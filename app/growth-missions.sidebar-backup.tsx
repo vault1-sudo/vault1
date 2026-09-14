@@ -431,7 +431,7 @@ export default function GrowthMissionsScreen() {
 
   return (
     <View style={styles.root}>
-      <View style={styles.sidebar} pointerEvents="none">
+      <View style={styles.sidebar}>
         <Pressable style={styles.brandContainer} onPress={() => router.replace("/dashboard")}>
           <Text style={styles.brand}>VAULT1</Text>
           <View style={styles.brandRow}>
@@ -1148,8 +1148,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   root: { flex: 1, flexDirection: "row", backgroundColor: "#FFFFFF" },
-  sidebar: {
-    display: "none", width: 270, backgroundColor: "#FFFFFF", borderRightWidth: 1, borderRightColor: "#E5E5E2", paddingTop: 32, paddingBottom: 26, paddingHorizontal: 22, justifyContent: "space-between" },
+  sidebar: { width: 270, backgroundColor: "#FFFFFF", borderRightWidth: 1, borderRightColor: "#E5E5E2", paddingTop: 32, paddingBottom: 26, paddingHorizontal: 22, justifyContent: "space-between" },
   brandContainer: { paddingHorizontal: 8 },
   brand: { color: "#111111", fontSize: 29, fontWeight: "900", letterSpacing: 4.5 },
   brandRow: { flexDirection: "row", alignItems: "center", marginTop: 6 },

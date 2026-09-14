@@ -10,157 +10,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 
 import { useAuth } from "../services/auth/AuthProvider";
-import { canAccessModule } from "../services/auth/permissions";
 import VaultSurface from "../components/ui/VaultSurface";
 import VaultMetric from "../components/ui/VaultMetric";
-
-const navigation = [
-  {
-    section: "COMMAND",
-    items: ["Dashboard"],
-  },
-  {
-    section: "GROWTH",
-    items: [
-      "Portfolio",
-      "Trading",
-      "Assets",
-      "Strategies",
-      "Growth Missions",
-      "Trade Journal",
-    ],
-  },
-  {
-    section: "MONEY",
-    items: [
-      "Capital",
-      "Cashflow",
-      "Transactions",
-    ],
-  },
-  {
-    section: "ANALYTICS",
-    items: [
-      "Performance",
-      "Risk",
-      "Reports",
-    ],
-  },
-  {
-    section: "INVESTORS",
-    items: [
-      "Investors",
-      "Investor Onboarding",
-      "Payouts",
-      "Documents",
-    ],
-  },
-  {
-    section: "COMMUNITY",
-    items: [
-      "Community Hub",
-      "Live Rooms",
-      "Competitions",
-      "Leaderboard",
-      "Creators",
-      "Rewards",
-    ],
-  },
-  {
-    section: "CONTROL",
-    items: [
-      "Audit Logs",
-      "Notifications",
-      "Settings",
-    ],
-  },
-];
-
-const routeMap: Record<string, string> = {
-  Dashboard: "/dashboard",
-
-  Portfolio: "/portfolio",
-  Trading: "/trading",
-  Assets: "/assets",
-  Strategies: "/strategies",
-  "Growth Missions": "/growth-missions",
-  "Trade Journal": "/trade-journal",
-
-  Capital: "/capital",
-  Cashflow: "/cashflow",
-  Transactions: "/transactions",
-
-  Performance: "/performance",
-  Risk: "/risk",
-  Reports: "/reports",
-
-  Investors: "/investors",
-  "Investor Onboarding": "/investor-onboarding",
-  Payouts: "/payouts",
-  Documents: "/documents",
-
-  "Community Hub": "/community",
-  "Live Rooms": "/live-rooms",
-  Competitions: "/competitions",
-  Leaderboard: "/leaderboard",
-  Creators: "/creators",
-  Rewards: "/rewards",
-
-  "Audit Logs": "/audit-logs",
-  Notifications: "/notifications",
-  Settings: "/settings",
-};
-
-function SidebarItem({
-  label,
-  active,
-  onPress,
-}: {
-  label: string;
-  active?: boolean;
-  onPress: () => void;
-}) {
-  return (
-    <Pressable
-      onPress={onPress}
-      style={({ pressed }) => [
-        styles.sidebarItem,
-        active && styles.sidebarItemActive,
-        pressed && styles.sidebarItemPressed,
-      ]}
-    >
-      {active && <View style={styles.activeRail} />}
-
-      <View
-        style={[
-          styles.sidebarDot,
-          active && styles.sidebarDotActive,
-        ]}
-      />
-
-      <Text
-        style={[
-          styles.sidebarItemText,
-          active && styles.sidebarItemTextActive,
-        ]}
-      >
-        {label}
-      </Text>
-    </Pressable>
-  );
-}
-
-function SectionLabel({
-  children,
-}: {
-  children: string;
-}) {
-  return (
-    <Text style={styles.sectionLabel}>
-      {children}
-    </Text>
-  );
-}
 
 function MiniStat({
   label,
@@ -190,152 +41,10 @@ function MiniStat({
 
 export default function Dashboard() {
   const router = useRouter();
-  const { profile, logout } = useAuth();
-
-  const visibleNavigation = navigation
-    .map((group) => ({
-      ...group,
-      items: group.items.filter((item) =>
-        canAccessModule(profile?.role, item, profile?.permissions)
-      ),
-    }))
-    .filter((group) => group.items.length > 0);
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-      router.replace("/login");
-    } catch (error) {
-      console.error("Vault1 logout failed:", error);
-    }
-  };
-
-  const handleNavigation = (label: string) => {
-    const route = routeMap[label];
-
-    if (route) {
-      router.push(route as any);
-    }
-  };
+  const { profile } = useAuth();
 
   return (
     <View style={styles.root}>
-
-      {/* ======================================================
-          SIDEBAR
-          ====================================================== */}
-
-      <View style={styles.sidebar}>
-
-        <View style={styles.sidebarTop}>
-
-          <View style={styles.brandRow}>
-
-            <LinearGradient
-              colors={[
-                "#8C5CFF",
-                "#5A2DCE",
-                "#30136F",
-              ]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.brandMark}
-            >
-              <Text style={styles.brandMarkText}>
-                V1
-              </Text>
-            </LinearGradient>
-
-            <View>
-              <Text style={styles.brandName}>
-                VAULT1
-              </Text>
-
-              <Text style={styles.brandSubtitle}>
-                WEALTH OS
-              </Text>
-            </View>
-
-          </View>
-
-          <View style={styles.systemStatus}>
-            <View style={styles.systemStatusDot} />
-
-            <Text style={styles.systemStatusText}>
-              SYSTEM OPERATIONAL
-            </Text>
-          </View>
-
-        </View>
-
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.sidebarNavigation}
-        >
-          {visibleNavigation.map((group) => (
-            <View
-              key={group.section}
-              style={styles.navGroup}
-            >
-              <SectionLabel>
-                {group.section}
-              </SectionLabel>
-
-              {group.items.map((item) => (
-                <SidebarItem
-                  key={item}
-                  label={item}
-                  active={item === "Dashboard"}
-                  onPress={() =>
-                    handleNavigation(item)
-                  }
-                />
-              ))}
-            </View>
-          ))}
-        </ScrollView>
-
-        <View style={styles.sidebarBottom}>
-
-          <View style={styles.userCard}>
-
-            <View style={styles.userAvatar}>
-              <Text style={styles.userAvatarText}>
-                {(profile?.displayName || "V")[0].toUpperCase()}
-              </Text>
-            </View>
-
-            <View style={styles.userInfo}>
-              <Text
-                style={styles.userName}
-                numberOfLines={1}
-              >
-                {profile?.displayName || "Vault1 User"}
-              </Text>
-
-              <Text style={styles.userRole}>
-                {profile?.role || "VIEWER"}
-              </Text>
-            </View>
-
-            <Pressable
-              onPress={handleLogout}
-              style={({ pressed }) => [
-                styles.logoutButton,
-                pressed && styles.logoutButtonPressed,
-              ]}
-            >
-              <Text style={styles.logoutText}>
-                SIGN OUT
-              </Text>
-            </Pressable>
-
-          </View>
-
-        </View>
-
-      </View>
-
 
       {/* ======================================================
           MAIN
@@ -1025,231 +734,6 @@ const styles = StyleSheet.create({
 
 
   /* ==========================================================
-     SIDEBAR
-     ========================================================== */
-
-  sidebar: {
-    width: 260,
-    backgroundColor: "#FFFFFF",
-    borderRightWidth: 1,
-    borderRightColor: "#202020",
-    paddingTop: 26,
-    paddingBottom: 18,
-  },
-
-  sidebarTop: {
-    paddingHorizontal: 22,
-  },
-
-  brandRow: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-
-  brandMark: {
-    width: 42,
-    height: 42,
-    borderRadius: 11,
-    alignItems: "center",
-    justifyContent: "center",
-    marginRight: 12,
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.12)",
-  },
-
-  brandMarkText: {
-    color: "#FFFFFF",
-    fontSize: 13,
-    fontWeight: "900",
-    letterSpacing: 0.5,
-  },
-
-  brandName: {
-    color: "#3F3F3B",
-    fontSize: 16,
-    fontWeight: "900",
-    letterSpacing: 2,
-  },
-
-  brandSubtitle: {
-    color: "#5D5D5D",
-    fontSize: 8,
-    fontWeight: "800",
-    letterSpacing: 1.8,
-    marginTop: 3,
-  },
-
-  systemStatus: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 24,
-    paddingVertical: 9,
-    paddingHorizontal: 11,
-    borderRadius: 7,
-    backgroundColor: "#FFFFFF",
-    borderWidth: 1,
-    borderColor: "#1C1C1C",
-  },
-
-  systemStatusDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: "#8F63FF",
-    marginRight: 8,
-  },
-
-  systemStatusText: {
-    color: "#686868",
-    fontSize: 8,
-    fontWeight: "800",
-    letterSpacing: 1.1,
-  },
-
-  sidebarNavigation: {
-    paddingTop: 28,
-    paddingBottom: 20,
-  },
-
-  navGroup: {
-    marginBottom: 22,
-  },
-
-  sectionLabel: {
-    color: "#444444",
-    fontSize: 9,
-    fontWeight: "900",
-    letterSpacing: 1.8,
-    paddingHorizontal: 22,
-    marginBottom: 8,
-  },
-
-  sidebarItem: {
-    height: 42,
-    marginHorizontal: 10,
-    paddingHorizontal: 13,
-    borderRadius: 8,
-    flexDirection: "row",
-    alignItems: "center",
-    position: "relative",
-  },
-
-  sidebarItemActive: {
-    backgroundColor: "#FFFFFF",
-    borderWidth: 1,
-    borderColor: "#292038",
-  },
-
-  sidebarItemPressed: {
-    opacity: 0.72,
-  },
-
-  activeRail: {
-    position: "absolute",
-    left: -1,
-    top: 8,
-    bottom: 8,
-    width: 2,
-    backgroundColor: "#8D5CFF",
-    borderRadius: 2,
-  },
-
-  sidebarDot: {
-    width: 5,
-    height: 5,
-    borderRadius: 2.5,
-    backgroundColor: "#FFFFFF",
-    marginRight: 11,
-  },
-
-  sidebarDotActive: {
-    backgroundColor: "#966AFF",
-  },
-
-  sidebarItemText: {
-    color: "#696969",
-    fontSize: 13,
-    fontWeight: "600",
-    letterSpacing: 0.1,
-  },
-
-  sidebarItemTextActive: {
-    color: "#F0ECFF",
-    fontWeight: "800",
-  },
-
-  sidebarBottom: {
-    paddingHorizontal: 14,
-  },
-
-  userCard: {
-    minHeight: 62,
-    borderRadius: 10,
-    backgroundColor: "#FFFFFF",
-    borderWidth: 1,
-    borderColor: "#222222",
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 11,
-  },
-
-  userAvatar: {
-    width: 32,
-    height: 32,
-    borderRadius: 9,
-    backgroundColor: "#FFFFFF",
-    borderWidth: 1,
-    borderColor: "#38285B",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  userAvatarText: {
-    color: "#B08FFF",
-    fontSize: 12,
-    fontWeight: "900",
-  },
-
-  userInfo: {
-    flex: 1,
-    marginLeft: 9,
-  },
-
-  userName: {
-    color: "#D7D7D7",
-    fontSize: 11,
-    fontWeight: "800",
-  },
-
-  userRole: {
-    color: "#555555",
-    fontSize: 8,
-    fontWeight: "800",
-    letterSpacing: 1,
-    marginTop: 3,
-  },
-
-  logoutButton: {
-    width: 29,
-    height: 29,
-    borderRadius: 7,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#FFFFFF",
-  },
-
-  logoutButtonPressed: {
-    opacity: 0.65,
-  },
-
-  logoutText: {
-    color: "#777777",
-    fontSize: 15,
-    fontWeight: "700",
-  },
-
-
-  /* ==========================================================
      MAIN
      ========================================================== */
 
@@ -1283,7 +767,7 @@ const styles = StyleSheet.create({
   },
 
   pageTitle: {
-    color: "#3F3F3B",
+    color: "#F5F5F5",
     fontSize: 44,
     lineHeight: 50,
     fontWeight: "900",
@@ -1498,7 +982,7 @@ const styles = StyleSheet.create({
   },
 
   sectionTitle: {
-    color: "#4A4A46",
+    color: "#EEEEEE",
     fontSize: 23,
     fontWeight: "900",
     letterSpacing: -0.4,
@@ -1542,7 +1026,7 @@ const styles = StyleSheet.create({
   },
 
   miniStatValue: {
-    color: "#4A4A46",
+    color: "#F0F0F0",
     fontSize: 32,
     fontWeight: "900",
     marginTop: 16,
@@ -1593,7 +1077,7 @@ const styles = StyleSheet.create({
   },
 
   panelTitle: {
-    color: "#5F5F5B",
+    color: "#E8E8E8",
     fontSize: 19,
     fontWeight: "900",
   },

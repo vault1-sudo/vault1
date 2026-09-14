@@ -180,7 +180,7 @@ export default function Capital() {
     <View style={styles.root}>
       {/* SIDEBAR */}
 
-      <View style={styles.sidebar} pointerEvents="none">
+      <View style={styles.sidebar}>
         <View>
           <Pressable
             onPress={() =>
@@ -959,7 +959,6 @@ const styles = StyleSheet.create({
   },
 
   sidebar: {
-    display: "none",
     width: 270,
     backgroundColor: "#FFFFFF",
     borderRightWidth: 1,

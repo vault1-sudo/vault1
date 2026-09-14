@@ -1957,7 +1957,6 @@ const styles = StyleSheet.create({
   /* SIDEBAR */
 
   sidebar: {
-    display: "none",
     width: 250,
     backgroundColor: "#FFFFFF",
     borderRightWidth: 1,

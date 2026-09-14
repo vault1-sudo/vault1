@@ -721,7 +721,7 @@ export default function TradeJournalScreen() {
           SIDEBAR
           ====================================================== */}
 
-      <View style={styles.sidebar} pointerEvents="none">
+      <View style={styles.sidebar}>
 
         <View style={styles.sidebarTop}>
 
@@ -1912,7 +1912,6 @@ const styles = StyleSheet.create({
      ========================================================== */
 
   sidebar: {
-    display: "none",
     width: 260,
     backgroundColor: "#FFFFFF",
     borderRightWidth: 1,

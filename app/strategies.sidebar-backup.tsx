@@ -385,7 +385,7 @@ export default function StrategiesScreen() {
 
   return (
     <View style={styles.root}>
-      <View style={styles.sidebar} pointerEvents="none">
+      <View style={styles.sidebar}>
         <View>
           <View style={styles.brandBlock}>
             <View style={styles.brandMark}>
@@ -1257,7 +1257,6 @@ const styles = StyleSheet.create({
   },
 
   sidebar: {
-    display: "none",
     width: 270,
     backgroundColor: "#FFFFFF",
     borderRightWidth: 1,

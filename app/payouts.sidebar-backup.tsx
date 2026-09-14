@@ -614,7 +614,7 @@ export default function PayoutsScreen() {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.sidebar} pointerEvents="none">
+      <View style={styles.sidebar}>
         <View style={styles.brand}>
           <View
             style={styles.brandMark}
@@ -1975,7 +1975,6 @@ const styles = StyleSheet.create({
   },
 
   sidebar: {
-    display: "none",
     width: 246,
     backgroundColor: "#FFFFFF",
     borderRightWidth: 1,

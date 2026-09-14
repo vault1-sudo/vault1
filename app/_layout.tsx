@@ -1,9 +1,18 @@
 import React from "react";
-import { ActivityIndicator, View } from "react-native";
-import { Redirect, Stack, usePathname } from "expo-router";
+import {
+  ActivityIndicator,
+  View,
+  useWindowDimensions,
+} from "react-native";
+import {
+  Redirect,
+  Stack,
+  usePathname,
+} from "expo-router";
 
 import { AuthProvider, useAuth } from "../services/auth/AuthProvider";
 import { canAccessModule } from "../services/auth/permissions";
+import VaultSidebar from "../components/layout/VaultSidebar";
 
 import "../styles/vault1.css";
 
@@ -15,41 +24,43 @@ const routeModuleMap: Record<string, string> = {
   "/strategies": "Strategies",
   "/growth-missions": "Growth Missions",
   "/trade-journal": "Trade Journal",
+
   "/capital": "Capital",
   "/cashflow": "Cashflow",
   "/transactions": "Transactions",
+
   "/performance": "Performance",
   "/risk": "Risk",
   "/reports": "Reports",
+
   "/investors": "Investors",
   "/investor-onboarding": "Investor Onboarding",
   "/payouts": "Payouts",
   "/documents": "Documents",
+
   "/community": "Community Hub",
   "/live-rooms": "Live Rooms",
   "/competitions": "Competitions",
   "/leaderboard": "Leaderboard",
   "/creators": "Creators",
   "/rewards": "Rewards",
+
   "/audit-logs": "Audit Logs",
   "/notifications": "Notifications",
   "/settings": "Settings",
 };
 
-function RouteAccessGuard({ children }: { children: React.ReactNode }) {
+function RouteAccessGuard({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
   const { user, profile, loading } = useAuth();
 
   if (loading) {
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "#FFFFFF",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <View style={styles.loadingContainer}>
         <ActivityIndicator />
       </View>
     );
@@ -59,7 +70,11 @@ function RouteAccessGuard({ children }: { children: React.ReactNode }) {
     pathname === "/login" || pathname === "/register";
 
   if (!user) {
-    return isAuthRoute ? <>{children}</> : <Redirect href="/login" />;
+    return isAuthRoute ? (
+      <>{children}</>
+    ) : (
+      <Redirect href="/login" />
+    );
   }
 
   if (isAuthRoute) {
@@ -68,7 +83,6 @@ function RouteAccessGuard({ children }: { children: React.ReactNode }) {
 
   const requiredModule = routeModuleMap[pathname];
 
-  // Unknown authenticated routes are denied by default rather than exposed.
   if (
     requiredModule &&
     !canAccessModule(
@@ -87,10 +101,30 @@ function RouteAccessGuard({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-export default function RootLayout() {
+function AppShell() {
+  const { user } = useAuth();
+  const pathname = usePathname();
+  const { width } = useWindowDimensions();
+
+  const isAuthRoute =
+    pathname === "/login" || pathname === "/register";
+
+  /*
+   * Desktop/tablet shell.
+   *
+   * Sidebar is intentionally hidden on narrow screens so the
+   * application remains usable on mobile.
+   */
+  const showSidebar =
+    !!user &&
+    !isAuthRoute &&
+    width >= 1000;
+
   return (
-    <AuthProvider>
-      <RouteAccessGuard>
+    <View style={styles.appContainer}>
+      {showSidebar && <VaultSidebar />}
+
+      <View style={styles.pageContainer}>
         <Stack
           screenOptions={{
             headerShown: false,
@@ -100,7 +134,39 @@ export default function RootLayout() {
             },
           }}
         />
+      </View>
+    </View>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <AuthProvider>
+      <RouteAccessGuard>
+        <AppShell />
       </RouteAccessGuard>
     </AuthProvider>
   );
 }
+
+const styles = {
+  loadingContainer: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+  },
+
+  appContainer: {
+    flex: 1,
+    flexDirection: "row" as const,
+    backgroundColor: "#FFFFFF",
+    minHeight: "100%" as any,
+  },
+
+  pageContainer: {
+    flex: 1,
+    minWidth: 0,
+    backgroundColor: "#FFFFFF",
+  },
+};
