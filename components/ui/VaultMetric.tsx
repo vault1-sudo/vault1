@@ -3,10 +3,7 @@ import {
   Text,
   View,
   StyleSheet,
-  Platform,
 } from "react-native";
-
-import VaultSurface from "./VaultSurface";
 
 type VaultMetricProps = {
   label: string;
@@ -22,15 +19,10 @@ export default function VaultMetric({
   accent = false,
 }: VaultMetricProps) {
   return (
-    <VaultSurface
-      intensity="medium"
-      style={styles.container}
-    >
+    <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.topRow}>
-          <Text style={styles.label}>
-            {label}
-          </Text>
+          <Text style={styles.label}>{label}</Text>
 
           <View
             style={[
@@ -41,23 +33,25 @@ export default function VaultMetric({
         </View>
 
         <View>
-          <Text style={styles.value}>
-            {value}
-          </Text>
+          <Text style={styles.value}>{value}</Text>
 
           <Text style={styles.change}>
             {change}
           </Text>
         </View>
       </View>
-    </VaultSurface>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    minHeight: 145,
+    minHeight: 138,
+    backgroundColor: "#111114",
+    borderWidth: 1,
+    borderColor: "#27272C",
+    borderRadius: 8,
   },
 
   content: {
@@ -73,41 +67,37 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    color: "#766489",
-    fontSize: 9,
-    fontWeight: "800",
-    letterSpacing: 1.5,
+    color: "#77777F",
+    fontFamily: "Inter",
+    fontSize: 11,
+    fontWeight: "600",
+    letterSpacing: 0.4,
   },
 
   indicator: {
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#4C3B59",
+    backgroundColor: "#3A3A42",
   },
 
   indicatorAccent: {
-    backgroundColor: "#B891E6",
-
-    ...Platform.select({
-      web: {
-        boxShadow: "0 0 12px rgba(184,145,230,0.65)",
-      },
-      default: {},
-    }),
+    backgroundColor: "#8B5CF6",
   },
 
   value: {
-    color: "#F5EFF9",
-    fontSize: 30,
-    fontWeight: "800",
-    letterSpacing: -0.7,
+    color: "#F5F5F7",
+    fontFamily: "Inter",
+    fontSize: 32,
+    fontWeight: "700",
+    letterSpacing: -0.8,
   },
 
   change: {
-    color: "#76687F",
-    fontSize: 10,
-    fontWeight: "600",
+    color: "#77777F",
+    fontFamily: "Inter",
+    fontSize: 12,
+    fontWeight: "400",
     marginTop: 6,
   },
 });
