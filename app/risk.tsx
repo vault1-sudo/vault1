@@ -12,6 +12,8 @@ import { router } from "expo-router";
 
 import VaultSurface from "../components/ui/VaultSurface";
 import { useAuth } from "../services/auth/AuthProvider";
+import { FONT, COLORS } from "./theme/theme";
+
 import {
   getRiskLevelDescription,
   getRiskLevelLabel,
@@ -1584,12 +1586,12 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   loadingScreen: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     alignItems: "center",
     justifyContent: "center",
     gap: 16,
@@ -1599,7 +1601,7 @@ const styles = StyleSheet.create({
     width: 58,
     height: 58,
     borderRadius: 16,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#3A3155",
     alignItems: "center",
@@ -1609,23 +1611,23 @@ const styles = StyleSheet.create({
   loadingMarkText: {
     color: "#B39AFF",
     fontSize: 18,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
   loadingText: {
     color: "#55505F",
     fontSize: 9,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.8,
   },
 
   sidebar: {
     display: "none",
     width: 246,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderRightWidth: 1,
-    borderRightColor: "#191919",
+    borderRightColor: COLORS.navyLine,
     paddingTop: 26,
     paddingBottom: 18,
   },
@@ -1641,7 +1643,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 11,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#3A3150",
     alignItems: "center",
@@ -1651,27 +1653,27 @@ const styles = StyleSheet.create({
   brandMarkText: {
     color: "#A989FF",
     fontSize: 18,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   brandName: {
     color: "#3F3F3B",
     fontSize: 17,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2.5,
   },
 
   brandSubtitle: {
     color: "#484848",
     fontSize: 7,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.1,
     marginTop: 3,
   },
 
   sidebarDivider: {
     height: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     marginTop: 25,
     marginHorizontal: 18,
   },
@@ -1688,7 +1690,7 @@ const styles = StyleSheet.create({
   navSection: {
     color: "#414141",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.8,
     paddingHorizontal: 22,
     marginBottom: 6,
@@ -1704,7 +1706,7 @@ const styles = StyleSheet.create({
   },
 
   navItemActive: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#282038",
   },
@@ -1729,17 +1731,17 @@ const styles = StyleSheet.create({
     flex: 1,
     color: "#656565",
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   navTextActive: {
-    color: "#5F5F5B",
+    color: COLORS.muted,
   },
 
   navArrow: {
     color: "#9675F5",
     fontSize: 19,
-    fontWeight: "400",
+    fontFamily: FONT.regular,
     marginTop: -2,
   },
 
@@ -1756,7 +1758,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 10,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#302B39",
     alignItems: "center",
@@ -1766,7 +1768,7 @@ const styles = StyleSheet.create({
   profileMarkText: {
     color: "#A890DD",
     fontSize: 12,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   profileInfo: {
@@ -1777,13 +1779,13 @@ const styles = StyleSheet.create({
   profileName: {
     color: "#C7C7C7",
     fontSize: 11,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
   },
 
   profileRole: {
-    color: "#454545",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
     marginTop: 2,
   },
@@ -1813,7 +1815,7 @@ const styles = StyleSheet.create({
   eyebrow: {
     color: "#8665E2",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2,
     marginBottom: 10,
   },
@@ -1821,14 +1823,14 @@ const styles = StyleSheet.create({
   title: {
     color: "#3F3F3B",
     fontSize: 44,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1.4,
   },
 
   subtitle: {
-    color: "#696969",
+    color: COLORS.muted,
     fontSize: 14,
-    fontWeight: "500",
+    fontFamily: FONT.medium,
     marginTop: 9,
     maxWidth: 680,
     lineHeight: 21,
@@ -1845,7 +1847,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "#29232F",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     flexDirection: "row",
     alignItems: "center",
     gap: 7,
@@ -1861,14 +1863,14 @@ const styles = StyleSheet.create({
   engineBadgeText: {
     color: "#82769A",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.3,
   },
 
   headerUser: {
     color: "#4B4B4B",
     fontSize: 10,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     marginTop: 9,
   },
 
@@ -1880,7 +1882,7 @@ const styles = StyleSheet.create({
   errorText: {
     color: "#B88787",
     fontSize: 11,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   emptyCard: {
@@ -1891,19 +1893,19 @@ const styles = StyleSheet.create({
   emptyEyebrow: {
     color: "#8061D4",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.8,
   },
 
   emptyTitle: {
-    color: "#5F5F5B",
+    color: COLORS.muted,
     fontSize: 27,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 10,
   },
 
   emptyDescription: {
-    color: "#5A5A5A",
+    color: COLORS.muted,
     fontSize: 12,
     lineHeight: 19,
     marginTop: 10,
@@ -1942,7 +1944,7 @@ const styles = StyleSheet.create({
   heroEyebrow: {
     color: "#71677F",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.8,
   },
 
@@ -1955,7 +1957,7 @@ const styles = StyleSheet.create({
 
   heroStatus: {
     fontSize: 38,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1,
   },
 
@@ -1986,7 +1988,7 @@ const styles = StyleSheet.create({
   gaugeSegment: {
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   gaugeSegmentActive: {
@@ -1996,7 +1998,7 @@ const styles = StyleSheet.create({
   gaugeLabel: {
     color: "#3F3F3F",
     fontSize: 7,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 0.8,
     marginTop: 7,
   },
@@ -2014,14 +2016,14 @@ const styles = StyleSheet.create({
   cardEyebrow: {
     color: "#59545F",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.6,
   },
 
   capitalRiskValue: {
-    color: "#5F5F5B",
+    color: COLORS.muted,
     fontSize: 44,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1.4,
     marginTop: 22,
   },
@@ -2029,7 +2031,7 @@ const styles = StyleSheet.create({
   capitalRiskCaption: {
     color: "#504A58",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.4,
     marginTop: 3,
   },
@@ -2046,14 +2048,14 @@ const styles = StyleSheet.create({
   smallLabel: {
     color: "#48454B",
     fontSize: 7,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.1,
   },
 
   smallValue: {
     color: "#BEBABE",
     fontSize: 13,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     marginTop: 5,
   },
 
@@ -2084,7 +2086,7 @@ const styles = StyleSheet.create({
   metricLabel: {
     color: "#595959",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.25,
   },
 
@@ -2100,9 +2102,9 @@ const styles = StyleSheet.create({
   },
 
   metricValue: {
-    color: "#5F5F5B",
+    color: COLORS.muted,
     fontSize: 25,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -0.7,
   },
 
@@ -2113,7 +2115,7 @@ const styles = StyleSheet.create({
   metricCaption: {
     color: "#4E4E4E",
     fontSize: 9,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     marginTop: 5,
   },
 
@@ -2132,7 +2134,7 @@ const styles = StyleSheet.create({
   sectionEyebrow: {
     color: "#6E55B8",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.8,
     marginBottom: 6,
   },
@@ -2140,7 +2142,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     color: "#DDDDDD",
     fontSize: 21,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -0.4,
   },
 
@@ -2153,13 +2155,13 @@ const styles = StyleSheet.create({
   flagCountNumber: {
     color: "#A98CF5",
     fontSize: 20,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   flagCountLabel: {
     color: "#484848",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -2190,7 +2192,7 @@ const styles = StyleSheet.create({
 
   flagIconText: {
     fontSize: 12,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   flagContent: {
@@ -2204,19 +2206,19 @@ const styles = StyleSheet.create({
   },
 
   flagTitle: {
-    color: "#CFCFCF",
+    color: COLORS.ink,
     fontSize: 12,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
   },
 
   flagLevel: {
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.1,
   },
 
   flagDescription: {
-    color: "#505050",
+    color: COLORS.muted,
     fontSize: 10,
     lineHeight: 15,
     marginTop: 5,
@@ -2235,7 +2237,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 9,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#34284B",
     alignItems: "center",
@@ -2245,17 +2247,17 @@ const styles = StyleSheet.create({
   noFlagsIconText: {
     color: "#9A7BFF",
     fontSize: 14,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   noFlagsTitle: {
     color: "#C6C6C6",
     fontSize: 13,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
   },
 
   noFlagsDescription: {
-    color: "#505050",
+    color: COLORS.muted,
     fontSize: 10,
     lineHeight: 15,
     marginTop: 4,
@@ -2282,14 +2284,14 @@ const styles = StyleSheet.create({
   breakdownTitle: {
     color: "#D5D5D5",
     fontSize: 19,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 7,
   },
 
   breakdownTotal: {
     color: "#A98CF5",
     fontSize: 13,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
   },
 
   breakdownRow: {
@@ -2311,13 +2313,13 @@ const styles = StyleSheet.create({
   breakdownName: {
     color: "#C5C5C5",
     fontSize: 11,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
   },
 
   breakdownTrades: {
     color: "#464646",
     fontSize: 7,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 0.9,
     marginTop: 3,
   },
@@ -2329,20 +2331,20 @@ const styles = StyleSheet.create({
   breakdownValue: {
     color: "#BEBEBE",
     fontSize: 11,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
   },
 
   breakdownPercent: {
     color: "#59525F",
     fontSize: 8,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     marginTop: 2,
   },
 
   breakdownTrack: {
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     overflow: "hidden",
   },
 
@@ -2358,9 +2360,9 @@ const styles = StyleSheet.create({
   },
 
   breakdownEmptyText: {
-    color: "#4D4D4D",
+    color: COLORS.muted,
     fontSize: 10,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   downsideGrid: {
@@ -2377,7 +2379,7 @@ const styles = StyleSheet.create({
   downsideValue: {
     color: "#DADADA",
     fontSize: 31,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -0.8,
     marginTop: 22,
   },
@@ -2389,14 +2391,14 @@ const styles = StyleSheet.create({
   downsidePercent: {
     color: "#55505B",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.2,
     marginTop: 5,
   },
 
   downsideDivider: {
     height: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     marginTop: 25,
     marginBottom: 13,
   },
@@ -2420,7 +2422,7 @@ const styles = StyleSheet.create({
     width: 35,
     height: 35,
     borderRadius: 9,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#2B2538",
     alignItems: "center",
@@ -2430,7 +2432,7 @@ const styles = StyleSheet.create({
   noteMarkText: {
     color: "#8B6DE1",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   noteContent: {
@@ -2440,7 +2442,7 @@ const styles = StyleSheet.create({
   noteTitle: {
     color: "#716D76",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
@@ -2456,7 +2458,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 24,
     borderTopWidth: 1,
-    borderTopColor: "#191919",
+    borderTopColor: COLORS.navyLine,
     marginTop: 30,
     flexDirection: "row",
     justifyContent: "center",
@@ -2464,16 +2466,16 @@ const styles = StyleSheet.create({
   },
 
   footerText: {
-    color: "#3E3E3E",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.2,
   },
 
   footerVersion: {
     color: "#444444",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 });

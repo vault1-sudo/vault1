@@ -20,6 +20,8 @@ import {
 } from "../services/ledger/ledgerService";
 import { LedgerEntry } from "../types/ledger";
 
+import { FONT, COLORS } from "./theme/theme";
+
 const navigation = [
   {
     section: "COMMAND",
@@ -831,7 +833,7 @@ export default function Capital() {
                 >
                   {saving ? (
                     <ActivityIndicator
-                      color="#FFFFFF"
+                      color={COLORS.glassBg}
                     />
                   ) : (
                     <Text
@@ -955,13 +957,13 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   sidebar: {
     display: "none",
     width: 270,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderRightWidth: 1,
     borderRightColor: "#1B1822",
     paddingTop: 32,
@@ -975,9 +977,9 @@ const styles = StyleSheet.create({
   },
 
   brand: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 29,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 4.5,
   },
 
@@ -997,13 +999,13 @@ const styles = StyleSheet.create({
   brandSub: {
     color: "#696373",
     fontSize: 10,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     letterSpacing: 2.8,
   },
 
   sidebarDivider: {
     height: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     marginTop: 30,
     marginBottom: 28,
   },
@@ -1019,7 +1021,7 @@ const styles = StyleSheet.create({
   navSection: {
     color: "#5B5664",
     fontSize: 11,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 2,
     marginBottom: 10,
     paddingHorizontal: 10,
@@ -1035,7 +1037,7 @@ const styles = StyleSheet.create({
   },
 
   navItemActive: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#302342",
   },
@@ -1044,7 +1046,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     marginRight: 13,
   },
 
@@ -1056,12 +1058,12 @@ const styles = StyleSheet.create({
     flex: 1,
     color: "#77727F",
     fontSize: 14,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
   },
 
   navTextActive: {
     color: "#3F3F3B",
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   navArrow: {
@@ -1092,9 +1094,9 @@ const styles = StyleSheet.create({
   },
 
   avatarText: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 14,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
   },
 
   userInfo: {
@@ -1105,13 +1107,13 @@ const styles = StyleSheet.create({
   userName: {
     color: "#D8D4DE",
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   userRole: {
     color: "#655F6D",
     fontSize: 10,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     letterSpacing: 1.1,
     marginTop: 4,
   },
@@ -1123,13 +1125,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   logoutText: {
     color: "#817B89",
     fontSize: 10,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.5,
   },
 
@@ -1168,7 +1170,7 @@ const styles = StyleSheet.create({
   breadcrumb: {
     color: "#716B7B",
     fontSize: 11,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 2.2,
   },
 
@@ -1198,7 +1200,7 @@ const styles = StyleSheet.create({
   statusText: {
     color: "#716B7B",
     fontSize: 10,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.4,
   },
 
@@ -1213,15 +1215,15 @@ const styles = StyleSheet.create({
   eyebrow: {
     color: "#756D82",
     fontSize: 11,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 2.2,
     marginBottom: 11,
   },
 
   heroTitle: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 44,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: -1.3,
   },
 
@@ -1248,9 +1250,9 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 11,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.4,
   },
 
@@ -1258,7 +1260,7 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     borderWidth: 1,
     borderColor: "#342449",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     shadowColor: "#000000",
     shadowOpacity: 0.55,
     shadowRadius: 26,
@@ -1297,14 +1299,14 @@ const styles = StyleSheet.create({
   capitalLabel: {
     color: "#756D82",
     fontSize: 11,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 2,
   },
 
   capitalValue: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 48,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: -1.8,
     marginTop: 10,
   },
@@ -1326,7 +1328,7 @@ const styles = StyleSheet.create({
   sourceIndicatorText: {
     color: "#756C82",
     fontSize: 10,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.2,
   },
 
@@ -1336,7 +1338,7 @@ const styles = StyleSheet.create({
     borderRadius: 46,
     borderWidth: 1,
     borderColor: "#45315D",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -1344,7 +1346,7 @@ const styles = StyleSheet.create({
   capitalMarkText: {
     color: "#8B5CF6",
     fontSize: 26,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2,
   },
 
@@ -1380,7 +1382,7 @@ const styles = StyleSheet.create({
     left: 15,
     right: 15,
     height: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   metricLineAccent: {
@@ -1390,14 +1392,14 @@ const styles = StyleSheet.create({
   metricLabel: {
     color: "#716C79",
     fontSize: 10,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.5,
   },
 
   metricValue: {
     color: "#3F3F3B",
     fontSize: 27,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: -0.6,
     marginTop: 20,
   },
@@ -1411,7 +1413,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     marginRight: 7,
   },
 
@@ -1422,7 +1424,7 @@ const styles = StyleSheet.create({
   metricCaption: {
     color: "#514B59",
     fontSize: 9,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.2,
   },
 
@@ -1434,7 +1436,7 @@ const styles = StyleSheet.create({
   ledgerCard: {
     flex: 1.7,
     minHeight: 430,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#211C29",
     borderRadius: 12,
@@ -1451,7 +1453,7 @@ const styles = StyleSheet.create({
   breakdownCard: {
     flex: 1,
     minHeight: 430,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#211C29",
     borderRadius: 12,
@@ -1474,21 +1476,21 @@ const styles = StyleSheet.create({
   cardEyebrow: {
     color: "#686171",
     fontSize: 10,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.8,
     marginBottom: 8,
   },
 
   cardTitle: {
-    color: "#5F5F5B",
+    color: COLORS.muted,
     fontSize: 21,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   recordBadge: {
     borderWidth: 1,
     borderColor: "#30233F",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 6,
@@ -1497,7 +1499,7 @@ const styles = StyleSheet.create({
   recordBadgeText: {
     color: "#806B98",
     fontSize: 9,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.1,
   },
 
@@ -1526,7 +1528,7 @@ const styles = StyleSheet.create({
     width: 54,
     height: 54,
     borderRadius: 12,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#39284A",
     alignItems: "center",
@@ -1542,7 +1544,7 @@ const styles = StyleSheet.create({
   emptyTitle: {
     color: "#AAA3B2",
     fontSize: 17,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   emptyText: {
@@ -1558,7 +1560,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderWidth: 1,
     borderColor: "#45305D",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderRadius: 8,
     paddingHorizontal: 16,
     paddingVertical: 10,
@@ -1567,7 +1569,7 @@ const styles = StyleSheet.create({
   emptyButtonText: {
     color: "#A88BC7",
     fontSize: 10,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.2,
   },
 
@@ -1586,7 +1588,7 @@ const styles = StyleSheet.create({
   tableHeaderText: {
     color: "#504A58",
     fontSize: 9,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.3,
   },
 
@@ -1607,7 +1609,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     marginRight: 9,
   },
 
@@ -1618,7 +1620,7 @@ const styles = StyleSheet.create({
   typeText: {
     color: "#9A939F",
     fontSize: 11,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   descriptionText: {
@@ -1629,7 +1631,7 @@ const styles = StyleSheet.create({
   amountText: {
     color: "#C8C1D0",
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     textAlign: "right",
   },
 
@@ -1651,7 +1653,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     marginRight: 10,
   },
 
@@ -1667,7 +1669,7 @@ const styles = StyleSheet.create({
   breakdownAmount: {
     color: "#A49DAA",
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   breakdownAmountAccent: {
@@ -1684,14 +1686,14 @@ const styles = StyleSheet.create({
   breakdownTotalLabel: {
     color: "#645C6E",
     fontSize: 10,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.5,
   },
 
   breakdownTotalValue: {
     color: "#4A4A46",
     fontSize: 27,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     marginTop: 8,
   },
 
@@ -1721,7 +1723,7 @@ const styles = StyleSheet.create({
   footerText: {
     color: "#45404C",
     fontSize: 9,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.3,
   },
 
@@ -1771,14 +1773,14 @@ const styles = StyleSheet.create({
   modalEyebrow: {
     color: "#806B98",
     fontSize: 10,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.8,
   },
 
   modalTitle: {
     color: "#3F3F3B",
     fontSize: 29,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     marginTop: 7,
   },
 
@@ -1792,7 +1794,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 8,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#2A2331",
     alignItems: "center",
@@ -1802,7 +1804,7 @@ const styles = StyleSheet.create({
   closeText: {
     color: "#918899",
     fontSize: 25,
-    fontWeight: "300",
+    fontFamily: FONT.light,
   },
 
   form: {
@@ -1812,7 +1814,7 @@ const styles = StyleSheet.create({
   inputLabel: {
     color: "#716A7A",
     fontSize: 10,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.4,
     marginBottom: 8,
   },
@@ -1821,7 +1823,7 @@ const styles = StyleSheet.create({
     height: 58,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#2A2332",
     borderRadius: 9,
@@ -1830,7 +1832,7 @@ const styles = StyleSheet.create({
   currencyPrefix: {
     color: "#8B5CF6",
     fontSize: 22,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     marginLeft: 17,
   },
 
@@ -1839,17 +1841,17 @@ const styles = StyleSheet.create({
     height: 58,
     color: "#3F3F3B",
     fontSize: 20,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     paddingHorizontal: 14,
   },
 
   descriptionInput: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#2A2332",
     borderRadius: 9,
     fontSize: 15,
-    fontWeight: "500",
+    fontFamily: FONT.medium,
     paddingHorizontal: 16,
   },
 
@@ -1865,9 +1867,9 @@ const styles = StyleSheet.create({
   },
 
   saveButtonText: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 11,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.5,
   },
 

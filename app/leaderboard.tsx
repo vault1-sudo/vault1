@@ -20,6 +20,8 @@ import {
 
 import VaultSurface from "../components/ui/VaultSurface";
 
+import { FONT, COLORS } from "./theme/theme";
+
 import {
   getLeaderboard,
 } from "../services/leaderboard/leaderboardService";
@@ -972,7 +974,7 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     content: {
@@ -993,8 +995,7 @@ const styles =
     eyebrow: {
       color: "#777",
       fontSize: 10,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         2,
       marginBottom: 10,
@@ -1003,8 +1004,7 @@ const styles =
     title: {
       color: "#3F3F3B",
       fontSize: 44,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         -1.5,
     },
@@ -1024,7 +1024,7 @@ const styles =
       alignItems:
         "center",
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderWidth: 1,
       borderColor:
         "#292929",
@@ -1035,8 +1035,7 @@ const styles =
     searchIcon: {
       color: "#777",
       fontSize: 18,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       marginRight: 8,
     },
 
@@ -1056,8 +1055,7 @@ const styles =
     filterLabel: {
       color: "#555",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.4,
       marginBottom: 9,
@@ -1086,14 +1084,13 @@ const styles =
       borderColor:
         "#8B5CF6",
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     chipText: {
       color: "#666",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     chipTextActive: {
@@ -1111,7 +1108,7 @@ const styles =
       flex: 1,
       minHeight: 205,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderWidth: 1,
       borderColor:
         "#282828",
@@ -1127,14 +1124,13 @@ const styles =
       borderColor:
         "#59418A",
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     podiumRank: {
       color: "#777",
       fontSize: 10,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
       marginBottom: 12,
@@ -1145,7 +1141,7 @@ const styles =
       height: 52,
       borderRadius: 26,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -1156,23 +1152,20 @@ const styles =
     podiumAvatarText: {
       color: "#B99CFF",
       fontSize: 17,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     podiumName: {
       color: "#DDD",
       fontSize: 14,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       maxWidth: 180,
     },
 
     podiumReturn: {
       color: "#A78BFA",
       fontSize: 22,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       marginTop: 8,
     },
 
@@ -1201,8 +1194,7 @@ const styles =
     verifiedText: {
       color: "#555",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -1224,8 +1216,7 @@ const styles =
     sectionTitle: {
       color: "#EEE",
       fontSize: 22,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     sectionSubtitle: {
@@ -1259,8 +1250,7 @@ const styles =
     liveText: {
       color: "#666",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -1278,7 +1268,7 @@ const styles =
       borderBottomWidth:
         1,
       borderBottomColor:
-        "#191919",
+        COLORS.navyLine,
       paddingHorizontal: 12,
     },
 
@@ -1289,14 +1279,12 @@ const styles =
     rank: {
       color: "#DDD",
       fontSize: 18,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     movement: {
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       marginTop: 3,
     },
 
@@ -1322,7 +1310,7 @@ const styles =
       height: 40,
       borderRadius: 20,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -1332,8 +1320,7 @@ const styles =
     avatarText: {
       color: "#B99CFF",
       fontSize: 13,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     traderInfo: {
@@ -1351,8 +1338,7 @@ const styles =
     name: {
       color: "#D8D8D8",
       fontSize: 14,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     username: {
@@ -1376,8 +1362,7 @@ const styles =
     checkText: {
       color: "#D4C4FF",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     stat: {
@@ -1387,8 +1372,7 @@ const styles =
     statLabel: {
       color: "#555",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
       marginBottom: 5,
@@ -1397,8 +1381,7 @@ const styles =
     statValue: {
       color: "#CCC",
       fontSize: 13,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     positive: {
@@ -1414,8 +1397,7 @@ const styles =
     scoreValue: {
       color: "#EEE",
       fontSize: 15,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     empty: {
@@ -1432,7 +1414,7 @@ const styles =
       height: 58,
       borderRadius: 29,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -1443,15 +1425,13 @@ const styles =
     emptyIconText: {
       color: "#A78BFA",
       fontSize: 26,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     emptyTitle: {
       color: "#DDD",
       fontSize: 21,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     emptyText: {
@@ -1483,7 +1463,7 @@ const styles =
       borderColor:
         "#292929",
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       padding: 18,
       marginTop: 20,
       borderRadius: 8,
@@ -1492,8 +1472,7 @@ const styles =
     disclaimerTitle: {
       color: "#777",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.4,
     },

@@ -21,6 +21,8 @@ import VaultSurface from "../components/ui/VaultSurface";
 
 import { useAuth } from "../services/auth/AuthProvider";
 
+import { FONT, COLORS } from "./theme/theme";
+
 import {
   activateCompetition,
   cancelCompetition,
@@ -1204,7 +1206,7 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     content: {
@@ -1225,8 +1227,7 @@ const styles =
     eyebrow: {
       color: "#777",
       fontSize: 10,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing: 2,
       marginBottom: 10,
     },
@@ -1234,8 +1235,7 @@ const styles =
     title: {
       color: "#3F3F3B",
       fontSize: 44,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         -1.5,
     },
@@ -1257,10 +1257,9 @@ const styles =
     },
 
     primaryButtonText: {
-      color: "#111111",
+      color: COLORS.ink,
       fontSize: 11,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.2,
     },
@@ -1281,8 +1280,7 @@ const styles =
     metricLabel: {
       color: "#666",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.5,
     },
@@ -1290,8 +1288,7 @@ const styles =
     metricValue: {
       color: "#EEE",
       fontSize: 34,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       marginTop: 25,
     },
 
@@ -1310,8 +1307,7 @@ const styles =
     sectionTitle: {
       color: "#3F3F3B",
       fontSize: 22,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     sectionSubtitle: {
@@ -1374,8 +1370,7 @@ const styles =
     statusText: {
       color: "#666",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.2,
     },
@@ -1387,8 +1382,7 @@ const styles =
     rowTitle: {
       color: "#EEE",
       fontSize: 21,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       marginTop: 10,
     },
 
@@ -1411,8 +1405,7 @@ const styles =
     meta: {
       color: "#555",
       fontSize: 9,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     divider: {
@@ -1432,7 +1425,7 @@ const styles =
       borderColor:
         "#4C3772",
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       paddingHorizontal: 14,
       paddingVertical: 10,
       borderRadius: 8,
@@ -1441,8 +1434,7 @@ const styles =
     actionText: {
       color: "#B99CFF",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         0.8,
     },
@@ -1459,8 +1451,7 @@ const styles =
     cancelText: {
       color: "#956565",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         0.8,
     },
@@ -1477,8 +1468,7 @@ const styles =
     viewText: {
       color: "#AAA",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         0.8,
     },
@@ -1497,7 +1487,7 @@ const styles =
       height: 64,
       borderRadius: 32,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -1508,15 +1498,13 @@ const styles =
     emptyIconText: {
       color: "#A78BFA",
       fontSize: 30,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     emptyTitle: {
       color: "#EEE",
       fontSize: 23,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     emptyText: {
@@ -1542,8 +1530,7 @@ const styles =
     secondaryButtonText: {
       color: "#CCC",
       fontSize: 10,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -1580,8 +1567,7 @@ const styles =
     modalEyebrow: {
       color: "#8B5CF6",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.5,
     },
@@ -1589,8 +1575,7 @@ const styles =
     modalTitle: {
       color: "#3F3F3B",
       fontSize: 30,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       marginTop: 8,
     },
 
@@ -1602,8 +1587,7 @@ const styles =
     inputLabel: {
       color: "#666",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.4,
       marginBottom: 8,
@@ -1612,7 +1596,7 @@ const styles =
 
     input: {
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderWidth: 1,
       borderColor:
         "#292929",
@@ -1650,14 +1634,13 @@ const styles =
       borderColor:
         "#8B5CF6",
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     chipText: {
       color: "#666",
       fontSize: 9,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     chipTextActive: {
@@ -1685,14 +1668,13 @@ const styles =
       borderColor:
         "#8B5CF6",
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     visibilityText: {
       color: "#666",
       fontSize: 10,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     visibilityTextActive: {
@@ -1704,7 +1686,7 @@ const styles =
       borderColor:
         "#3A3150",
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       padding: 15,
       marginTop: 25,
       borderRadius: 8,
@@ -1713,8 +1695,7 @@ const styles =
     gateNoticeTitle: {
       color: "#A78BFA",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.2,
     },
@@ -1737,10 +1718,9 @@ const styles =
     },
 
     createButtonText: {
-      color: "#111111",
+      color: COLORS.ink,
       fontSize: 10,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.2,
     },

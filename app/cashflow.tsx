@@ -29,6 +29,8 @@ import {
 import { Transaction } from "../types/transaction";
 
 
+import { FONT, COLORS } from "./theme/theme";
+
 const navigation = [
   {
     section: "COMMAND",
@@ -489,9 +491,9 @@ export default function CashflowScreen() {
             >
               <LinearGradient
                 colors={[
-                  "#9A6BFF",
-                  "#6C3BE6",
-                  "#4B22A7",
+                  COLORS.bull,
+                  "#0A9A63",
+                  "#0A9A63",
                 ]}
                 start={{
                   x: 0,
@@ -1486,7 +1488,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   /* ========================================================
@@ -1496,7 +1498,7 @@ const styles = StyleSheet.create({
   sidebar: {
     display: "none",
     width: 260,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderRightWidth: 1,
     borderRightColor: "#202020",
     paddingTop: 26,
@@ -1525,22 +1527,22 @@ const styles = StyleSheet.create({
   },
 
   brandMarkText: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 13,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   brandName: {
     color: "#3F3F3B",
     fontSize: 16,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2,
   },
 
   brandSubtitle: {
     color: "#5D5D5D",
     fontSize: 8,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.8,
     marginTop: 3,
   },
@@ -1552,7 +1554,7 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     paddingHorizontal: 11,
     borderRadius: 7,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#1C1C1C",
   },
@@ -1568,7 +1570,7 @@ const styles = StyleSheet.create({
   systemStatusText: {
     color: "#686868",
     fontSize: 8,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.1,
   },
 
@@ -1584,7 +1586,7 @@ const styles = StyleSheet.create({
   sectionLabel: {
     color: "#444444",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.8,
     paddingHorizontal: 22,
     marginBottom: 8,
@@ -1601,7 +1603,7 @@ const styles = StyleSheet.create({
   },
 
   sidebarItemActive: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#292038",
   },
@@ -1616,7 +1618,7 @@ const styles = StyleSheet.create({
     top: 8,
     bottom: 8,
     width: 2,
-    backgroundColor: "#8D5CFF",
+    backgroundColor: COLORS.bull,
     borderRadius: 2,
   },
 
@@ -1624,7 +1626,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 2.5,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     marginRight: 11,
   },
 
@@ -1633,14 +1635,14 @@ const styles = StyleSheet.create({
   },
 
   sidebarItemText: {
-    color: "#696969",
+    color: COLORS.muted,
     fontSize: 13,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
   },
 
   sidebarItemTextActive: {
     color: "#F0ECFF",
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
   },
 
   sidebarBottom: {
@@ -1650,9 +1652,9 @@ const styles = StyleSheet.create({
   userCard: {
     minHeight: 62,
     borderRadius: 10,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
-    borderColor: "#222222",
+    borderColor: COLORS.navyLine,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 11,
@@ -1662,7 +1664,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 9,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#38285B",
     alignItems: "center",
@@ -1672,7 +1674,7 @@ const styles = StyleSheet.create({
   userAvatarText: {
     color: "#B08FFF",
     fontSize: 12,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   userInfo: {
@@ -1683,13 +1685,13 @@ const styles = StyleSheet.create({
   userName: {
     color: "#D7D7D7",
     fontSize: 11,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
   },
 
   userRole: {
-    color: "#555555",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1,
     marginTop: 3,
   },
@@ -1700,7 +1702,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   logoutButtonPressed: {
@@ -1710,7 +1712,7 @@ const styles = StyleSheet.create({
   logoutText: {
     color: "#777777",
     fontSize: 15,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   /* ========================================================
@@ -1719,7 +1721,7 @@ const styles = StyleSheet.create({
 
   main: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   contentContainer: {
@@ -1743,9 +1745,9 @@ const styles = StyleSheet.create({
   },
 
   eyebrow: {
-    color: "#7550C7",
+    color: COLORS.bull,
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2.2,
     marginBottom: 8,
   },
@@ -1754,14 +1756,14 @@ const styles = StyleSheet.create({
     color: "#3F3F3B",
     fontSize: 44,
     lineHeight: 50,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1.4,
   },
 
   pageSubtitle: {
-    color: "#696969",
+    color: COLORS.muted,
     fontSize: 14,
-    fontWeight: "500",
+    fontFamily: FONT.medium,
     marginTop: 7,
   },
 
@@ -1789,14 +1791,14 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.1,
   },
 
   primaryButtonArrow: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 18,
     marginLeft: 10,
   },
@@ -1827,18 +1829,18 @@ const styles = StyleSheet.create({
   },
 
   heroEyebrow: {
-    color: "#666666",
+    color: COLORS.muted,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.8,
     marginBottom: 9,
   },
 
   heroValue: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 46,
     lineHeight: 54,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1.6,
   },
 
@@ -1852,25 +1854,25 @@ const styles = StyleSheet.create({
     width: 280,
     paddingLeft: 28,
     borderLeftWidth: 1,
-    borderLeftColor: "#252525",
+    borderLeftColor: COLORS.navyLine,
   },
 
   heroSideLabel: {
-    color: "#4D4D4D",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
   heroSideValue: {
-    color: "#AA8CFF",
+    color: COLORS.accentBlue,
     fontSize: 23,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 9,
   },
 
   heroSideDescription: {
-    color: "#5E5E5E",
+    color: COLORS.muted,
     fontSize: 11,
     lineHeight: 17,
     marginTop: 7,
@@ -1907,22 +1909,22 @@ const styles = StyleSheet.create({
   metricLabel: {
     color: "#5B5B5B",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
   metricValue: {
     color: "#3F3F3B",
     fontSize: 29,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 20,
     letterSpacing: -0.7,
   },
 
   metricDescription: {
-    color: "#555555",
+    color: COLORS.muted,
     fontSize: 10,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     marginTop: 6,
   },
 
@@ -1938,9 +1940,9 @@ const styles = StyleSheet.create({
   },
 
   sectionEyebrow: {
-    color: "#7050B7",
+    color: COLORS.bull,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.7,
     marginBottom: 6,
   },
@@ -1948,14 +1950,14 @@ const styles = StyleSheet.create({
   sectionTitle: {
     color: "#4A4A46",
     fontSize: 23,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -0.4,
   },
 
   sectionMeta: {
-    color: "#454545",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.3,
   },
 
@@ -1979,20 +1981,20 @@ const styles = StyleSheet.create({
   breakdownLabel: {
     color: "#4E4E4E",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.4,
   },
 
   breakdownValue: {
-    color: "#5F5F5B",
+    color: COLORS.muted,
     fontSize: 27,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 18,
   },
 
   breakdownLine: {
     height: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     marginTop: 18,
   },
 
@@ -2027,28 +2029,28 @@ const styles = StyleSheet.create({
   incomeLabel: {
     color: "#4E4E4E",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.3,
   },
 
   incomeBadge: {
     color: "#8063B2",
     fontSize: 7,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
   lossBadge: {
     color: "#9B6464",
     fontSize: 7,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
   incomeValue: {
-    color: "#5F5F5B",
+    color: COLORS.muted,
     fontSize: 24,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 20,
   },
 
@@ -2065,9 +2067,9 @@ const styles = StyleSheet.create({
   },
 
   linkText: {
-    color: "#8D62DD",
+    color: COLORS.bull,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -2085,7 +2087,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 21,
     paddingVertical: 14,
     borderBottomWidth: 1,
-    borderBottomColor: "#222222",
+    borderBottomColor: COLORS.navyLine,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -2113,9 +2115,9 @@ const styles = StyleSheet.create({
   },
 
   recentType: {
-    color: "#DCDCDC",
+    color: COLORS.ink,
     fontSize: 11,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   recentDescription: {
@@ -2128,7 +2130,7 @@ const styles = StyleSheet.create({
   recentDate: {
     color: "#414141",
     fontSize: 8,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     marginTop: 5,
   },
 
@@ -2139,13 +2141,13 @@ const styles = StyleSheet.create({
 
   recentAmount: {
     fontSize: 14,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   recentStatus: {
-    color: "#4D4D4D",
+    color: COLORS.muted,
     fontSize: 7,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
     marginTop: 5,
   },
@@ -2163,9 +2165,9 @@ const styles = StyleSheet.create({
   },
 
   loadingText: {
-    color: "#5A5A5A",
+    color: COLORS.muted,
     fontSize: 11,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     marginTop: 15,
   },
 
@@ -2173,29 +2175,29 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 14,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
-    borderColor: "#2C2144",
+    borderColor: COLORS.glassBorder,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 14,
   },
 
   emptyIconText: {
-    color: "#9B70F7",
+    color: COLORS.bull,
     fontSize: 21,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
   },
 
   emptyTitle: {
-    color: "#DCDCDC",
+    color: COLORS.ink,
     fontSize: 18,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   emptyDescription: {
     maxWidth: 500,
-    color: "#5A5A5A",
+    color: COLORS.muted,
     fontSize: 11,
     lineHeight: 18,
     textAlign: "center",
@@ -2206,7 +2208,7 @@ const styles = StyleSheet.create({
     height: 40,
     paddingHorizontal: 15,
     borderRadius: 8,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#35254F",
     justifyContent: "center",
@@ -2220,7 +2222,7 @@ const styles = StyleSheet.create({
   emptyButtonText: {
     color: "#9B78D9",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -2240,7 +2242,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 13,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#302243",
     alignItems: "center",
@@ -2260,7 +2262,7 @@ const styles = StyleSheet.create({
   foundationTitle: {
     color: "#D8D8D8",
     fontSize: 16,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   foundationDescription: {
@@ -2280,27 +2282,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 20,
     borderTopWidth: 1,
-    borderTopColor: "#191919",
+    borderTopColor: COLORS.navyLine,
   },
 
   footerText: {
-    color: "#3E3E3E",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.3,
   },
 
   footerDivider: {
-    color: "#343434",
+    color: COLORS.muted,
     fontSize: 8,
     marginHorizontal: 9,
   },
 
   footerVersion: {
     marginLeft: "auto",
-    color: "#454545",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 

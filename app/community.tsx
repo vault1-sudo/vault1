@@ -19,6 +19,8 @@ import { router } from "expo-router";
 
 import VaultSurface from "../components/ui/VaultSurface";
 
+import { FONT, COLORS } from "./theme/theme";
+
 import {
   getContentCategoryLabel,
   getPublicTraderProfiles,
@@ -1250,7 +1252,7 @@ export default function CommunityScreen() {
             >
               {working ? (
                 <ActivityIndicator
-                  color="#FFFFFF"
+                  color={COLORS.glassBg}
                 />
               ) : (
                 <Text
@@ -1403,13 +1405,13 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   sidebar: {
     display: "none",
     width: 238,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderRightWidth: 1,
     borderRightColor: "#202020",
     paddingTop: 28,
@@ -1427,25 +1429,25 @@ const styles = StyleSheet.create({
     height: 42,
     borderRadius: 11,
     backgroundColor: violet,
-    color: "#111111",
+    color: COLORS.ink,
     textAlign: "center",
     textAlignVertical: "center",
     fontSize: 15,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginRight: 12,
   },
 
   brandTitle: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 18,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2,
   },
 
   brandSub: {
     color: "#626262",
     fontSize: 8,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 2,
     marginTop: 2,
   },
@@ -1455,9 +1457,9 @@ const styles = StyleSheet.create({
   },
 
   navSection: {
-    color: "#454545",
+    color: COLORS.muted,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.8,
     paddingHorizontal: 12,
     marginBottom: 8,
@@ -1472,7 +1474,7 @@ const styles = StyleSheet.create({
   },
 
   navItemActive: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#2B1D42",
   },
@@ -1480,7 +1482,7 @@ const styles = StyleSheet.create({
   navText: {
     color: "#707070",
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   navTextActive: {
@@ -1509,7 +1511,7 @@ const styles = StyleSheet.create({
   eyebrow: {
     color: "#7654B5",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2.5,
     marginBottom: 10,
   },
@@ -1517,7 +1519,7 @@ const styles = StyleSheet.create({
   title: {
     color: "#3F3F3B",
     fontSize: 46,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1.5,
   },
 
@@ -1541,9 +1543,9 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 11,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.1,
   },
 
@@ -1553,20 +1555,20 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     borderWidth: 1,
     borderColor: "#363636",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     justifyContent: "center",
     alignItems: "center",
   },
 
   activeButton: {
     borderColor: "#7250A7",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   secondaryButtonText: {
     color: "#D1D1D1",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -1576,7 +1578,7 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     borderWidth: 1,
     borderColor: "#5A3030",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -1584,7 +1586,7 @@ const styles = StyleSheet.create({
   liveButtonText: {
     color: "#B24A57",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -1600,7 +1602,7 @@ const styles = StyleSheet.create({
   errorBox: {
     borderWidth: 1,
     borderColor: "#5B2929",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderRadius: 10,
     padding: 14,
     marginBottom: 18,
@@ -1609,13 +1611,13 @@ const styles = StyleSheet.create({
   errorText: {
     color: "#B24A57",
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   successBox: {
     borderWidth: 1,
     borderColor: "#294A37",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderRadius: 10,
     padding: 14,
     marginBottom: 18,
@@ -1624,7 +1626,7 @@ const styles = StyleSheet.create({
   successText: {
     color: "#8CC9A3",
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   metricsRow: {
@@ -1639,9 +1641,9 @@ const styles = StyleSheet.create({
   },
 
   metricLabel: {
-    color: "#666666",
+    color: COLORS.muted,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
     padding: 20,
     paddingBottom: 0,
@@ -1650,7 +1652,7 @@ const styles = StyleSheet.create({
   metricValue: {
     color: "#3F3F3B",
     fontSize: 32,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     padding: 20,
     paddingTop: 12,
   },
@@ -1665,7 +1667,7 @@ const styles = StyleSheet.create({
 
   searchInput: {
     height: 52,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#292929",
     borderRadius: 10,
@@ -1697,11 +1699,11 @@ const styles = StyleSheet.create({
   sectionTitle: {
     color: "#4A4A46",
     fontSize: 21,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   sectionSub: {
-    color: "#666666",
+    color: COLORS.muted,
     fontSize: 12,
     marginTop: 4,
   },
@@ -1709,14 +1711,14 @@ const styles = StyleSheet.create({
   countText: {
     color: "#8E69C7",
     fontSize: 14,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   traderCard: {
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
-    borderColor: "#242424",
+    borderColor: COLORS.navyLine,
     borderRadius: 12,
     padding: 18,
     marginBottom: 10,
@@ -1724,14 +1726,14 @@ const styles = StyleSheet.create({
 
   traderCardActive: {
     borderColor: "#62449A",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   avatar: {
     width: 54,
     height: 54,
     borderRadius: 15,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#3C2A55",
     alignItems: "center",
@@ -1742,7 +1744,7 @@ const styles = StyleSheet.create({
   avatarText: {
     color: "#B993FF",
     fontSize: 21,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   traderIdentity: {
@@ -1758,19 +1760,19 @@ const styles = StyleSheet.create({
   traderName: {
     color: "#4A4A46",
     fontSize: 16,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   verified: {
     color: "#A982F0",
     fontSize: 12,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   livePill: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#4A2929",
     borderRadius: 20,
@@ -1789,14 +1791,14 @@ const styles = StyleSheet.create({
   liveText: {
     color: "#DB8B8B",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
   username: {
     color: "#7654A8",
     fontSize: 11,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     marginTop: 3,
   },
 
@@ -1816,13 +1818,13 @@ const styles = StyleSheet.create({
   statValue: {
     color: "#D5D5D5",
     fontSize: 12,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   statLabel: {
     color: "#4F4F4F",
     fontSize: 8,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     marginTop: 3,
   },
 
@@ -1843,12 +1845,12 @@ const styles = StyleSheet.create({
   emptyTitle: {
     color: "#4A4A46",
     fontSize: 21,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginBottom: 8,
   },
 
   emptyText: {
-    color: "#666666",
+    color: COLORS.muted,
     fontSize: 13,
     textAlign: "center",
   },
@@ -1859,7 +1861,7 @@ const styles = StyleSheet.create({
 
   profileBanner: {
     height: 120,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderBottomWidth: 1,
     borderBottomColor: "#2A2038",
   },
@@ -1873,7 +1875,7 @@ const styles = StyleSheet.create({
     width: 92,
     height: 92,
     borderRadius: 24,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 2,
     borderColor: "#5B4080",
     alignItems: "center",
@@ -1885,7 +1887,7 @@ const styles = StyleSheet.create({
   largeAvatarText: {
     color: "#C09AFF",
     fontSize: 34,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   profileTitleRow: {
@@ -1897,27 +1899,27 @@ const styles = StyleSheet.create({
   profileName: {
     color: "#3F3F3B",
     fontSize: 27,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   verifiedLarge: {
     color: "#A982F0",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
   profileUsername: {
     color: "#7654A8",
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     marginTop: 3,
   },
 
   liveLarge: {
     color: "#DB8B8B",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
     flexDirection: "row",
     alignItems: "center",
@@ -1933,7 +1935,7 @@ const styles = StyleSheet.create({
   categoryText: {
     color: "#6F55A0",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
     marginTop: 17,
   },
@@ -1942,7 +1944,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderColor: "#252525",
+    borderColor: COLORS.navyLine,
     marginTop: 25,
     paddingVertical: 18,
   },
@@ -1950,20 +1952,20 @@ const styles = StyleSheet.create({
   profileStat: {
     flex: 1,
     borderRightWidth: 1,
-    borderRightColor: "#252525",
+    borderRightColor: COLORS.navyLine,
     paddingLeft: 16,
   },
 
   profileStatValue: {
     color: "#4A4A46",
     fontSize: 19,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   profileStatLabel: {
-    color: "#555555",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
     marginTop: 4,
   },
@@ -2001,14 +2003,14 @@ const styles = StyleSheet.create({
   modalEyebrow: {
     color: "#7654B5",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2,
   },
 
   modalTitle: {
     color: "#3F3F3B",
     fontSize: 27,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 5,
   },
 
@@ -2016,7 +2018,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 8,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#303030",
     alignItems: "center",
@@ -2036,14 +2038,14 @@ const styles = StyleSheet.create({
   fieldLabel: {
     color: "#656565",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
     marginBottom: 8,
   },
 
   input: {
     minHeight: 48,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#2A2A2A",
     borderRadius: 9,
@@ -2069,20 +2071,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 11,
     paddingVertical: 9,
     borderRadius: 8,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#292929",
   },
 
   categoryChipActive: {
     borderColor: "#6949A0",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   categoryChipText: {
     color: "#686868",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 0.8,
   },
 

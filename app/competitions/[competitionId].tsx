@@ -22,6 +22,8 @@ import VaultSurface from "../../components/ui/VaultSurface";
 
 import { useAuth } from "../../services/auth/AuthProvider";
 
+import { FONT, COLORS } from "../theme/theme";
+
 import {
   getCompetition,
   getCompetitionLeaderboard,
@@ -847,13 +849,13 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     loadingScreen: {
       flex: 1,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -877,8 +879,7 @@ const styles =
     backText: {
       color: "#666",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.2,
     },
@@ -922,8 +923,7 @@ const styles =
     status: {
       color: "#666",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.4,
     },
@@ -935,8 +935,7 @@ const styles =
     title: {
       color: "#3F3F3B",
       fontSize: 42,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         -1.4,
       marginTop: 10,
@@ -962,8 +961,7 @@ const styles =
     meta: {
       color: "#555",
       fontSize: 9,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     divider: {
@@ -984,10 +982,9 @@ const styles =
     },
 
     joinText: {
-      color: "#111111",
+      color: COLORS.ink,
       fontSize: 10,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -1004,8 +1001,7 @@ const styles =
     withdrawText: {
       color: "#986666",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -1026,8 +1022,7 @@ const styles =
     metricLabel: {
       color: "#666",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.3,
     },
@@ -1035,8 +1030,7 @@ const styles =
     metricValue: {
       color: "#EEE",
       fontSize: 25,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       marginTop: 24,
     },
 
@@ -1076,8 +1070,7 @@ const styles =
     panelTitle: {
       color: "#EEE",
       fontSize: 20,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     panelSubtitle: {
@@ -1099,12 +1092,12 @@ const styles =
       borderBottomWidth:
         1,
       borderBottomColor:
-        "#191919",
+        COLORS.navyLine,
     },
 
     highlightedRow: {
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     rank: {
@@ -1114,8 +1107,7 @@ const styles =
     rankText: {
       color: "#777",
       fontSize: 18,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     player: {
@@ -1132,7 +1124,7 @@ const styles =
       height: 38,
       borderRadius: 19,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -1142,8 +1134,7 @@ const styles =
     avatarText: {
       color: "#B99CFF",
       fontSize: 12,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     playerInfo: {
@@ -1153,8 +1144,7 @@ const styles =
     playerName: {
       color: "#CCC",
       fontSize: 13,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     playerMeta: {
@@ -1172,15 +1162,13 @@ const styles =
     score: {
       color: "#EEE",
       fontSize: 15,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     returnText: {
       color: "#A78BFA",
       fontSize: 9,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       marginTop: 3,
     },
 
@@ -1196,8 +1184,7 @@ const styles =
     emptyTitle: {
       color: "#DDD",
       fontSize: 20,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     emptyText: {
@@ -1220,8 +1207,7 @@ const styles =
     ruleNumber: {
       color: "#A78BFA",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       width: 25,
     },
 
@@ -1235,8 +1221,7 @@ const styles =
     noticeTitle: {
       color: "#A78BFA",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.2,
     },

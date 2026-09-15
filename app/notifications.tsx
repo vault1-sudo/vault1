@@ -19,6 +19,8 @@ import VaultSurface from "../components/ui/VaultSurface";
 
 import { useAuth } from "../services/auth/AuthProvider";
 
+import { FONT, COLORS } from "./theme/theme";
+
 import {
   getUserNotifications,
   markNotificationRead,
@@ -145,28 +147,28 @@ function priorityStyles(
   switch (priority) {
     case "CRITICAL":
       return {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: COLORS.glassBg,
         borderColor: "#703232",
         textColor: "#B24A57",
       };
 
     case "HIGH":
       return {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: COLORS.glassBg,
         borderColor: "#655322",
         textColor: "#D9BD6D",
       };
 
     case "LOW":
       return {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: COLORS.glassBg,
         borderColor: "#272727",
-        textColor: "#696969",
+        textColor: COLORS.muted,
       };
 
     default:
       return {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: COLORS.glassBg,
         borderColor: "#3D3262",
         textColor: "#A792ED",
       };
@@ -1526,14 +1528,14 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
 
   sidebar: {
     display: "none",
     width: 250,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderRightWidth: 1,
     borderRightColor: "#1B1B1B",
     paddingTop: 28,
@@ -1552,7 +1554,7 @@ const styles = StyleSheet.create({
     width: 42,
     height: 42,
     borderRadius: 12,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#3B2B68",
     alignItems: "center",
@@ -1560,23 +1562,23 @@ const styles = StyleSheet.create({
   },
 
   brandMarkText: {
-    color: "#B49AFF",
+    color: COLORS.bull,
     fontSize: 13,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
   brand: {
     color: "#3F3F3B",
     fontSize: 17,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 3,
   },
 
   brandSub: {
-    color: "#505050",
+    color: COLORS.muted,
     fontSize: 7,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.2,
     marginTop: 3,
   },
@@ -1590,9 +1592,9 @@ const styles = StyleSheet.create({
   },
 
   sectionLabel: {
-    color: "#3E3E3E",
+    color: COLORS.muted,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2,
     paddingHorizontal: 22,
     marginBottom: 8,
@@ -1609,7 +1611,7 @@ const styles = StyleSheet.create({
   },
 
   navItemActive: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderLeftColor: "#8B6FE8",
   },
 
@@ -1621,7 +1623,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   navDotActive: {
@@ -1629,13 +1631,13 @@ const styles = StyleSheet.create({
   },
 
   navText: {
-    color: "#696969",
+    color: COLORS.muted,
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   navTextActive: {
-    color: "#5F5F5B",
+    color: COLORS.muted,
   },
 
   sidebarFooter: {
@@ -1648,21 +1650,21 @@ const styles = StyleSheet.create({
   footerLabel: {
     color: "#393939",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
   footerUser: {
     color: "#A0A0A0",
     fontSize: 11,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     marginTop: 7,
   },
 
   footerRole: {
     color: "#66549A",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.2,
     marginTop: 3,
   },
@@ -1691,7 +1693,7 @@ const styles = StyleSheet.create({
   eyebrow: {
     color: "#7661B8",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2.5,
     marginBottom: 9,
   },
@@ -1699,14 +1701,14 @@ const styles = StyleSheet.create({
   pageTitle: {
     color: "#3F3F3B",
     fontSize: 44,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1.5,
   },
 
   pageSubtitle: {
     color: "#626262",
     fontSize: 14,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     marginTop: 9,
   },
 
@@ -1721,7 +1723,7 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     borderWidth: 1,
     borderColor: "#493B6D",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -1733,7 +1735,7 @@ const styles = StyleSheet.create({
   actionButtonText: {
     color: "#A993EA",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.2,
   },
 
@@ -1743,7 +1745,7 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     borderWidth: 1,
     borderColor: "#302A43",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -1751,7 +1753,7 @@ const styles = StyleSheet.create({
   refreshText: {
     color: "#A28BEA",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.4,
   },
 
@@ -1784,7 +1786,7 @@ const styles = StyleSheet.create({
     width: 66,
     height: 66,
     borderRadius: 17,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#4A3A78",
     alignItems: "center",
@@ -1794,20 +1796,20 @@ const styles = StyleSheet.create({
   heroIconText: {
     color: "#B39AF8",
     fontSize: 28,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   heroLabel: {
     color: "#7460B4",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2,
   },
 
   heroValue: {
     color: "#3F3F3B",
     fontSize: 48,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -2,
     marginTop: 5,
   },
@@ -1815,7 +1817,7 @@ const styles = StyleSheet.create({
   heroDescription: {
     color: "#64606D",
     fontSize: 12,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     marginTop: 3,
   },
 
@@ -1832,21 +1834,21 @@ const styles = StyleSheet.create({
   heroMiniLabel: {
     color: "#4B4B4B",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.4,
   },
 
   heroMiniValue: {
     color: "#BEBEBE",
     fontSize: 25,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 9,
   },
 
   heroDivider: {
     width: 1,
     height: 50,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     marginHorizontal: 25,
   },
 
@@ -1870,14 +1872,14 @@ const styles = StyleSheet.create({
   metricLabel: {
     color: "#5C5C5C",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
   metricValue: {
     color: "#3F3F3B",
     fontSize: 32,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1,
     marginTop: 15,
   },
@@ -1889,7 +1891,7 @@ const styles = StyleSheet.create({
   metricHint: {
     color: "#4C4C4C",
     fontSize: 10,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     marginTop: 6,
   },
 
@@ -1903,7 +1905,7 @@ const styles = StyleSheet.create({
   errorTitle: {
     color: "#B24A57",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
@@ -1926,23 +1928,23 @@ const styles = StyleSheet.create({
   },
 
   filterTitle: {
-    color: "#5F5F5B",
+    color: COLORS.muted,
     fontSize: 14,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.3,
   },
 
   filterSubtitle: {
-    color: "#555555",
+    color: COLORS.muted,
     fontSize: 11,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     marginTop: 5,
   },
 
   resultCount: {
     color: "#66549A",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.3,
   },
 
@@ -1957,19 +1959,19 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     borderWidth: 1,
     borderColor: "#272727",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     justifyContent: "center",
   },
 
   filterChipActive: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderColor: "#4B3A78",
   },
 
   filterChipText: {
     color: "#565656",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 0.9,
   },
 
@@ -1993,16 +1995,16 @@ const styles = StyleSheet.create({
   },
 
   registerTitle: {
-    color: "#5F5F5B",
+    color: COLORS.muted,
     fontSize: 14,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.4,
   },
 
   registerSubtitle: {
-    color: "#555555",
+    color: COLORS.muted,
     fontSize: 11,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     marginTop: 5,
   },
 
@@ -2018,7 +2020,7 @@ const styles = StyleSheet.create({
   },
 
   notificationUnread: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   notificationLast: {
@@ -2026,14 +2028,14 @@ const styles = StyleSheet.create({
   },
 
   notificationPressed: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   typeIcon: {
     width: 42,
     height: 42,
     borderRadius: 11,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#282828",
     alignItems: "center",
@@ -2041,14 +2043,14 @@ const styles = StyleSheet.create({
   },
 
   typeIconUnread: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderColor: "#493A76",
   },
 
   typeIconText: {
     color: "#8D7DB9",
     fontSize: 13,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   notificationBody: {
@@ -2079,19 +2081,19 @@ const styles = StyleSheet.create({
   notificationTitle: {
     color: "#A0A0A0",
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     flex: 1,
   },
 
   notificationTitleUnread: {
-    color: "#5F5F5B",
-    fontWeight: "800",
+    color: COLORS.muted,
+    fontFamily: FONT.extraBold,
   },
 
   notificationMessage: {
     color: "#626262",
     fontSize: 11,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     lineHeight: 17,
     marginTop: 8,
     maxWidth: 900,
@@ -2107,7 +2109,7 @@ const styles = StyleSheet.create({
 
   priorityText: {
     fontSize: 7,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 0.9,
   },
 
@@ -2121,7 +2123,7 @@ const styles = StyleSheet.create({
   metaText: {
     color: "#464646",
     fontSize: 8,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 0.8,
   },
 
@@ -2129,7 +2131,7 @@ const styles = StyleSheet.create({
     width: 3,
     height: 3,
     borderRadius: 2,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
 
@@ -2141,9 +2143,9 @@ const styles = StyleSheet.create({
   },
 
   loadingText: {
-    color: "#555555",
+    color: COLORS.muted,
     fontSize: 11,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
   },
 
   emptyState: {
@@ -2157,7 +2159,7 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 14,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#272727",
     alignItems: "center",
@@ -2168,20 +2170,20 @@ const styles = StyleSheet.create({
   emptyIconText: {
     color: "#7661B8",
     fontSize: 22,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   emptyTitle: {
     color: "#858585",
     fontSize: 12,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
   emptyText: {
     color: "#4C4C4C",
     fontSize: 11,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     textAlign: "center",
     marginTop: 7,
   },
@@ -2201,14 +2203,14 @@ const styles = StyleSheet.create({
   detailEyebrow: {
     color: "#765FB8",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.7,
   },
 
   detailTitle: {
     color: "#4A4A46",
     fontSize: 22,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 7,
   },
 
@@ -2218,22 +2220,22 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     borderWidth: 1,
     borderColor: "#292929",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     justifyContent: "center",
     alignItems: "center",
   },
 
   closeButtonText: {
-    color: "#666666",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.1,
   },
 
   detailMessage: {
     color: "#A7A7A7",
     fontSize: 14,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     lineHeight: 22,
     marginTop: 24,
     maxWidth: 1000,
@@ -2257,14 +2259,14 @@ const styles = StyleSheet.create({
   detailLabel: {
     color: "#484848",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.3,
   },
 
   detailValue: {
     color: "#BEBEBE",
     fontSize: 12,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     marginTop: 8,
   },
 
@@ -2281,27 +2283,27 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "#292929",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     alignItems: "center",
     justifyContent: "center",
   },
 
   detailActionPrimary: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderColor: "#493A76",
   },
 
   detailActionText: {
     color: "#777777",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
   detailActionPrimaryText: {
     color: "#AA95EC",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -2322,14 +2324,14 @@ const styles = StyleSheet.create({
   noteTitle: {
     color: "#8B78B9",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
   noteText: {
     color: "#55505E",
     fontSize: 11,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     lineHeight: 18,
     marginTop: 7,
     maxWidth: 950,

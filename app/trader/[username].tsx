@@ -19,6 +19,8 @@ import {
 
 import VaultSurface from "../../components/ui/VaultSurface";
 
+import { FONT, COLORS } from "../theme/theme";
+
 import {
   getTraderProfileByUsername,
 } from "../../services/community/communityService";
@@ -355,7 +357,7 @@ function Stat({
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   container: {
@@ -368,7 +370,7 @@ const styles = StyleSheet.create({
 
   loading: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     alignItems: "center",
     justifyContent: "center",
     padding: 30,
@@ -377,11 +379,11 @@ const styles = StyleSheet.create({
   notFoundTitle: {
     color: "#3F3F3B",
     fontSize: 30,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   notFoundText: {
-    color: "#666666",
+    color: COLORS.muted,
     fontSize: 14,
     marginTop: 8,
     marginBottom: 25,
@@ -395,9 +397,9 @@ const styles = StyleSheet.create({
   },
 
   brand: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 20,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2,
   },
 
@@ -409,7 +411,7 @@ const styles = StyleSheet.create({
   brandSection: {
     color: "#6A6A6A",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.8,
   },
 
@@ -419,7 +421,7 @@ const styles = StyleSheet.create({
 
   banner: {
     height: 170,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderBottomWidth: 1,
     borderBottomColor: "#2A2038",
   },
@@ -433,7 +435,7 @@ const styles = StyleSheet.create({
     width: 108,
     height: 108,
     borderRadius: 28,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 2,
     borderColor: "#60458A",
     alignItems: "center",
@@ -445,7 +447,7 @@ const styles = StyleSheet.create({
   avatarText: {
     color: "#C29EFF",
     fontSize: 40,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   titleRow: {
@@ -463,20 +465,20 @@ const styles = StyleSheet.create({
   name: {
     color: "#3F3F3B",
     fontSize: 34,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   verified: {
     color: "#AD8BE9",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
   username: {
     color: "#7654A8",
     fontSize: 14,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
     marginTop: 5,
   },
 
@@ -485,7 +487,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     color: "#DB8B8B",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -525,13 +527,13 @@ const styles = StyleSheet.create({
   statValue: {
     color: "#4A4A46",
     fontSize: 24,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   statLabel: {
     color: "#565656",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.2,
     marginTop: 4,
   },
@@ -552,9 +554,9 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -562,7 +564,7 @@ const styles = StyleSheet.create({
     minHeight: 46,
     paddingHorizontal: 22,
     borderRadius: 9,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#573030",
     alignItems: "center",
@@ -572,7 +574,7 @@ const styles = StyleSheet.create({
   liveButtonText: {
     color: "#B24A57",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -591,14 +593,14 @@ const styles = StyleSheet.create({
   cardEyebrow: {
     color: "#7654B5",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.8,
   },
 
   cardTitle: {
     color: "#4A4A46",
     fontSize: 21,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 10,
   },
 
@@ -612,7 +614,7 @@ const styles = StyleSheet.create({
   footer: {
     color: "#3F3F3F",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2,
     textAlign: "center",
     marginTop: 50,

@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import { COLORS, FONT } from "../../app/theme/theme";
 
 type VaultMetricProps = {
   label: string;
@@ -42,11 +43,11 @@ const styles = StyleSheet.create({
     flex: 1,
     minHeight: 138,
 
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
 
     borderWidth: 1,
-    borderColor: "#E5E5E2",
-    borderRadius: 8,
+    borderColor: COLORS.glassBorder,
+    borderRadius: 12,
   },
 
   content: {
@@ -62,10 +63,9 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    color: "#858581",
-    fontFamily: "Inter",
+    color: COLORS.muted,
+    fontFamily: FONT.semiBold,
     fontSize: 11,
-    fontWeight: "600",
     letterSpacing: 0.4,
   },
 
@@ -73,26 +73,24 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#D0D0CC",
+    backgroundColor: COLORS.navyLine,
   },
 
   indicatorAccent: {
-    backgroundColor: "#6D45D8",
+    backgroundColor: COLORS.bull,
   },
 
   value: {
-    color: "#111111",
-    fontFamily: "Inter",
+    color: COLORS.ink,
+    fontFamily: FONT.bold,
     fontSize: 32,
-    fontWeight: "700",
     letterSpacing: -0.8,
   },
 
   change: {
-    color: "#858581",
-    fontFamily: "Inter",
+    color: COLORS.muted,
+    fontFamily: FONT.regular,
     fontSize: 12,
-    fontWeight: "400",
     marginTop: 6,
   },
 });

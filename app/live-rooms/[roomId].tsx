@@ -25,6 +25,8 @@ import VaultSurface from "../../components/ui/VaultSurface";
 
 import { useAuth } from "../../services/auth/AuthProvider";
 
+import { FONT, COLORS } from "../theme/theme";
+
 import {
   deleteLiveChatMessage,
   endLiveRoom,
@@ -1244,13 +1246,13 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     loadingScreen: {
       flex: 1,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -1282,8 +1284,7 @@ const styles =
     backText: {
       color: "#777",
       fontSize: 10,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -1315,8 +1316,7 @@ const styles =
     liveLabel: {
       color: "#AAA",
       fontSize: 10,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.3,
     },
@@ -1330,8 +1330,7 @@ const styles =
     viewerCount: {
       color: "#666",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -1367,7 +1366,7 @@ const styles =
         "center",
       padding: 40,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     broadcastIcon: {
@@ -1375,7 +1374,7 @@ const styles =
       height: 76,
       borderRadius: 38,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -1391,8 +1390,7 @@ const styles =
     stageTitle: {
       color: "#EEE",
       fontSize: 30,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       textAlign:
         "center",
     },
@@ -1416,8 +1414,7 @@ const styles =
     category: {
       color: "#A78BFA",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.5,
     },
@@ -1425,8 +1422,7 @@ const styles =
     roomTitle: {
       color: "#EEE",
       fontSize: 27,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       marginTop: 6,
     },
 
@@ -1449,8 +1445,7 @@ const styles =
     endButtonText: {
       color: "#A66",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -1477,7 +1472,7 @@ const styles =
       borderColor:
         "#574184",
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     controlDanger: {
@@ -1488,8 +1483,7 @@ const styles =
     controlText: {
       color: "#777",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -1522,8 +1516,7 @@ const styles =
     panelTitle: {
       color: "#EEE",
       fontSize: 17,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     panelSubtitle: {
@@ -1555,7 +1548,7 @@ const styles =
       height: 30,
       borderRadius: 15,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -1565,8 +1558,7 @@ const styles =
     avatarText: {
       color: "#B99CFF",
       fontSize: 11,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     participantInfo: {
@@ -1576,15 +1568,13 @@ const styles =
     participantName: {
       color: "#CCC",
       fontSize: 12,
-      fontWeight:
-        "700",
+      fontFamily: FONT.bold,
     },
 
     participantRole: {
       color: "#555",
       fontSize: 8,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       letterSpacing:
         0.8,
       marginTop: 3,
@@ -1598,15 +1588,13 @@ const styles =
     mediaState: {
       color: "#555",
       fontSize: 7,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     shareState: {
       color: "#A78BFA",
       fontSize: 7,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       marginTop: 3,
     },
 
@@ -1617,15 +1605,13 @@ const styles =
     moderationText: {
       color: "#777",
       fontSize: 7,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     removeText: {
       color: "#8C5F5F",
       fontSize: 7,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     chatList: {
@@ -1665,8 +1651,7 @@ const styles =
     chatName: {
       color: "#A78BFA",
       fontSize: 10,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     deleteChat: {
@@ -1703,7 +1688,7 @@ const styles =
       flex: 1,
       height: 40,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderWidth: 1,
       borderColor:
         "#292929",
@@ -1730,10 +1715,9 @@ const styles =
     },
 
     sendText: {
-      color: "#111111",
+      color: COLORS.ink,
       fontSize: 18,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     pressed: {

@@ -17,6 +17,8 @@ import VaultSurface from "../components/ui/VaultSurface";
 
 import { useAuth } from "../services/auth/AuthProvider";
 
+import { FONT, COLORS } from "./theme/theme";
+
 import {
   getRewardDefinitions,
   getRewardSummary,
@@ -1153,7 +1155,7 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     content: {
@@ -1174,8 +1176,7 @@ const styles =
     eyebrow: {
       color: "#75618F",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         2,
       marginBottom: 9,
@@ -1184,8 +1185,7 @@ const styles =
     title: {
       color: "#3F3F3B",
       fontSize: 45,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         -1.5,
     },
@@ -1206,8 +1206,7 @@ const styles =
     levelLabel: {
       color: "#555",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.4,
     },
@@ -1215,8 +1214,7 @@ const styles =
     levelValue: {
       color: "#B99BEF",
       fontSize: 45,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       marginTop: 4,
     },
 
@@ -1236,8 +1234,7 @@ const styles =
     metricLabel: {
       color: "#555",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.2,
     },
@@ -1254,15 +1251,13 @@ const styles =
     metricValue: {
       color: "#ECECEC",
       fontSize: 29,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     metricSuffix: {
       color: "#666",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       marginBottom: 5,
     },
 
@@ -1286,31 +1281,28 @@ const styles =
     progressEyebrow: {
       color: "#625176",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.4,
     },
 
     progressTitle: {
-      color: "#5F5F5B",
+      color: COLORS.muted,
       fontSize: 23,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       marginTop: 6,
     },
 
     progressPercent: {
       color: "#B89BEF",
       fontSize: 27,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     progressTrack: {
       height: 7,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderRadius: 4,
       marginTop: 20,
       overflow:
@@ -1332,10 +1324,9 @@ const styles =
     },
 
     progressHint: {
-      color: "#505050",
+      color: COLORS.muted,
       fontSize: 8,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       letterSpacing:
         0.8,
     },
@@ -1356,17 +1347,15 @@ const styles =
     cardEyebrow: {
       color: "#5B476F",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.4,
     },
 
     cardTitle: {
-      color: "#5F5F5B",
+      color: COLORS.muted,
       fontSize: 21,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       marginTop: 7,
       marginBottom: 17,
     },
@@ -1390,8 +1379,7 @@ const styles =
     scoreValue: {
       color: "#B49ADA",
       fontSize: 10,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     achievementStats: {
@@ -1405,15 +1393,13 @@ const styles =
     achievementNumber: {
       color: "#4A4A46",
       fontSize: 28,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     achievementLabel: {
       color: "#555",
       fontSize: 7,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         0.8,
       marginTop: 5,
@@ -1426,8 +1412,7 @@ const styles =
     sectionTitle: {
       color: "#EAEAEA",
       fontSize: 23,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     sectionSubtitle: {
@@ -1452,7 +1437,7 @@ const styles =
 
     filterActive: {
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderColor:
         "#684999",
     },
@@ -1460,8 +1445,7 @@ const styles =
     filterText: {
       color: "#555",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         0.9,
     },
@@ -1500,7 +1484,7 @@ const styles =
       height: 48,
       borderRadius: 9,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderWidth: 1,
       borderColor:
         "#392A4C",
@@ -1513,8 +1497,7 @@ const styles =
     rewardIconLargeText: {
       color: "#B99BEF",
       fontSize: 21,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     rewardType: {
@@ -1529,20 +1512,18 @@ const styles =
     rewardTypeText: {
       color: "#656565",
       fontSize: 7,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     rewardName: {
-      color: "#5F5F5B",
+      color: COLORS.muted,
       fontSize: 18,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       marginTop: 19,
     },
 
     rewardDescription: {
-      color: "#696969",
+      color: COLORS.muted,
       fontSize: 11,
       lineHeight: 17,
       marginTop: 8,
@@ -1569,22 +1550,19 @@ const styles =
     rewardPoints: {
       color: "#C0A5EF",
       fontSize: 19,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     rewardXp: {
       color: "#858585",
       fontSize: 19,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     rewardPointsLabel: {
       color: "#4F4F4F",
       fontSize: 7,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         0.8,
       marginTop: 2,
@@ -1608,7 +1586,7 @@ const styles =
       height: 40,
       borderRadius: 8,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -1628,8 +1606,7 @@ const styles =
     earnedName: {
       color: "#DADADA",
       fontSize: 13,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     earnedMeta: {
@@ -1650,8 +1627,7 @@ const styles =
     statusText: {
       color: "#8F79A8",
       fontSize: 7,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     legalCard: {
@@ -1662,8 +1638,7 @@ const styles =
     legalTitle: {
       color: "#6D557E",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.3,
     },
@@ -1690,8 +1665,7 @@ const styles =
     emptyTitle: {
       color: "#DADADA",
       fontSize: 18,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     emptyText: {

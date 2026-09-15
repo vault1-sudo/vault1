@@ -22,6 +22,8 @@ import { router } from "expo-router";
 
 import { useAuth } from "../services/auth/AuthProvider";
 
+import { FONT, COLORS } from "./theme/theme";
+
 import {
   calculateTradePnL,
   calculateTradeSummary,
@@ -779,7 +781,7 @@ export default function TradingScreen() {
             >
               {saving ? (
                 <ActivityIndicator
-                  color="#FFFFFF"
+                  color={COLORS.glassBg}
                 />
               ) : (
                 <Text style={styles.primaryButtonText}>
@@ -1104,7 +1106,7 @@ export default function TradingScreen() {
                           >
                             {saving ? (
                               <ActivityIndicator
-                                color="#FFFFFF"
+                                color={COLORS.glassBg}
                               />
                             ) : (
                               <Text
@@ -1296,13 +1298,13 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   sidebar: {
     display: "none",
     width: 250,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderRightWidth: 1,
     borderRightColor: "#211A2D",
     paddingTop: 34,
@@ -1317,14 +1319,14 @@ const styles = StyleSheet.create({
   brand: {
     color: "#3F3F3B",
     fontSize: 27,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 3,
   },
 
   brandSub: {
     color: "#746B83",
     fontSize: 8,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1.7,
     marginTop: 7,
   },
@@ -1341,7 +1343,7 @@ const styles = StyleSheet.create({
   navSection: {
     color: "#62596E",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.8,
     paddingHorizontal: 12,
     marginBottom: 9,
@@ -1357,7 +1359,7 @@ const styles = StyleSheet.create({
   },
 
   navItemActive: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#35234D",
   },
@@ -1366,7 +1368,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 3,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     marginRight: 13,
   },
 
@@ -1377,7 +1379,7 @@ const styles = StyleSheet.create({
   navText: {
     color: "#81788D",
     fontSize: 14,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   navTextActive: {
@@ -1394,7 +1396,7 @@ const styles = StyleSheet.create({
   sidebarFooterTitle: {
     color: "#A78BFA",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
@@ -1406,7 +1408,7 @@ const styles = StyleSheet.create({
 
   main: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   mainContent: {
@@ -1427,7 +1429,7 @@ const styles = StyleSheet.create({
   eyebrow: {
     color: "#9B7DCE",
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2,
     marginBottom: 10,
   },
@@ -1435,7 +1437,7 @@ const styles = StyleSheet.create({
   title: {
     color: "#3F3F3B",
     fontSize: 45,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1.5,
   },
 
@@ -1453,7 +1455,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderRadius: 20,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#2B203A",
   },
@@ -1469,7 +1471,7 @@ const styles = StyleSheet.create({
   statusText: {
     color: "#B8A9D0",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
@@ -1482,7 +1484,7 @@ const styles = StyleSheet.create({
   metricCard: {
     flex: 1,
     minHeight: 158,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#292431",
     borderRadius: 14,
@@ -1507,7 +1509,7 @@ const styles = StyleSheet.create({
 
   metricCardAccent: {
     borderColor: "#3A2852",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   metricTop: {
@@ -1519,7 +1521,7 @@ const styles = StyleSheet.create({
   metricLabel: {
     color: "#726A7C",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
@@ -1527,7 +1529,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 
   metricIndicatorAccent: {
@@ -1537,7 +1539,7 @@ const styles = StyleSheet.create({
   metricValue: {
     color: "#3F3F3B",
     fontSize: 34,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1,
     marginTop: 27,
   },
@@ -1545,7 +1547,7 @@ const styles = StyleSheet.create({
   metricCaption: {
     color: "#696170",
     fontSize: 11,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     marginTop: 7,
   },
 
@@ -1559,7 +1561,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     color: "#4A4A46",
     fontSize: 21,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -0.3,
   },
 
@@ -1570,7 +1572,7 @@ const styles = StyleSheet.create({
   },
 
   tradeForm: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#292431",
     borderRadius: 16,
@@ -1611,21 +1613,21 @@ const styles = StyleSheet.create({
   fieldLabel: {
     color: "#746B80",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
     marginBottom: 9,
   },
 
   input: {
     height: 50,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#2B2632",
     borderRadius: 9,
     color: "#3F3F3B",
     paddingHorizontal: 15,
     fontSize: 14,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   sideRow: {
@@ -1637,7 +1639,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 50,
     borderRadius: 9,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#2B2632",
     alignItems: "center",
@@ -1645,19 +1647,19 @@ const styles = StyleSheet.create({
   },
 
   sideButtonActive: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderColor: "#704DA0",
   },
 
   sideButtonActiveSell: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderColor: "#754A52",
   },
 
   sideButtonText: {
     color: "#756C80",
     fontSize: 12,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -1696,7 +1698,7 @@ const styles = StyleSheet.create({
   formHintTitle: {
     color: "#A78BFA",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.4,
   },
 
@@ -1732,9 +1734,9 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.4,
   },
 
@@ -1742,7 +1744,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 11,
     paddingVertical: 7,
     borderRadius: 8,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#292231",
   },
@@ -1750,12 +1752,12 @@ const styles = StyleSheet.create({
   countBadgeText: {
     color: "#81768F",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.3,
   },
 
   tradeBook: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#292431",
     borderRadius: 16,
@@ -1783,7 +1785,7 @@ const styles = StyleSheet.create({
     minHeight: 55,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderBottomWidth: 1,
     borderBottomColor: "#292431",
     paddingHorizontal: 22,
@@ -1792,7 +1794,7 @@ const styles = StyleSheet.create({
   tableHeaderText: {
     color: "#686070",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.4,
   },
 
@@ -1827,7 +1829,7 @@ const styles = StyleSheet.create({
   assetName: {
     color: "#3F3F3B",
     fontSize: 14,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   assetMeta: {
@@ -1844,7 +1846,7 @@ const styles = StyleSheet.create({
 
   sideValue: {
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -1859,13 +1861,13 @@ const styles = StyleSheet.create({
   tableValue: {
     color: "#DAD3E2",
     fontSize: 12,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   mutedValue: {
     color: "#514B57",
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   positiveText: {
@@ -1880,7 +1882,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 7,
     borderRadius: 7,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#4A3265",
   },
@@ -1888,7 +1890,7 @@ const styles = StyleSheet.create({
   openBadgeText: {
     color: "#B99BDE",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -1896,7 +1898,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 7,
     borderRadius: 7,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#302B35",
   },
@@ -1904,7 +1906,7 @@ const styles = StyleSheet.create({
   closedBadgeText: {
     color: "#77707D",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -1919,7 +1921,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
     width: 330,
     padding: 18,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#46305D",
     borderRadius: 12,
@@ -1937,21 +1939,21 @@ const styles = StyleSheet.create({
   closePanelTitle: {
     color: "#A78BFA",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.3,
     marginBottom: 8,
   },
 
   closeInput: {
     height: 45,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#302938",
     borderRadius: 8,
     color: "#3F3F3B",
     paddingHorizontal: 13,
     fontSize: 13,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   closeConfirm: {
@@ -1964,9 +1966,9 @@ const styles = StyleSheet.create({
   },
 
   closeConfirmText: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.2,
   },
 
@@ -1980,7 +1982,7 @@ const styles = StyleSheet.create({
   cancelButtonText: {
     color: "#726978",
     fontSize: 9,
-    fontWeight: "800",
+    fontFamily: FONT.extraBold,
     letterSpacing: 1,
   },
 
@@ -2007,7 +2009,7 @@ const styles = StyleSheet.create({
     width: 58,
     height: 58,
     borderRadius: 14,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#38264D",
     alignItems: "center",
@@ -2018,13 +2020,13 @@ const styles = StyleSheet.create({
   emptyIconText: {
     color: "#A78BFA",
     fontSize: 28,
-    fontWeight: "300",
+    fontFamily: FONT.light,
   },
 
   emptyTitle: {
     color: "#4A4A46",
     fontSize: 20,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   emptyText: {
@@ -2038,7 +2040,7 @@ const styles = StyleSheet.create({
 
   engineNote: {
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     borderWidth: 1,
     borderColor: "#292030",
     borderRadius: 13,
@@ -2060,7 +2062,7 @@ const styles = StyleSheet.create({
   engineNoteTitle: {
     color: "#BFA9DB",
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
@@ -2083,7 +2085,7 @@ const styles = StyleSheet.create({
   footerText: {
     color: "#47414D",
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 });

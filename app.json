@@ -22,7 +22,8 @@
       "favicon": "./assets/vault1.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-font"
     ]
   }
 }

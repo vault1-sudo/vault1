@@ -31,6 +31,8 @@ import {
 
 import { useAuth } from "../services/auth/AuthProvider";
 
+import { FONT, COLORS } from "./theme/theme";
+
 import {
   CreatorContentCategory,
   CreatorContentType,
@@ -572,7 +574,7 @@ export default function CreatorsScreen() {
                 setSearch
               }
               placeholder="Search creators or content..."
-              placeholderTextColor="#505050"
+              placeholderTextColor={COLORS.muted}
               style={
                 styles.searchInput
               }
@@ -1571,7 +1573,7 @@ function Field({
         placeholder={
           placeholder
         }
-        placeholderTextColor="#4D4D4D"
+        placeholderTextColor={COLORS.muted}
         multiline={
           multiline
         }
@@ -1642,7 +1644,7 @@ const styles =
     screen: {
       flex: 1,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     content: {
@@ -1663,8 +1665,7 @@ const styles =
     eyebrow: {
       color: "#777",
       fontSize: 10,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         2,
       marginBottom: 10,
@@ -1673,8 +1674,7 @@ const styles =
     title: {
       color: "#3F3F3B",
       fontSize: 44,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         -1.5,
     },
@@ -1696,7 +1696,7 @@ const styles =
 
     primaryButton: {
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderWidth: 1,
       borderColor:
         "#7150A6",
@@ -1708,8 +1708,7 @@ const styles =
     primaryButtonText: {
       color: "#C9B5F3",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -1730,8 +1729,7 @@ const styles =
     metricLabel: {
       color: "#5B5B5B",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.4,
     },
@@ -1739,8 +1737,7 @@ const styles =
     metricValue: {
       color: "#4A4A46",
       fontSize: 29,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       marginTop: 22,
     },
 
@@ -1764,7 +1761,7 @@ const styles =
       borderColor:
         "#292929",
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderRadius: 8,
       paddingHorizontal: 13,
     },
@@ -1772,14 +1769,13 @@ const styles =
     searchPrefix: {
       color: "#8B5CF6",
       fontSize: 17,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       marginRight: 8,
     },
 
     searchInput: {
       flex: 1,
-      color: "#5F5F5B",
+      color: COLORS.muted,
       fontSize: 13,
     },
 
@@ -1798,7 +1794,7 @@ const styles =
 
     categoryChipActive: {
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderColor:
         "#6947A1",
     },
@@ -1806,8 +1802,7 @@ const styles =
     categoryText: {
       color: "#5C5C5C",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -1830,8 +1825,7 @@ const styles =
     sectionTitle: {
       color: "#4A4A46",
       fontSize: 22,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     sectionSubtitle: {
@@ -1843,8 +1837,7 @@ const styles =
     feedCount: {
       color: "#555",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.3,
     },
@@ -1863,7 +1856,7 @@ const styles =
         "32.35%" as any,
       minHeight: 245,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderWidth: 1,
       borderColor:
         "#292929",
@@ -1886,7 +1879,7 @@ const styles =
       height: 48,
       borderRadius: 24,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -1896,8 +1889,7 @@ const styles =
     creatorAvatarText: {
       color: "#B79BEF",
       fontSize: 17,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     verified: {
@@ -1912,17 +1904,15 @@ const styles =
     verifiedText: {
       color: "#9275C3",
       fontSize: 7,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         0.7,
     },
 
     creatorName: {
-      color: "#5F5F5B",
+      color: COLORS.muted,
       fontSize: 16,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     creatorUsername: {
@@ -1954,8 +1944,7 @@ const styles =
     miniLabel: {
       color: "#4F4F4F",
       fontSize: 7,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         0.8,
     },
@@ -1963,8 +1952,7 @@ const styles =
     miniValue: {
       color: "#C9C9C9",
       fontSize: 12,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       marginTop: 4,
     },
 
@@ -1999,7 +1987,7 @@ const styles =
       height: 38,
       borderRadius: 19,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       alignItems:
         "center",
       justifyContent:
@@ -2009,15 +1997,13 @@ const styles =
     postAvatarText: {
       color: "#B79BEF",
       fontSize: 13,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     postCreatorName: {
       color: "#D7D7D7",
       fontSize: 12,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     postCreatorUsername: {
@@ -2034,8 +2020,7 @@ const styles =
     postType: {
       color: "#9B7BCD",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },
@@ -2043,17 +2028,15 @@ const styles =
     postCategory: {
       color: "#555",
       fontSize: 8,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       marginTop: 4,
     },
 
     postTitle: {
-      color: "#5F5F5B",
+      color: COLORS.muted,
       fontSize: 23,
       lineHeight: 29,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
       letterSpacing:
         -0.4,
     },
@@ -2077,7 +2060,7 @@ const styles =
 
     tag: {
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderWidth: 1,
       borderColor:
         "#29202F",
@@ -2089,8 +2072,7 @@ const styles =
     tagText: {
       color: "#8067A5",
       fontSize: 8,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     engagement: {
@@ -2107,8 +2089,7 @@ const styles =
     engagementText: {
       color: "#555",
       fontSize: 10,
-      fontWeight:
-        "700",
+      fontFamily: FONT.bold,
     },
 
     loading: {
@@ -2137,8 +2118,7 @@ const styles =
     emptyTitle: {
       color: "#D8D8D8",
       fontSize: 20,
-      fontWeight:
-        "800",
+      fontFamily: FONT.extraBold,
     },
 
     emptyText: {
@@ -2184,14 +2164,13 @@ const styles =
       padding: 23,
       borderBottomWidth: 1,
       borderBottomColor:
-        "#252525",
+        COLORS.navyLine,
     },
 
     modalEyebrow: {
       color: "#8065A7",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.5,
       marginBottom: 6,
@@ -2200,8 +2179,7 @@ const styles =
     modalTitle: {
       color: "#4A4A46",
       fontSize: 25,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     close: {
@@ -2218,8 +2196,7 @@ const styles =
     fieldLabel: {
       color: "#555",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1.2,
       marginBottom: 7,
@@ -2231,8 +2208,8 @@ const styles =
       borderColor:
         "#292929",
       backgroundColor:
-        "#111111",
-      color: "#5F5F5B",
+        COLORS.ink,
+      color: COLORS.muted,
       borderRadius: 7,
       paddingHorizontal: 12,
       fontSize: 12,
@@ -2272,14 +2249,13 @@ const styles =
       borderColor:
         "#6B4A9A",
       backgroundColor:
-        "#111111",
+        COLORS.ink,
     },
 
     typeText: {
       color: "#555",
       fontSize: 8,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
     },
 
     typeTextActive: {
@@ -2291,7 +2267,7 @@ const styles =
       marginTop: 20,
       height: 47,
       backgroundColor:
-        "#111111",
+        COLORS.ink,
       borderWidth: 1,
       borderColor:
         "#7654AA",
@@ -2305,8 +2281,7 @@ const styles =
     modalButtonText: {
       color: "#CDB8F4",
       fontSize: 9,
-      fontWeight:
-        "900",
+      fontFamily: FONT.black,
       letterSpacing:
         1,
     },

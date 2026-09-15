@@ -2,6 +2,8 @@ import { Redirect } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
 import { useAuth } from "../services/auth/AuthProvider";
 
+import { COLORS } from "./theme/theme";
+
 export default function Index() {
   const { user, loading } = useAuth();
 
@@ -10,7 +12,7 @@ export default function Index() {
       <View
         style={{
           flex: 1,
-          backgroundColor: "#FFFFFF",
+          backgroundColor: COLORS.glassBg,
           alignItems: "center",
           justifyContent: "center",
         }}

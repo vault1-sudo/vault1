@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Image,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -11,6 +12,7 @@ import { usePathname, useRouter } from "expo-router";
 
 import { useAuth } from "../../services/auth/AuthProvider";
 import { canAccessModule } from "../../services/auth/permissions";
+import { COLORS, FONT } from "../../app/theme/theme";
 
 type NavigationGroup = {
   section: string;
@@ -215,11 +217,13 @@ export default function VaultSidebar() {
         style={styles.brandContainer}
       >
         <View style={styles.brandRow}>
-          <Image
-            source={require("../../assets/vault1.png")}
-            style={styles.brandIcon}
-            resizeMode="contain"
-          />
+          <View style={styles.brandIconWrap}>
+            <Image
+              source={require("../../assets/vault1.png")}
+              style={styles.brandIcon}
+              resizeMode="contain"
+            />
+          </View>
 
           <View style={styles.brandCopy}>
             <Text style={styles.brandName}>
@@ -324,9 +328,9 @@ const styles = StyleSheet.create({
   sidebar: {
     width: 270,
     height: "100%",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.navyMid,
     borderRightWidth: 1,
-    borderRightColor: "#E5E5E2",
+    borderRightColor: COLORS.navyLine,
     flexShrink: 0,
   },
 
@@ -341,9 +345,29 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  brandIconWrap: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: COLORS.glassBgSoft,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    ...Platform.select({
+      web: { boxShadow: `0 0 16px ${COLORS.glowTeal}` as any },
+      default: {
+        shadowColor: COLORS.bull,
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.4,
+        shadowRadius: 10,
+      },
+    }),
+  },
+
   brandIcon: {
-    width: 42,
-    height: 42,
+    width: 32,
+    height: 32,
   },
 
   brandCopy: {
@@ -351,18 +375,16 @@ const styles = StyleSheet.create({
   },
 
   brandName: {
-    color: "#111111",
-    fontFamily: "Inter",
+    color: COLORS.ink,
+    fontFamily: FONT.extraBold,
     fontSize: 19,
-    fontWeight: "800",
     letterSpacing: 1.2,
   },
 
   brandSubtitle: {
-    color: "#858581",
-    fontFamily: "Inter",
+    color: COLORS.muted,
+    fontFamily: FONT.semiBold,
     fontSize: 10,
-    fontWeight: "600",
     letterSpacing: 1.2,
     marginTop: 2,
   },
@@ -377,21 +399,20 @@ const styles = StyleSheet.create({
     width: 7,
     height: 7,
     borderRadius: 4,
-    backgroundColor: "#21864B",
+    backgroundColor: COLORS.bull,
     marginRight: 8,
   },
 
   systemStatusText: {
-    color: "#858581",
-    fontFamily: "Inter",
+    color: COLORS.muted,
+    fontFamily: FONT.semiBold,
     fontSize: 10,
-    fontWeight: "600",
     letterSpacing: 0.7,
   },
 
   divider: {
     height: 1,
-    backgroundColor: "#EAEAE7",
+    backgroundColor: COLORS.navyLine,
     marginHorizontal: 18,
   },
 
@@ -410,10 +431,9 @@ const styles = StyleSheet.create({
   },
 
   sectionLabel: {
-    color: "#A0A09B",
-    fontFamily: "Inter",
+    color: COLORS.muted,
+    fontFamily: FONT.bold,
     fontSize: 10,
-    fontWeight: "700",
     letterSpacing: 1.2,
     marginLeft: 11,
     marginBottom: 7,
@@ -430,7 +450,7 @@ const styles = StyleSheet.create({
   },
 
   sidebarItemActive: {
-    backgroundColor: "#F3F0FB",
+    backgroundColor: "rgba(15,190,122,0.10)",
   },
 
   sidebarItemPressed: {
@@ -444,47 +464,45 @@ const styles = StyleSheet.create({
     bottom: 8,
     width: 3,
     borderRadius: 2,
-    backgroundColor: "#6D45D8",
+    backgroundColor: COLORS.bull,
   },
 
   sidebarDot: {
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#C9C9C5",
+    backgroundColor: COLORS.navyLine,
     marginRight: 11,
   },
 
   sidebarDotActive: {
-    backgroundColor: "#6D45D8",
+    backgroundColor: COLORS.bull,
   },
 
   sidebarItemText: {
     flex: 1,
-    color: "#5F5F5B",
-    fontFamily: "Inter",
+    color: COLORS.muted,
+    fontFamily: FONT.medium,
     fontSize: 13,
-    fontWeight: "500",
     letterSpacing: 0.05,
   },
 
   sidebarItemTextActive: {
-    color: "#4E2AA8",
-    fontWeight: "700",
+    color: COLORS.ink,
+    fontFamily: FONT.bold,
   },
 
   activeArrow: {
-    color: "#6D45D8",
-    fontFamily: "Inter",
+    color: COLORS.bull,
+    fontFamily: FONT.medium,
     fontSize: 20,
-    fontWeight: "500",
     lineHeight: 20,
     marginLeft: 5,
   },
 
   sidebarBottom: {
     borderTopWidth: 1,
-    borderTopColor: "#EAEAE7",
+    borderTopColor: COLORS.navyLine,
     paddingHorizontal: 16,
     paddingTop: 15,
     paddingBottom: 17,
@@ -500,18 +518,17 @@ const styles = StyleSheet.create({
     width: 34,
     height: 34,
     borderRadius: 17,
-    backgroundColor: "#F0EBFA",
+    backgroundColor: "rgba(15,190,122,0.12)",
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 1,
-    borderColor: "#DDD4F2",
+    borderColor: COLORS.glassBorder,
   },
 
   userAvatarText: {
-    color: "#5A35B5",
-    fontFamily: "Inter",
+    color: COLORS.bull,
+    fontFamily: FONT.extraBold,
     fontSize: 13,
-    fontWeight: "800",
   },
 
   userInfo: {
@@ -520,17 +537,15 @@ const styles = StyleSheet.create({
   },
 
   userName: {
-    color: "#222222",
-    fontFamily: "Inter",
+    color: COLORS.ink,
+    fontFamily: FONT.bold,
     fontSize: 12,
-    fontWeight: "700",
   },
 
   userRole: {
-    color: "#8A8A85",
-    fontFamily: "Inter",
+    color: COLORS.muted,
+    fontFamily: FONT.semiBold,
     fontSize: 9,
-    fontWeight: "600",
     letterSpacing: 0.6,
     marginTop: 2,
   },
@@ -538,22 +553,21 @@ const styles = StyleSheet.create({
   logoutButton: {
     minHeight: 36,
     borderWidth: 1,
-    borderColor: "#E5E5E2",
+    borderColor: COLORS.glassBorder,
     borderRadius: 6,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#FAFAF9",
+    backgroundColor: COLORS.glassBgSoft,
   },
 
   logoutButtonPressed: {
-    backgroundColor: "#F3F3F1",
+    backgroundColor: "rgba(255,255,255,0.06)",
   },
 
   logoutText: {
-    color: "#666662",
-    fontFamily: "Inter",
+    color: COLORS.muted,
+    fontFamily: FONT.bold,
     fontSize: 10,
-    fontWeight: "700",
     letterSpacing: 0.8,
   },
 });

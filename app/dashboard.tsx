@@ -13,6 +13,9 @@ import { useAuth } from "../services/auth/AuthProvider";
 import VaultSurface from "../components/ui/VaultSurface";
 import VaultMetric from "../components/ui/VaultMetric";
 
+import { FONT, COLORS } from "./theme/theme";
+import { AmbientGlow } from "./theme/components/GlassBackground";
+
 function MiniStat({
   label,
   value,
@@ -45,6 +48,8 @@ export default function Dashboard() {
 
   return (
     <View style={styles.root}>
+
+      <AmbientGlow />
 
       {/* ======================================================
           MAIN
@@ -106,11 +111,7 @@ export default function Dashboard() {
                 ]}
               >
                 <LinearGradient
-                  colors={[
-                    "#9A6BFF",
-                    "#6C3BE6",
-                    "#4B22A7",
-                  ]}
+                  colors={[COLORS.bull, "#0A9A63"]}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 1 }}
                   style={styles.primaryButtonGradient}
@@ -140,11 +141,7 @@ export default function Dashboard() {
           >
 
             <LinearGradient
-              colors={[
-                "rgba(123,72,255,0.18)",
-                "rgba(72,34,155,0.06)",
-                "rgba(10,10,10,0)",
-              ]}
+              colors={[COLORS.glowTeal, COLORS.glowBlue, "rgba(8,13,24,0)"]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
               style={styles.heroGlow}
@@ -729,7 +726,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.navyDeep,
   },
 
 
@@ -739,7 +736,7 @@ const styles = StyleSheet.create({
 
   main: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "transparent",
   },
 
   contentContainer: {
@@ -759,25 +756,25 @@ const styles = StyleSheet.create({
   },
 
   eyebrow: {
-    color: "#7550C7",
+    color: COLORS.bull,
     fontSize: 10,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 2.2,
     marginBottom: 8,
   },
 
   pageTitle: {
-    color: "#F5F5F5",
+    color: COLORS.ink,
     fontSize: 44,
     lineHeight: 50,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1.4,
   },
 
   pageSubtitle: {
-    color: "#696969",
+    color: COLORS.muted,
     fontSize: 14,
-    fontWeight: "500",
+    fontFamily: FONT.medium,
     marginTop: 7,
   },
 
@@ -791,9 +788,9 @@ const styles = StyleSheet.create({
     height: 46,
     paddingHorizontal: 14,
     borderRadius: 9,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBgSoft,
     borderWidth: 1,
-    borderColor: "#222222",
+    borderColor: COLORS.glassBorder,
     flexDirection: "row",
     alignItems: "center",
   },
@@ -802,22 +799,22 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#8D5CFF",
+    backgroundColor: COLORS.bull,
     marginRight: 8,
   },
 
   marketStatusText: {
-    color: "#505050",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.1,
     marginRight: 9,
   },
 
   marketStatusValue: {
-    color: "#B49AFF",
+    color: COLORS.bull,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 
@@ -846,16 +843,16 @@ const styles = StyleSheet.create({
   },
 
   primaryButtonText: {
-    color: "#111111",
+    color: COLORS.glassBg,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.2,
   },
 
   primaryButtonArrow: {
-    color: "#111111",
+    color: COLORS.glassBg,
     fontSize: 16,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     marginLeft: 10,
   },
 
@@ -886,18 +883,18 @@ const styles = StyleSheet.create({
   },
 
   heroEyebrow: {
-    color: "#666666",
+    color: COLORS.muted,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.8,
     marginBottom: 9,
   },
 
   heroValue: {
-    color: "#111111",
+    color: COLORS.ink,
     fontSize: 48,
     lineHeight: 55,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -1.8,
   },
 
@@ -911,40 +908,40 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#7047C4",
+    backgroundColor: COLORS.bull,
     marginRight: 8,
   },
 
   heroChangeText: {
-    color: "#666666",
+    color: COLORS.muted,
     fontSize: 11,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
   },
 
   heroSide: {
     width: 260,
     paddingLeft: 28,
     borderLeftWidth: 1,
-    borderLeftColor: "#252525",
+    borderLeftColor: COLORS.navyLine,
   },
 
   heroSideLabel: {
-    color: "#4D4D4D",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
   heroSideValue: {
-    color: "#AA8CFF",
+    color: COLORS.accentBlue,
     fontSize: 20,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 0.3,
     marginTop: 9,
   },
 
   heroSideDescription: {
-    color: "#5E5E5E",
+    color: COLORS.muted,
     fontSize: 11,
     lineHeight: 17,
     marginTop: 7,
@@ -974,24 +971,24 @@ const styles = StyleSheet.create({
   },
 
   sectionEyebrow: {
-    color: "#7050B7",
+    color: COLORS.bull,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.7,
     marginBottom: 6,
   },
 
   sectionTitle: {
-    color: "#EEEEEE",
+    color: COLORS.ink,
     fontSize: 23,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: -0.4,
   },
 
   sectionMeta: {
-    color: "#454545",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.3,
   },
 
@@ -1015,28 +1012,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderRightWidth: 1,
-    borderRightColor: "#242424",
+    borderRightColor: COLORS.navyLine,
   },
 
   miniStatLabel: {
-    color: "#4D4D4D",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
   },
 
   miniStatValue: {
-    color: "#F0F0F0",
+    color: COLORS.ink,
     fontSize: 32,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 16,
     letterSpacing: -0.8,
   },
 
   miniStatDescription: {
-    color: "#555555",
+    color: COLORS.muted,
     fontSize: 10,
-    fontWeight: "600",
+    fontFamily: FONT.semiBold,
     marginTop: 5,
   },
 
@@ -1062,24 +1059,24 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 16,
     borderBottomWidth: 1,
-    borderBottomColor: "#222222",
+    borderBottomColor: COLORS.navyLine,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
 
   panelEyebrow: {
-    color: "#555555",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.5,
     marginBottom: 5,
   },
 
   panelTitle: {
-    color: "#E8E8E8",
+    color: COLORS.ink,
     fontSize: 19,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   textButton: {
@@ -1093,14 +1090,14 @@ const styles = StyleSheet.create({
   },
 
   textButtonText: {
-    color: "#8F69DE",
+    color: COLORS.bull,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.1,
   },
 
   textButtonArrow: {
-    color: "#8F69DE",
+    color: COLORS.bull,
     fontSize: 13,
     marginLeft: 7,
   },
@@ -1121,29 +1118,29 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 14,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBgSoft,
     borderWidth: 1,
-    borderColor: "#2C2144",
+    borderColor: COLORS.glassBorder,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 14,
   },
 
   emptyIconText: {
-    color: "#9B70F7",
+    color: COLORS.bull,
     fontSize: 22,
-    fontWeight: "700",
+    fontFamily: FONT.bold,
   },
 
   emptyTitle: {
-    color: "#DCDCDC",
+    color: COLORS.ink,
     fontSize: 17,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   emptyDescription: {
     maxWidth: 380,
-    color: "#5A5A5A",
+    color: COLORS.muted,
     fontSize: 11,
     lineHeight: 18,
     textAlign: "center",
@@ -1155,9 +1152,9 @@ const styles = StyleSheet.create({
     height: 39,
     paddingHorizontal: 14,
     borderRadius: 8,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBgSoft,
     borderWidth: 1,
-    borderColor: "#30224A",
+    borderColor: COLORS.glassBorder,
     justifyContent: "center",
   },
 
@@ -1166,9 +1163,9 @@ const styles = StyleSheet.create({
   },
 
   secondaryButtonText: {
-    color: "#9E7AE8",
+    color: COLORS.bull,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.1,
   },
 
@@ -1184,13 +1181,13 @@ const styles = StyleSheet.create({
   },
 
   activityEmptyTitle: {
-    color: "#CFCFCF",
+    color: COLORS.ink,
     fontSize: 18,
-    fontWeight: "900",
+    fontFamily: FONT.black,
   },
 
   activityEmptyDescription: {
-    color: "#5A5A5A",
+    color: COLORS.muted,
     fontSize: 11,
     lineHeight: 18,
     maxWidth: 390,
@@ -1225,21 +1222,21 @@ const styles = StyleSheet.create({
   },
 
   moduleNumber: {
-    color: "#4D4D4D",
+    color: COLORS.muted,
     fontSize: 9,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.2,
   },
 
   moduleTitle: {
-    color: "#EAEAEA",
+    color: COLORS.ink,
     fontSize: 21,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     marginTop: 22,
   },
 
   moduleDescription: {
-    color: "#5B5B5B",
+    color: COLORS.muted,
     fontSize: 11,
     lineHeight: 17,
     marginTop: 8,
@@ -1247,9 +1244,9 @@ const styles = StyleSheet.create({
   },
 
   moduleArrow: {
-    color: "#8D62DD",
+    color: COLORS.bull,
     fontSize: 19,
-    fontWeight: "500",
+    fontFamily: FONT.medium,
     marginTop: 18,
   },
 
@@ -1263,27 +1260,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 20,
     borderTopWidth: 1,
-    borderTopColor: "#191919",
+    borderTopColor: COLORS.navyLine,
   },
 
   footerText: {
-    color: "#3E3E3E",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1.3,
   },
 
   footerDivider: {
-    color: "#343434",
+    color: COLORS.muted,
     fontSize: 8,
     marginHorizontal: 9,
   },
 
   footerVersion: {
     marginLeft: "auto",
-    color: "#454545",
+    color: COLORS.muted,
     fontSize: 8,
-    fontWeight: "900",
+    fontFamily: FONT.black,
     letterSpacing: 1,
   },
 

@@ -16,6 +16,8 @@ import VaultSidebar from "../components/layout/VaultSidebar";
 
 import "../styles/vault1.css";
 
+import { COLORS } from "./theme/theme";
+
 const routeModuleMap: Record<string, string> = {
   "/dashboard": "Dashboard",
   "/portfolio": "Portfolio",
@@ -130,7 +132,7 @@ function AppShell() {
             headerShown: false,
             animation: "none",
             contentStyle: {
-              backgroundColor: "#FFFFFF",
+              backgroundColor: COLORS.glassBg,
             },
           }}
         />
@@ -152,7 +154,7 @@ export default function RootLayout() {
 const styles = {
   loadingContainer: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     alignItems: "center" as const,
     justifyContent: "center" as const,
   },
@@ -160,13 +162,13 @@ const styles = {
   appContainer: {
     flex: 1,
     flexDirection: "row" as const,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
     minHeight: "100%" as any,
   },
 
   pageContainer: {
     flex: 1,
     minWidth: 0,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.glassBg,
   },
 };
