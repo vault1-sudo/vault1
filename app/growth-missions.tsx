@@ -13,6 +13,8 @@ import { router } from "expo-router";
 
 import { useAuth } from "../services/auth/AuthProvider";
 import { FONT, COLORS } from "./theme/theme";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../services/firebase/firestore";
 
 import {
   createGrowthMission,
@@ -111,6 +113,7 @@ export default function GrowthMissionsScreen() {
   const [error, setError] = useState("");
 
   const [createVisible, setCreateVisible] = useState(false);
+  const [editingMission, setEditingMission] = useState<GrowthMission | null>(null);
   const [tradeVisible, setTradeVisible] = useState(false);
   const [closeVisible, setCloseVisible] = useState(false);
 
@@ -220,12 +223,26 @@ export default function GrowthMissionsScreen() {
   }, [activeMission?.id]);
 
   function resetCreateForm() {
+    setEditingMission(null);
     setName("");
     setDescription("");
     setStartingCapital("");
     setTargetCapital("");
     setDurationDays("30");
     setError("");
+  }
+
+  function openEditMission(mission: GrowthMission) {
+    if (mission.status !== "DRAFT") return;
+
+    setError("");
+    setEditingMission(mission);
+    setName(mission.name);
+    setDescription(mission.description);
+    setStartingCapital(String(mission.startingCapital));
+    setTargetCapital(String(mission.targetCapital));
+    setDurationDays(String(mission.durationDays));
+    setCreateVisible(true);
   }
 
   function resetTradeForm() {
@@ -253,23 +270,67 @@ export default function GrowthMissionsScreen() {
       setError("You must be logged in.");
       return;
     }
+
+    const parsedStartingCapital = Number(startingCapital);
+    const parsedTargetCapital = Number(targetCapital);
+    const parsedDurationDays = Number(durationDays);
+
+    if (!name.trim()) {
+      setError("Mission name is required.");
+      return;
+    }
+
+    if (
+      !Number.isFinite(parsedStartingCapital) ||
+      parsedStartingCapital <= 0 ||
+      !Number.isFinite(parsedTargetCapital) ||
+      parsedTargetCapital <= parsedStartingCapital ||
+      !Number.isFinite(parsedDurationDays) ||
+      parsedDurationDays <= 0
+    ) {
+      setError("Enter a valid starting capital, a target above starting capital, and a duration greater than 0.");
+      return;
+    }
+
     try {
       setSaving(true);
       setError("");
-      await createGrowthMission({
-        userId,
-        name,
-        description,
-        startingCapital: Number(startingCapital),
-        targetCapital: Number(targetCapital),
-        durationDays: Number(durationDays),
-        status: "DRAFT",
-      });
+
+      if (editingMission) {
+        if (editingMission.status !== "DRAFT") {
+          setError("Only draft missions can be edited.");
+          return;
+        }
+
+        await updateDoc(doc(db, "growthMissions", editingMission.id), {
+          name: name.trim(),
+          description: description.trim(),
+          startingCapital: parsedStartingCapital,
+          targetCapital: parsedTargetCapital,
+          durationDays: parsedDurationDays,
+        });
+      } else {
+        await createGrowthMission({
+          userId,
+          name: name.trim(),
+          description: description.trim(),
+          startingCapital: parsedStartingCapital,
+          targetCapital: parsedTargetCapital,
+          durationDays: parsedDurationDays,
+          status: "DRAFT",
+        });
+      }
+
       setCreateVisible(false);
       resetCreateForm();
       await loadMissions();
     } catch (err: any) {
-      setError(err?.message || "Unable to create mission.");
+      setError(
+        err?.message ||
+          (editingMission
+            ? "Unable to update mission."
+            : "Unable to create mission.")
+      );
     } finally {
       setSaving(false);
     }
@@ -500,8 +561,8 @@ export default function GrowthMissionsScreen() {
         <View style={styles.kpiGrid}>
           <MetricCard label="TOTAL MISSIONS" value={String(missions.length)} detail="Created in Vault1" />
           <MetricCard
-            label="ACTIVE MISSION"
-            value={activeMission ? "1" : "0"}
+            label="ACTIVE MISSIONS"
+            value={String(missions.filter((mission) => mission.status === "ACTIVE").length)}
             detail={activeMission?.name || "No active mission"}
             accent
           />
@@ -783,9 +844,19 @@ export default function GrowthMissionsScreen() {
                     </View>
                     <View style={styles.missionCardActions}>
                       <StatusBadge status={mission.status} />
+                      {mission.status === "DRAFT" && (
+                        <Pressable
+                          onPress={() => openEditMission(mission)}
+                          style={styles.editIconButton}
+                          disabled={saving}
+                        >
+                          <Text style={styles.editIconButtonText}>EDIT</Text>
+                        </Pressable>
+                      )}
                       <Pressable
                         onPress={() => handleDeleteMission(mission)}
                         style={styles.deleteIconButton}
+                        disabled={saving}
                       >
                         <Text style={styles.deleteIconButtonText}>DELETE</Text>
                       </Pressable>
@@ -819,14 +890,14 @@ export default function GrowthMissionsScreen() {
                     <MissionMetric label="TRADES" value={String(mission.tradesCount)} />
                   </View>
 
-                  {mission.status === "DRAFT" && !activeMission && (
+                  {mission.status === "DRAFT" && (
                     <Pressable onPress={() => handleActivate(mission.id)} style={styles.activateButton}>
                       <Text style={styles.activateButtonText}>ACTIVATE + BUILD TARGET MAP</Text>
                       <Text style={styles.activateArrow}>→</Text>
                     </Pressable>
                   )}
 
-                  {mission.status === "PAUSED" && !activeMission && (
+                  {mission.status === "PAUSED" && (
                     <Pressable onPress={() => handleResume(mission.id)} style={styles.activateButton}>
                       <Text style={styles.activateButtonText}>RESUME MISSION</Text>
                       <Text style={styles.activateArrow}>→</Text>
@@ -864,7 +935,15 @@ export default function GrowthMissionsScreen() {
         <View style={styles.modalBackdrop}>
           <View style={styles.modalCard}>
             <ScrollView contentContainerStyle={styles.modalContent}>
-              <ModalHeader eyebrow="GROWTH ENGINE" title="New Mission" subtitle="Define the capital destination." onClose={() => setCreateVisible(false)} />
+              <ModalHeader
+                eyebrow="GROWTH ENGINE"
+                title={editingMission ? "Edit Draft Mission" : "New Mission"}
+                subtitle={editingMission ? "Update the mission before activation." : "Define the capital destination."}
+                onClose={() => {
+                  setCreateVisible(false);
+                  resetCreateForm();
+                }}
+              />
               <Input label="MISSION NAME" value={name} onChangeText={setName} placeholder="e.g. ₹500 → ₹19K Challenge" />
               <Input label="DESCRIPTION" value={description} onChangeText={setDescription} placeholder="What are you trying to achieve?" multiline />
               <View style={styles.twoColumn}>
@@ -900,9 +979,21 @@ export default function GrowthMissionsScreen() {
               {error ? <View style={styles.modalError}><Text style={styles.modalErrorText}>{error}</Text></View> : null}
 
               <Pressable onPress={handleCreateMission} disabled={saving} style={[styles.modalPrimaryButton, saving && styles.disabledButton]}>
-                {saving ? <ActivityIndicator color={COLORS.glassBg} /> : <Text style={styles.modalPrimaryText}>CREATE MISSION</Text>}
+                {saving ? (
+                  <ActivityIndicator color={COLORS.glassBg} />
+                ) : (
+                  <Text style={styles.modalPrimaryText}>
+                    {editingMission ? "SAVE DRAFT CHANGES" : "CREATE MISSION"}
+                  </Text>
+                )}
               </Pressable>
-              <Pressable onPress={() => setCreateVisible(false)} style={styles.cancelButton}>
+              <Pressable
+                onPress={() => {
+                  setCreateVisible(false);
+                  resetCreateForm();
+                }}
+                style={styles.cancelButton}
+              >
                 <Text style={styles.cancelButtonText}>CANCEL</Text>
               </Pressable>
             </ScrollView>
@@ -1134,8 +1225,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  deleteIconButton: {
+  editIconButton: {
     marginLeft: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 7,
+    borderWidth: 1,
+    borderColor: "#DCD4F1",
+    borderRadius: 6,
+    backgroundColor: "#F5F2FC",
+  },
+  editIconButtonText: {
+    color: "#FFFFFF",
+    fontSize: 10,
+    fontFamily: FONT.bold,
+    letterSpacing: 0.5,
+  },
+  deleteIconButton: {
+    marginLeft: 10, 
     paddingHorizontal: 10,
     paddingVertical: 7,
     borderWidth: 1,
@@ -1144,7 +1250,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF7F7",
   },
   deleteIconButtonText: {
-    color: "#C43B3B",
+    color: "#FFFFFF",
     fontSize: 10,
     fontFamily: FONT.bold,
     letterSpacing: 0.5,
@@ -1153,202 +1259,202 @@ const styles = StyleSheet.create({
   sidebar: {
     display: "none", width: 270, backgroundColor: COLORS.glassBg, borderRightWidth: 1, borderRightColor: COLORS.glassBorder, paddingTop: 32, paddingBottom: 26, paddingHorizontal: 22, justifyContent: "space-between" },
   brandContainer: { paddingHorizontal: 8 },
-  brand: { color: COLORS.ink, fontSize: 29, fontFamily: FONT.black, letterSpacing: 4.5 },
+  brand: { color: "#FFFFFF", fontSize: 29, fontFamily: FONT.black, letterSpacing: 4.5 },
   brandRow: { flexDirection: "row", alignItems: "center", marginTop: 6 },
   brandAccent: { width: 20, height: 2, backgroundColor: COLORS.bull, marginRight: 8, borderRadius: 2 },
-  brandSub: { color: COLORS.muted, fontSize: 10, fontFamily: FONT.bold, letterSpacing: 2.8 },
+  brandSub: { color: "#FFFFFF", fontSize: 10, fontFamily: FONT.bold, letterSpacing: 2.8 },
   sidebarDivider: { height: 1, backgroundColor: COLORS.glassBorder, marginTop: 30, marginBottom: 28 },
   navContent: { paddingBottom: 30 },
   navGroup: { marginBottom: 28 },
-  navSection: { color: COLORS.muted, fontSize: 11, fontFamily: FONT.extraBold, letterSpacing: 2, marginBottom: 10, paddingHorizontal: 10 },
+  navSection: { color: "#FFFFFF", fontSize: 11, fontFamily: FONT.extraBold, letterSpacing: 2, marginBottom: 10, paddingHorizontal: 10 },
   navItem: { height: 46, borderRadius: 8, flexDirection: "row", alignItems: "center", paddingHorizontal: 11, marginBottom: 3 },
   navItemActive: { backgroundColor: "#F5F2FC", borderWidth: 1, borderColor: "#E3DDF5" },
   navDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: COLORS.navyLine, marginRight: 13 },
   navDotActive: { backgroundColor: COLORS.bull },
-  navText: { flex: 1, color: COLORS.muted, fontSize: 14, fontFamily: FONT.semiBold, },
-  navTextActive: { color: COLORS.ink, fontFamily: FONT.bold, },
-  navArrow: { color: COLORS.bull, fontSize: 22, lineHeight: 22 },
+  navText: { flex: 1, color: "#FFFFFF", fontSize: 14, fontFamily: FONT.semiBold, },
+  navTextActive: { color: "#FFFFFF", fontFamily: FONT.bold, },
+  navArrow: { color: "#FFFFFF", fontSize: 22, lineHeight: 22 },
   sidebarBottom: { borderTopWidth: 1, borderTopColor: COLORS.glassBorder, paddingTop: 20 },
-  sidebarFooterLabel: { color: COLORS.bull, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.5 },
-  sidebarFooterText: { color: COLORS.muted, fontSize: 12, lineHeight: 18, marginTop: 7 },
+  sidebarFooterLabel: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.5 },
+  sidebarFooterText: { color: "#FFFFFF", fontSize: 12, lineHeight: 18, marginTop: 7 },
   main: { flex: 1 },
   mainContent: { paddingHorizontal: 46, paddingTop: 30, paddingBottom: 70, maxWidth: 1750, width: "100%", alignSelf: "center" },
   headerRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 34 },
   commandLabel: { flexDirection: "row", alignItems: "center", marginBottom: 12 },
   commandLine: { width: 22, height: 2, backgroundColor: COLORS.bull, marginRight: 10, borderRadius: 2 },
-  breadcrumb: { color: COLORS.muted, fontSize: 11, fontFamily: FONT.extraBold, letterSpacing: 2.2 },
-  pageTitle: { color: COLORS.ink, fontSize: 44, lineHeight: 52, fontFamily: FONT.black, letterSpacing: -1.5 },
-  pageSubtitle: { color: COLORS.muted, fontSize: 16, marginTop: 9 },
+  breadcrumb: { color: "#FFFFFF", fontSize: 11, fontFamily: FONT.extraBold, letterSpacing: 2.2 },
+  pageTitle: { color: "#FFFFFF", fontSize: 44, lineHeight: 52, fontFamily: FONT.black, letterSpacing: -1.5 },
+  pageSubtitle: { color: "#FFFFFF", fontSize: 16, marginTop: 9 },
   primaryButton: { height: 48, minWidth: 165, borderRadius: 8, backgroundColor: COLORS.bull, alignItems: "center", justifyContent: "center" },
-  primaryButtonText: { color: COLORS.ink, fontSize: 11, fontFamily: FONT.black, letterSpacing: 1.1 },
+  primaryButtonText: { color: "#FFFFFF", fontSize: 11, fontFamily: FONT.black, letterSpacing: 1.1 },
   kpiGrid: { flexDirection: "row", gap: 14, marginBottom: 22 },
   metricCard: { flex: 1, minWidth: 200, minHeight: 150, borderRadius: 10, padding: 21, backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: COLORS.glassBorder, justifyContent: "space-between" },
   metricCardAccent: { borderColor: "#DCD4F1" },
   metricHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
-  metricLabel: { color: COLORS.muted, fontSize: 10, fontFamily: FONT.black, letterSpacing: 1.5 },
+  metricLabel: { color: "#FFFFFF", fontSize: 10, fontFamily: FONT.black, letterSpacing: 1.5 },
   metricDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: COLORS.navyLine },
   metricDotAccent: { backgroundColor: COLORS.bull },
-  metricValue: { color: COLORS.ink, fontSize: 34, fontFamily: FONT.black, letterSpacing: -0.8 },
-  metricDetail: { color: COLORS.muted, fontSize: 11, fontFamily: FONT.semiBold, },
+  metricValue: { color: "#FFFFFF", fontSize: 34, fontFamily: FONT.black, letterSpacing: -0.8 },
+  metricDetail: { color: "#FFFFFF", fontSize: 11, fontFamily: FONT.semiBold, },
   errorBanner: { backgroundColor: "#FFF7F7", borderWidth: 1, borderColor: "#E8B9B9", borderRadius: 8, padding: 13, marginBottom: 18 },
-  errorBannerText: { color: "#B52E2E", fontSize: 12 },
+  errorBannerText: { color: "#FFFFFF", fontSize: 12 },
   activeMissionCard: { position: "relative", overflow: "hidden", backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: "#DCD4F1", borderRadius: 12, padding: 28, marginBottom: 30 },
   activeMissionGlow: { position: "absolute", top: -100, right: -60, width: 260, height: 260, borderRadius: 130, backgroundColor: COLORS.bull, opacity: 0.045 },
   activeMissionHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start" },
-  cardEyebrow: { color: COLORS.bull, fontSize: 10, fontFamily: FONT.black, letterSpacing: 1.7, marginBottom: 7 },
-  activeMissionTitle: { color: COLORS.ink, fontSize: 29, fontFamily: FONT.black, letterSpacing: -0.5 },
-  activeMissionDescription: { color: COLORS.muted, fontSize: 13, lineHeight: 20, marginTop: 7 },
+  cardEyebrow: { color: "#FFFFFF", fontSize: 10, fontFamily: FONT.black, letterSpacing: 1.7, marginBottom: 7 },
+  activeMissionTitle: { color: "#FFFFFF", fontSize: 29, fontFamily: FONT.black, letterSpacing: -0.5 },
+  activeMissionDescription: { color: "#FFFFFF", fontSize: 13, lineHeight: 20, marginTop: 7 },
   activeBadge: { flexDirection: "row", alignItems: "center", gap: 7, paddingHorizontal: 11, paddingVertical: 7, backgroundColor: "#F5F2FC", borderWidth: 1, borderColor: "#DCD4F1", borderRadius: 7 },
   activeBadgeDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: COLORS.bull },
-  activeBadgeText: { color: COLORS.bull, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2 },
+  activeBadgeText: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2 },
   activeMissionNumbers: { flexDirection: "row", gap: 15, marginTop: 30 },
   missionNumber: { flex: 1, minHeight: 100, padding: 17, backgroundColor: "#FAFAF8", borderWidth: 1, borderColor: COLORS.glassBorder, borderRadius: 9, justifyContent: "space-between" },
-  missionNumberLabel: { color: COLORS.muted, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2 },
-  missionNumberValue: { color: COLORS.ink, fontSize: 23, fontFamily: FONT.black, letterSpacing: -0.5 },
-  missionNumberAccent: { color: COLORS.bull },
+  missionNumberLabel: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2 },
+  missionNumberValue: { color: "#FFFFFF", fontSize: 23, fontFamily: FONT.black, letterSpacing: -0.5 },
+  missionNumberAccent: { color: "#FFFFFF"},
   activeProgressSection: { marginTop: 25 },
   activeProgressHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 9 },
-  progressLabel: { color: COLORS.muted, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.3 },
-  progressSub: { color: COLORS.muted, fontSize: 11, marginTop: 4 },
-  activeProgressPercent: { color: COLORS.bull, fontSize: 24, fontFamily: FONT.black, },
+  progressLabel: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.3 },
+  progressSub: { color: "#FFFFFF", fontSize: 11, marginTop: 4 },
+  activeProgressPercent: { color: "#FFFFFF", fontSize: 24, fontFamily: FONT.black, },
   progressTrackLarge: { height: 9, backgroundColor: "#ECECE8", borderRadius: 5, overflow: "hidden" },
   progressFillLarge: { height: 9, backgroundColor: COLORS.bull, borderRadius: 5 },
   activeStats: { flexDirection: "row", flexWrap: "wrap", gap: 28, marginTop: 25, paddingTop: 20, borderTopWidth: 1, borderTopColor: COLORS.glassBorder },
   missionStat: { minWidth: 125 },
-  missionStatLabel: { color: COLORS.muted, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2 },
-  missionStatValue: { color: "#33332F", fontSize: 16, fontFamily: FONT.extraBold, marginTop: 6 },
-  missionStatValueAccent: { color: COLORS.bull },
+  missionStatLabel: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2 },
+  missionStatValue: { color: "#FFFFFF", fontSize: 16, fontFamily: FONT.extraBold, marginTop: 6 },
+  missionStatValueAccent: { color: "#FFFFFF"},
   actionRow: { flexDirection: "row", gap: 10, marginTop: 23 },
   tradeButton: { paddingHorizontal: 18, paddingVertical: 10, borderRadius: 8, backgroundColor: COLORS.bull },
-  tradeButtonText: { color: COLORS.ink, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2 },
+  tradeButtonText: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2 },
   pauseButton: { paddingHorizontal: 16, paddingVertical: 10, borderRadius: 8, borderWidth: 1, borderColor: "#DADAD5", backgroundColor: COLORS.glassBg },
-  pauseButtonText: { color: COLORS.muted, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2 },
+  pauseButtonText: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2 },
   targetMapHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 15 },
   sectionHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end", marginTop: 36, marginBottom: 17 },
-  sectionTitle: { color: COLORS.ink, fontSize: 22, fontFamily: FONT.black, letterSpacing: -0.4 },
-  sectionSubtitle: { color: COLORS.muted, fontSize: 13, marginTop: 5 },
-  sectionCount: { color: COLORS.muted, fontSize: 10, fontFamily: FONT.black, letterSpacing: 1.4 },
+  sectionTitle: { color: "#FFFFFF", fontSize: 22, fontFamily: FONT.black, letterSpacing: -0.4 },
+  sectionSubtitle: { color: "#FFFFFF", fontSize: 13, marginTop: 5 },
+  sectionCount: { color: "#FFFFFF", fontSize: 10, fontFamily: FONT.black, letterSpacing: 1.4 },
   dayStrip: { flexDirection: "row", flexWrap: "wrap", gap: 10, marginBottom: 22 },
   dayCard: { width: 145, minHeight: 125, padding: 13, backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: COLORS.glassBorder, borderRadius: 9 },
   dayCardSelected: { borderColor: COLORS.bull, backgroundColor: "#FAF8FF" },
   dayTop: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
-  dayNumber: { color: COLORS.ink, fontSize: 10, fontFamily: FONT.black, letterSpacing: 1 },
+  dayNumber: { color: "#FFFFFF", fontSize: 10, fontFamily: FONT.black, letterSpacing: 1 },
   dayStatusDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: "#C9C9C4" },
   dayStatusDone: { backgroundColor: COLORS.bull },
-  dayDate: { color: COLORS.muted, fontSize: 10, marginTop: 5 },
-  dayTarget: { color: COLORS.bull, fontSize: 18, fontFamily: FONT.black, marginTop: 12 },
-  dayDelta: { color: COLORS.muted, fontSize: 9, marginTop: 5 },
-  positiveText: { color: COLORS.bull },
-  negativeText: { color: "#D93636" },
+  dayDate: { color: "#FFFFFF", fontSize: 10, marginTop: 5 },
+  dayTarget: { color: "#FFFFFF", fontSize: 18, fontFamily: FONT.black, marginTop: 12 },
+  dayDelta: { color: "#FFFFFF", fontSize: 9, marginTop: 5 },
+  positiveText: { color: "#FFFFFF"},
+  negativeText: { color: "#FFFFFF"},
   dayMiniTrack: { height: 4, backgroundColor: "#ECECE8", borderRadius: 2, overflow: "hidden", marginTop: 10 },
   dayMiniFill: { height: 4, backgroundColor: COLORS.bull, borderRadius: 2 },
   dayDetailCard: { backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: COLORS.glassBorder, borderRadius: 10, padding: 23, marginBottom: 10 },
   dayDetailHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start" },
-  dayDetailTitle: { color: COLORS.ink, fontSize: 24, fontFamily: FONT.black, },
-  dayDetailSubtitle: { color: COLORS.muted, fontSize: 12, marginTop: 5 },
+  dayDetailTitle: { color: "#FFFFFF", fontSize: 24, fontFamily: FONT.black, },
+  dayDetailSubtitle: { color: "#FFFFFF", fontSize: 12, marginTop: 5 },
   smallPrimaryButton: { backgroundColor: COLORS.bull, borderRadius: 7, paddingHorizontal: 14, paddingVertical: 9 },
-  smallPrimaryText: { color: COLORS.ink, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1 },
+  smallPrimaryText: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1 },
   dayMetrics: { flexDirection: "row", flexWrap: "wrap", gap: 28, paddingVertical: 20, marginTop: 18, borderTopWidth: 1, borderBottomWidth: 1, borderColor: COLORS.glassBorder },
   tradeHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 21, marginBottom: 10 },
-  subsectionTitle: { color: COLORS.ink, fontSize: 16, fontFamily: FONT.black, },
+  subsectionTitle: { color: "#FFFFFF", fontSize: 16, fontFamily: FONT.black, },
   tradeEmpty: { alignItems: "center", paddingVertical: 34 },
-  tradeEmptyTitle: { color: COLORS.ink, fontSize: 17, fontFamily: FONT.extraBold, },
-  tradeEmptyText: { color: COLORS.muted, fontSize: 12, lineHeight: 19, maxWidth: 600, textAlign: "center", marginTop: 6 },
+  tradeEmptyTitle: { color: "#FFFFFF", fontSize: 17, fontFamily: FONT.extraBold, },
+  tradeEmptyText: { color: "#FFFFFF", fontSize: 12, lineHeight: 19, maxWidth: 600, textAlign: "center", marginTop: 6 },
   secondaryButton: { marginTop: 18, paddingHorizontal: 18, height: 42, borderRadius: 7, borderWidth: 1, borderColor: "#DCD4F1", backgroundColor: "#FAF8FF", alignItems: "center", justifyContent: "center" },
-  secondaryButtonText: { color: COLORS.bull, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1 },
+  secondaryButtonText: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1 },
   tradeTable: { borderWidth: 1, borderColor: COLORS.glassBorder, borderRadius: 8, overflow: "hidden" },
   tradeRow: { minHeight: 68, paddingHorizontal: 14, paddingVertical: 10, flexDirection: "row", alignItems: "center", gap: 18, borderBottomWidth: 1, borderBottomColor: "#EEEEEA" },
   tradeIdentity: { flex: 2, flexDirection: "row", alignItems: "center", gap: 12 },
-  tradeNumber: { color: COLORS.bull, fontSize: 11, fontFamily: FONT.black, },
-  tradeInstrument: { color: COLORS.ink, fontSize: 13, fontFamily: FONT.extraBold, },
-  tradeMeta: { color: COLORS.muted, fontSize: 10, marginTop: 3 },
+  tradeNumber: { color: "#FFFFFF", fontSize: 11, fontFamily: FONT.black, },
+  tradeInstrument: { color: "#FFFFFF", fontSize: 13, fontFamily: FONT.extraBold, },
+  tradeMeta: { color: "#FFFFFF", fontSize: 10, marginTop: 3 },
   tradeCell: { minWidth: 90 },
-  tableLabel: { color: COLORS.muted, fontSize: 7, fontFamily: FONT.black, letterSpacing: 1 },
-  tableValue: { color: "#33332F", fontSize: 12, fontFamily: FONT.extraBold, marginTop: 4 },
+  tableLabel: { color: "#FFFFFF", fontSize: 7, fontFamily: FONT.black, letterSpacing: 1 },
+  tableValue: { color: "#FFFFFF", fontSize: 12, fontFamily: FONT.extraBold, marginTop: 4 },
   closeTradeButton: { paddingHorizontal: 12, paddingVertical: 7, borderRadius: 6, borderWidth: 1, borderColor: "#DADAD5" },
-  closeTradeText: { color: COLORS.muted, fontSize: 8, fontFamily: FONT.black, letterSpacing: 1 },
+  closeTradeText: { color: "#FFFFFF", fontSize: 8, fontFamily: FONT.black, letterSpacing: 1 },
   missionGrid: { flexDirection: "row", flexWrap: "wrap", gap: 16 },
   missionCard: { width: "calc(50% - 8px)" as any, minHeight: 330, backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: COLORS.glassBorder, borderRadius: 10, padding: 23 },
   missionCardHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start" },
   missionCardTitleBlock: { flex: 1, paddingRight: 15 },
-  missionCardTitle: { color: COLORS.ink, fontSize: 21, fontFamily: FONT.black, },
-  missionCardDescription: { color: COLORS.muted, fontSize: 12, lineHeight: 18, marginTop: 7 },
+  missionCardTitle: { color: "#FFFFFF", fontSize: 21, fontFamily: FONT.black, },
+  missionCardDescription: { color: "#FFFFFF", fontSize: 12, lineHeight: 18, marginTop: 7 },
   statusBadge: { flexDirection: "row", alignItems: "center", gap: 6, paddingHorizontal: 9, paddingVertical: 6, borderRadius: 7, backgroundColor: "#F7F7F4", borderWidth: 1, borderColor: COLORS.glassBorder },
   statusBadgeActive: { backgroundColor: "#F5F2FC", borderColor: "#DCD4F1" },
   statusBadgeCompleted: { backgroundColor: "#F2F8F4", borderColor: "#CDE3D5" },
   statusDot: { width: 5, height: 5, borderRadius: 3, backgroundColor: "#BEBEB9" },
   statusDotActive: { backgroundColor: COLORS.bull },
   statusDotCompleted: { backgroundColor: COLORS.bull },
-  statusText: { color: COLORS.muted, fontSize: 8, fontFamily: FONT.black, letterSpacing: 0.9 },
+  statusText: { color: "#FFFFFF", fontSize: 8, fontFamily: FONT.black, letterSpacing: 0.9 },
   targetRow: { flexDirection: "row", alignItems: "flex-end", marginTop: 27, paddingBottom: 19, borderBottomWidth: 1, borderBottomColor: COLORS.glassBorder },
-  targetLabel: { color: COLORS.muted, fontSize: 8, fontFamily: FONT.black, letterSpacing: 1.2, marginBottom: 5 },
-  targetValue: { color: "#33332F", fontSize: 20, fontFamily: FONT.extraBold, },
-  targetArrow: { color: COLORS.bull, fontSize: 21, marginHorizontal: 20, marginBottom: 1 },
+  targetLabel: { color: "#FFFFFF", fontSize: 8, fontFamily: FONT.black, letterSpacing: 1.2, marginBottom: 5 },
+  targetValue: { color: "#FFFFFF", fontSize: 20, fontFamily: FONT.extraBold, },
+  targetArrow: { color: "#FFFFFF", fontSize: 21, marginHorizontal: 20, marginBottom: 1 },
   targetRight: { alignItems: "flex-end", marginLeft: "auto" },
-  targetValueTarget: { color: COLORS.bull, fontSize: 20, fontFamily: FONT.black, },
+  targetValueTarget: { color: "#FFFFFF", fontSize: 20, fontFamily: FONT.black, },
   smallProgressHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 19, marginBottom: 8 },
-  smallProgressLabel: { color: COLORS.muted, fontSize: 8, fontFamily: FONT.black, letterSpacing: 1.1 },
-  smallProgressPercent: { color: COLORS.bull, fontSize: 10, fontFamily: FONT.black, },
+  smallProgressLabel: { color: "#FFFFFF", fontSize: 8, fontFamily: FONT.black, letterSpacing: 1.1 },
+  smallProgressPercent: { color: "#FFFFFF", fontSize: 10, fontFamily: FONT.black, },
   smallProgressTrack: { height: 5, backgroundColor: "#ECECE8", borderRadius: 3, overflow: "hidden" },
   smallProgressFill: { height: 5, backgroundColor: COLORS.bull, borderRadius: 3 },
   missionMetrics: { flexDirection: "row", gap: 12, marginTop: 21 },
   missionMetric: { flex: 1 },
-  missionMetricLabel: { color: COLORS.muted, fontSize: 8, fontFamily: FONT.black, letterSpacing: 1 },
-  missionMetricValue: { color: "#33332F", fontSize: 13, fontFamily: FONT.extraBold, marginTop: 5 },
+  missionMetricLabel: { color: "#FFFFFF", fontSize: 8, fontFamily: FONT.black, letterSpacing: 1 },
+  missionMetricValue: { color: "#FFFFFF", fontSize: 13, fontFamily: FONT.extraBold, marginTop: 5 },
   activateButton: { height: 42, marginTop: 22, borderRadius: 7, backgroundColor: "#FAF8FF", borderWidth: 1, borderColor: "#DCD4F1", flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 10 },
-  activateButtonText: { color: COLORS.bull, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.1 },
-  activateArrow: { color: COLORS.bull, fontSize: 15 },
+  activateButtonText: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.1 },
+  activateArrow: { color: "#FFFFFF", fontSize: 15 },
   emptyState: { minHeight: 360, borderWidth: 1, borderColor: COLORS.glassBorder, borderRadius: 10, backgroundColor: COLORS.glassBg, alignItems: "center", justifyContent: "center", padding: 40 },
   emptyIcon: { width: 60, height: 60, borderRadius: 15, backgroundColor: "#FAF8FF", borderWidth: 1, borderColor: "#DCD4F1", alignItems: "center", justifyContent: "center", marginBottom: 18 },
-  emptyIconText: { color: COLORS.bull, fontSize: 28, fontFamily: FONT.black, },
-  emptyTitle: { color: COLORS.ink, fontSize: 22, fontFamily: FONT.black, },
-  emptyText: { color: COLORS.muted, fontSize: 14, lineHeight: 22, textAlign: "center", maxWidth: 600, marginTop: 8 },
+  emptyIconText: { color: "#FFFFFF", fontSize: 28, fontFamily: FONT.black, },
+  emptyTitle: { color: "#FFFFFF", fontSize: 22, fontFamily: FONT.black, },
+  emptyText: { color: "#FFFFFF", fontSize: 14, lineHeight: 22, textAlign: "center", maxWidth: 600, marginTop: 8 },
   foundationCard: { marginTop: 26, minHeight: 250, backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: COLORS.glassBorder, borderRadius: 10, overflow: "hidden", flexDirection: "row" },
   foundationAccent: { width: 4, backgroundColor: COLORS.bull },
   foundationContent: { flex: 1, padding: 27 },
-  foundationEyebrow: { color: COLORS.bull, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.5 },
-  foundationTitle: { color: COLORS.ink, fontSize: 25, fontFamily: FONT.black, marginTop: 8 },
-  foundationText: { color: COLORS.muted, fontSize: 14, lineHeight: 22, marginTop: 8, maxWidth: 1000 },
+  foundationEyebrow: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.5 },
+  foundationTitle: { color: "#FFFFFF", fontSize: 25, fontFamily: FONT.black, marginTop: 8 },
+  foundationText: { color: "#FFFFFF", fontSize: 14, lineHeight: 22, marginTop: 8, maxWidth: 1000 },
   foundationPoints: { flexDirection: "row", gap: 30, marginTop: 22 },
   foundationPoint: { flex: 1, flexDirection: "row", gap: 9 },
   foundationPointDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: COLORS.bull, marginTop: 6 },
-  foundationPointTitle: { color: "#33332F", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.1 },
-  foundationPointText: { color: COLORS.muted, fontSize: 12, lineHeight: 18, marginTop: 5 },
+  foundationPointTitle: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.1 },
+  foundationPointText: { color: "#FFFFFF", fontSize: 12, lineHeight: 18, marginTop: 5 },
   footer: { flexDirection: "row", justifyContent: "space-between", marginTop: 30, paddingTop: 20, borderTopWidth: 1, borderTopColor: COLORS.glassBorder },
-  footerText: { color: COLORS.muted, fontSize: 9, fontFamily: FONT.extraBold, letterSpacing: 1.3 },
+  footerText: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.extraBold, letterSpacing: 1.3 },
   modalBackdrop: { flex: 1, backgroundColor: "rgba(0,0,0,0.78)", alignItems: "center", justifyContent: "center", padding: 24 },
   modalCard: { width: "min(720px, 100%)" as any, maxHeight: "92%", borderRadius: 14, backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: COLORS.glassBorder },
   tradeModalCard: { width: "min(850px, 100%)" as any, maxHeight: "94%", borderRadius: 14, backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: COLORS.glassBorder },
   modalContent: { padding: 30 },
   modalHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 27 },
-  modalEyebrow: { color: COLORS.bull, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.5 },
-  modalTitle: { color: COLORS.ink, fontSize: 30, fontFamily: FONT.black, marginTop: 5 },
-  modalSubtitle: { color: COLORS.muted, fontSize: 13, marginTop: 5 },
+  modalEyebrow: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.5 },
+  modalTitle: { color: "#FFFFFF", fontSize: 30, fontFamily: FONT.black, marginTop: 5 },
+  modalSubtitle: { color: "#FFFFFF", fontSize: 13, marginTop: 5 },
   closeButton: { width: 38, height: 38, borderRadius: 9, backgroundColor: "#FAFAF8", borderWidth: 1, borderColor: COLORS.glassBorder, alignItems: "center", justifyContent: "center" },
-  closeButtonText: { color: COLORS.muted, fontSize: 25, lineHeight: 28 },
+  closeButtonText: { color: "#FFFFFF", fontSize: 25, lineHeight: 28 },
   inputGroup: { marginBottom: 17 },
-  inputLabel: { color: COLORS.muted, fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2, marginBottom: 8 },
-  input: { height: 48, borderRadius: 8, backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: "#DCDCD7", color: COLORS.ink, fontSize: 14, paddingHorizontal: 14, outlineStyle: "none" } as any,
+  inputLabel: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 1.2, marginBottom: 8 },
+  input: { height: 48, borderRadius: 8, backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: "#DCDCD7", color: "#FFFFFF", fontSize: 14, paddingHorizontal: 14, outlineStyle: "none" } as any,
   multilineInput: { height: 82, paddingTop: 13, textAlignVertical: "top" },
   twoColumn: { flexDirection: "row", gap: 14 },
   column: { flex: 1 },
   choiceRow: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: 18 },
   choice: { paddingHorizontal: 12, paddingVertical: 9, borderRadius: 7, borderWidth: 1, borderColor: "#DCDCD7", backgroundColor: "#FAFAF8" },
   choiceSelected: { backgroundColor: "#F5F2FC", borderColor: "#CFC3ED" },
-  choiceText: { color: COLORS.muted, fontSize: 9, fontFamily: FONT.black, letterSpacing: 0.8 },
-  choiceTextSelected: { color: COLORS.bull },
+  choiceText: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.black, letterSpacing: 0.8 },
+  choiceTextSelected: { color: "#FFFFFF"},
   previewCard: { backgroundColor: "#FAF8FF", borderWidth: 1, borderColor: "#DCD4F1", borderRadius: 9, padding: 16, marginBottom: 18 },
-  previewEyebrow: { color: COLORS.bull, fontSize: 8, fontFamily: FONT.black, letterSpacing: 1.3, marginBottom: 13 },
+  previewEyebrow: { color: "#FFFFFF", fontSize: 8, fontFamily: FONT.black, letterSpacing: 1.3, marginBottom: 13 },
   previewRow: { flexDirection: "row", flexWrap: "wrap", gap: 25 },
   previewMetric: { flex: 1, minWidth: 120 },
-  previewMetricLabel: { color: COLORS.muted, fontSize: 8, fontFamily: FONT.black, letterSpacing: 1 },
-  previewMetricValue: { color: COLORS.bull, fontSize: 20, fontFamily: FONT.black, marginTop: 5 },
-  exitEstimate: { color: COLORS.ink, fontSize: 28, fontFamily: FONT.black, },
+  previewMetricLabel: { color: "#FFFFFF", fontSize: 8, fontFamily: FONT.black, letterSpacing: 1 },
+  previewMetricValue: { color: "#FFFFFF", fontSize: 20, fontFamily: FONT.black, marginTop: 5 },
+  exitEstimate: { color: "#FFFFFF", fontSize: 28, fontFamily: FONT.black, },
   modalError: { backgroundColor: "#FFF7F7", borderWidth: 1, borderColor: "#E8B9B9", borderRadius: 8, padding: 12, marginBottom: 14 },
-  modalErrorText: { color: "#B52E2E", fontSize: 12, lineHeight: 18 },
+  modalErrorText: { color: "#FFFFFF", fontSize: 12, lineHeight: 18 },
   modalPrimaryButton: { height: 50, borderRadius: 9, backgroundColor: COLORS.bull, alignItems: "center", justifyContent: "center" },
   disabledButton: { opacity: 0.55 },
-  modalPrimaryText: { color: COLORS.ink, fontSize: 11, fontFamily: FONT.black, letterSpacing: 1 },
+  modalPrimaryText: { color: "#FFFFFF", fontSize: 11, fontFamily: FONT.black, letterSpacing: 1 },
   cancelButton: { height: 46, alignItems: "center", justifyContent: "center" },
-  cancelButtonText: { color: COLORS.muted, fontSize: 10, fontFamily: FONT.black, letterSpacing: 1 },
+  cancelButtonText: { color: "#FFFFFF", fontSize: 10, fontFamily: FONT.black, letterSpacing: 1 },
 });
