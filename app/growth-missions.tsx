@@ -115,6 +115,7 @@ export default function GrowthMissionsScreen() {
   const [createVisible, setCreateVisible] = useState(false);
   const [editingMission, setEditingMission] = useState<GrowthMission | null>(null);
   const [tradeVisible, setTradeVisible] = useState(false);
+  const [dayModalVisible, setDayModalVisible] = useState(false);
   const [closeVisible, setCloseVisible] = useState(false);
 
   const [name, setName] = useState("");
@@ -160,6 +161,11 @@ export default function GrowthMissionsScreen() {
   const completedMissions = missions.filter((m) => m.status === "COMPLETED").length;
   const totalTargetCapital = missions.reduce((sum, m) => sum + m.targetCapital, 0);
 
+  const completedMissionDays = days.filter((day) => day.status === "COMPLETED").length;
+  const missionDaysTotal = activeMission?.durationDays || days.length || 0;
+  const missionDaysRemaining = Math.max(0, missionDaysTotal - completedMissionDays);
+  const missionTradesCount = activeMission?.tradesCount || 0;
+
   async function loadMissions() {
     if (!userId) {
       setLoading(false);
@@ -198,6 +204,7 @@ export default function GrowthMissionsScreen() {
   async function selectDay(day: GrowthMissionDay) {
     if (!activeMission) return;
     setSelectedDayId(day.id);
+    setDayModalVisible(true);
     try {
       setDetailsLoading(true);
       setTrades(await getGrowthMissionTrades(activeMission.id, day.id));
@@ -427,10 +434,16 @@ export default function GrowthMissionsScreen() {
         entryReason,
         notes: tradeNotes,
       });
+      const dayId = selectedDay.id;
       setTradeVisible(false);
       resetTradeForm();
       await refreshMissionAggregates(activeMission.id);
+      const refreshedDays = await getGrowthMissionDays(activeMission.id);
+      setDays(refreshedDays);
+      setSelectedDayId(dayId);
+      setTrades(await getGrowthMissionTrades(activeMission.id, dayId));
       await loadMissions();
+      setDayModalVisible(true);
     } catch (err: any) {
       setError(err?.message || "Unable to record trade.");
     } finally {
@@ -457,8 +470,13 @@ export default function GrowthMissionsScreen() {
       setExitPrice("");
       setFees("");
       setExitNotes("");
-      await loadMissionDetails(activeMission.id);
+      const dayId = selectedDay.id;
+      const refreshedDays = await getGrowthMissionDays(activeMission.id);
+      setDays(refreshedDays);
+      setSelectedDayId(dayId);
+      setTrades(await getGrowthMissionTrades(activeMission.id, dayId));
       await loadMissions();
+      setDayModalVisible(true);
     } catch (err: any) {
       setError(err?.message || "Unable to close trade.");
     } finally {
@@ -708,100 +726,6 @@ export default function GrowthMissionsScreen() {
                 })
               )}
             </View>
-
-            {selectedDay ? (
-              <View style={styles.dayDetailCard}>
-                <View style={styles.dayDetailHeader}>
-                  <View>
-                    <Text style={styles.cardEyebrow}>MISSION DAY {selectedDay.dayNumber}</Text>
-                    <Text style={styles.dayDetailTitle}>{formatDate(selectedDay.date)}</Text>
-                    <Text style={styles.dayDetailSubtitle}>
-                      Opening {formatCurrency(selectedDay.openingCapital)} → Target {formatCurrency(selectedDay.targetCapital)}
-                    </Text>
-                  </View>
-                  <Pressable onPress={() => setTradeVisible(true)} style={styles.smallPrimaryButton}>
-                    <Text style={styles.smallPrimaryText}>+ TRADE</Text>
-                  </Pressable>
-                </View>
-
-                <View style={styles.dayMetrics}>
-                  <MissionStat label="EXPECTED GROWTH" value={`${selectedDay.expectedGrowthPercent.toFixed(2)}%`} />
-                  <MissionStat label="ACTUAL GROWTH" value={`${(selectedDay.actualGrowthPercent || 0).toFixed(2)}%`} />
-                  <MissionStat label="NET P&L" value={formatSignedCurrency(selectedDay.netPnL || 0)} accent={(selectedDay.netPnL || 0) > 0} />
-                  <MissionStat label="TRADES" value={String(selectedDay.tradesCount)} />
-                  <MissionStat label="FEES" value={formatCurrency(selectedDay.fees || 0)} />
-                </View>
-
-                <View style={styles.tradeHeader}>
-                  <Text style={styles.subsectionTitle}>Trade Ledger</Text>
-                  <Text style={styles.sectionCount}>{trades.length} TRADES</Text>
-                </View>
-
-                {detailsLoading ? (
-                  <ActivityIndicator color={COLORS.bull} />
-                ) : trades.length === 0 ? (
-                  <View style={styles.tradeEmpty}>
-                    <Text style={styles.tradeEmptyTitle}>No trades recorded</Text>
-                    <Text style={styles.tradeEmptyText}>
-                      Record the first trade for this mission day. Every trade rolls into the day result and mission capital.
-                    </Text>
-                    <Pressable onPress={() => setTradeVisible(true)} style={styles.secondaryButton}>
-                      <Text style={styles.secondaryButtonText}>RECORD FIRST TRADE</Text>
-                    </Pressable>
-                  </View>
-                ) : (
-                  <View style={styles.tradeTable}>
-                    {trades.map((trade) => (
-                      <View key={trade.id} style={styles.tradeRow}>
-                        <View style={styles.tradeIdentity}>
-                          <Text style={styles.tradeNumber}>#{trade.tradeNumber}</Text>
-                          <View>
-                            <Text style={styles.tradeInstrument}>{trade.instrument}</Text>
-                            <Text style={styles.tradeMeta}>
-                              {trade.symbol || trade.assetClass} · {trade.position} · {trade.strategy || "No strategy"}
-                            </Text>
-                          </View>
-                        </View>
-                        <View style={styles.tradeCell}>
-                          <Text style={styles.tableLabel}>ENTRY</Text>
-                          <Text style={styles.tableValue}>{formatPreciseCurrency(trade.entryPrice)}</Text>
-                        </View>
-                        <View style={styles.tradeCell}>
-                          <Text style={styles.tableLabel}>SIZE</Text>
-                          <Text style={styles.tableValue}>{formatCurrency(trade.positionSize)}</Text>
-                        </View>
-                        <View style={styles.tradeCell}>
-                          <Text style={styles.tableLabel}>RESULT</Text>
-                          <Text
-                            style={[
-                              styles.tableValue,
-                              trade.result === "WIN" && styles.positiveText,
-                              trade.result === "LOSS" && styles.negativeText,
-                            ]}
-                          >
-                            {trade.status === "OPEN" ? "OPEN" : formatSignedCurrency(trade.netPnL)}
-                          </Text>
-                        </View>
-                        {trade.status === "OPEN" && (
-                          <Pressable
-                            onPress={() => {
-                              setClosingTrade(trade);
-                              setExitPrice("");
-                              setFees("");
-                              setExitNotes("");
-                              setCloseVisible(true);
-                            }}
-                            style={styles.closeTradeButton}
-                          >
-                            <Text style={styles.closeTradeText}>CLOSE</Text>
-                          </Pressable>
-                        )}
-                      </View>
-                    ))}
-                  </View>
-                )}
-              </View>
-            ) : null}
           </>
         ) : null}
 
@@ -930,6 +854,287 @@ export default function GrowthMissionsScreen() {
           <Text style={styles.footerText}>{profile?.role || "VIEWER"}</Text>
         </View>
       </ScrollView>
+
+      {activeMission ? (
+        <View pointerEvents="box-none" style={styles.missionCountdownLayer}>
+          <View style={styles.missionCountdown}>
+            <View style={styles.missionCountdownIcon}>
+              <Text style={styles.missionCountdownIconText}>↗</Text>
+            </View>
+            <View style={styles.missionCountdownMain}>
+              <Text style={styles.missionCountdownEyebrow}>MISSION CLOCK</Text>
+              <Text style={styles.missionCountdownDays}>{missionDaysRemaining}</Text>
+              <Text style={styles.missionCountdownDaysLabel}>
+                {missionDaysRemaining === 1 ? "DAY LEFT" : "DAYS LEFT"}
+              </Text>
+            </View>
+            <View style={styles.missionCountdownDivider} />
+            <View style={styles.missionCountdownTrades}>
+              <Text style={styles.missionCountdownTradeValue}>{missionTradesCount}</Text>
+              <Text style={styles.missionCountdownTradeLabel}>
+                {missionTradesCount === 1 ? "TRADE" : "TRADES"}
+              </Text>
+            </View>
+          </View>
+        </View>
+      ) : null}
+
+      <Modal
+        visible={dayModalVisible}
+        animationType="fade"
+        transparent
+        onRequestClose={() => setDayModalVisible(false)}
+      >
+        <View style={styles.modalBackdrop}>
+          <View style={styles.dayModalCard}>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={styles.dayModalContent}
+            >
+              <View style={styles.modalHeader}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.modalEyebrow}>
+                    {activeMission?.name || "GROWTH MISSION"} · DAY {selectedDay?.dayNumber || "—"}
+                  </Text>
+                  <Text style={styles.modalTitle}>
+                    {selectedDay ? formatDate(selectedDay.date) : "Mission Day"}
+                  </Text>
+                  <Text style={styles.modalSubtitle}>
+                    Review the day, record trades, and track the capital result against the target.
+                  </Text>
+                </View>
+                <Pressable
+                  onPress={() => setDayModalVisible(false)}
+                  style={styles.closeButton}
+                >
+                  <Text style={styles.closeButtonText}>×</Text>
+                </Pressable>
+              </View>
+
+              {selectedDay ? (
+                <>
+                  <View style={styles.dayCurrentBanner}>
+                    <View>
+                      <Text style={styles.dayCurrentEyebrow}>CURRENT DAY STATUS</Text>
+                      <Text style={styles.dayCurrentTitle}>{selectedDay.status}</Text>
+                      <Text style={styles.dayCurrentSubtitle}>
+                        Opening {formatCurrency(selectedDay.openingCapital)} → Target {formatCurrency(selectedDay.targetCapital)}
+                      </Text>
+                    </View>
+                    <View style={styles.dayCurrentTarget}>
+                      <Text style={styles.dayCurrentTargetLabel}>TARGET</Text>
+                      <Text style={styles.dayCurrentTargetValue}>
+                        {formatCurrency(selectedDay.targetCapital)}
+                      </Text>
+                    </View>
+                  </View>
+
+                  <View style={styles.dayModalMetricGrid}>
+                    <DayModalMetric label="OPENING CAPITAL" value={formatCurrency(selectedDay.openingCapital)} />
+                    <DayModalMetric
+                      label="CURRENT / CLOSING CAPITAL"
+                      value={formatCurrency(selectedDay.closingCapital || selectedDay.openingCapital)}
+                      accent={(selectedDay.netPnL || 0) > 0}
+                    />
+                    <DayModalMetric label="TARGET CAPITAL" value={formatCurrency(selectedDay.targetCapital)} />
+                    <DayModalMetric
+                      label="NET P&L"
+                      value={formatSignedCurrency(selectedDay.netPnL || 0)}
+                      accent={(selectedDay.netPnL || 0) > 0}
+                      danger={(selectedDay.netPnL || 0) < 0}
+                    />
+                    <DayModalMetric
+                      label="ACTUAL RETURN"
+                      value={`${(selectedDay.actualGrowthPercent || 0).toFixed(2)}%`}
+                      accent={(selectedDay.actualGrowthPercent || 0) > 0}
+                      danger={(selectedDay.actualGrowthPercent || 0) < 0}
+                    />
+                    <DayModalMetric label="EXPECTED GROWTH" value={`${selectedDay.expectedGrowthPercent.toFixed(2)}%`} />
+                    <DayModalMetric
+                      label="VS TARGET"
+                      value={formatSignedCurrency(selectedDay.aheadBehindCapital || 0)}
+                      accent={(selectedDay.aheadBehindCapital || 0) >= 0}
+                      danger={(selectedDay.aheadBehindCapital || 0) < 0}
+                    />
+                    <DayModalMetric label="FEES" value={formatCurrency(selectedDay.fees || 0)} />
+                  </View>
+
+                  <View style={styles.dayModalProgress}>
+                    <View style={styles.dayModalProgressHeader}>
+                      <View>
+                        <Text style={styles.dayModalProgressLabel}>CAPITAL PROGRESS</Text>
+                        <Text style={styles.dayModalProgressSub}>
+                          {formatCurrency(selectedDay.closingCapital || selectedDay.openingCapital)} of {formatCurrency(selectedDay.targetCapital)}
+                        </Text>
+                      </View>
+                      <Text style={styles.dayModalProgressPercent}>
+                        {selectedDay.targetCapital > 0
+                          ? Math.min(
+                              100,
+                              Math.max(
+                                0,
+                                ((selectedDay.closingCapital || selectedDay.openingCapital) /
+                                  selectedDay.targetCapital) *
+                                  100
+                              )
+                            ).toFixed(1)
+                          : "0.0"}%
+                      </Text>
+                    </View>
+                    <View style={styles.dayModalProgressTrack}>
+                      <View
+                        style={[
+                          styles.dayModalProgressFill,
+                          {
+                            width: `${Math.min(
+                              100,
+                              Math.max(
+                                0,
+                                selectedDay.targetCapital > 0
+                                  ? ((selectedDay.closingCapital || selectedDay.openingCapital) /
+                                      selectedDay.targetCapital) *
+                                    100
+                                  : 0
+                              )
+                            )}%`,
+                          },
+                        ]}
+                      />
+                    </View>
+                  </View>
+
+                  <View style={styles.dayModalActionRow}>
+                    <View style={{ flex: 1 }}>
+                      <Text style={styles.dayModalSectionTitle}>TRADE EXECUTION</Text>
+                      <Text style={styles.dayModalSectionSubtitle}>
+                        Record every entry, exit, result and capital impact for this day.
+                      </Text>
+                    </View>
+                    <Pressable
+                      onPress={() => {
+                        setDayModalVisible(false);
+                        setTradeVisible(true);
+                      }}
+                      style={styles.tradeButton}
+                    >
+                      <Text style={styles.tradeButtonText}>+ RECORD TRADE</Text>
+                    </Pressable>
+                  </View>
+
+                  <View style={styles.dayModalLedgerHeader}>
+                    <Text style={styles.dayModalSectionTitle}>TRADE LEDGER</Text>
+                    <Text style={styles.sectionCount}>{trades.length} TRADES</Text>
+                  </View>
+
+                  {detailsLoading ? (
+                    <View style={styles.dayModalLoading}>
+                      <ActivityIndicator color={COLORS.bull} />
+                      <Text style={styles.dayModalLoadingText}>Loading this day's trades...</Text>
+                    </View>
+                  ) : trades.length === 0 ? (
+                    <View style={styles.dayModalEmpty}>
+                      <Text style={styles.tradeEmptyTitle}>No trades recorded</Text>
+                      <Text style={styles.tradeEmptyText}>
+                        Start recording trades for this day. Closed-trade results automatically update P&L, return and closing capital.
+                      </Text>
+                      <Pressable
+                        onPress={() => {
+                          setDayModalVisible(false);
+                          setTradeVisible(true);
+                        }}
+                        style={styles.secondaryButton}
+                      >
+                        <Text style={styles.secondaryButtonText}>RECORD FIRST TRADE</Text>
+                      </Pressable>
+                    </View>
+                  ) : (
+                    <View style={styles.dayModalTradeTable}>
+                      {trades.map((trade) => (
+                        <View key={trade.id} style={styles.dayModalTradeRow}>
+                          <View style={styles.dayModalTradeIdentity}>
+                            <Text style={styles.tradeNumber}>#{trade.tradeNumber}</Text>
+                            <View style={{ flex: 1 }}>
+                              <Text style={styles.tradeInstrument}>{trade.instrument}</Text>
+                              <Text style={styles.tradeMeta}>
+                                {trade.symbol || trade.assetClass} · {trade.position} · {trade.strategy || "No strategy"}
+                              </Text>
+                            </View>
+                          </View>
+
+                          <View style={styles.dayModalTradeStat}>
+                            <Text style={styles.tableLabel}>ENTRY</Text>
+                            <Text style={styles.tableValue}>{formatPreciseCurrency(trade.entryPrice)}</Text>
+                          </View>
+
+                          <View style={styles.dayModalTradeStat}>
+                            <Text style={styles.tableLabel}>SIZE</Text>
+                            <Text style={styles.tableValue}>{formatCurrency(trade.positionSize)}</Text>
+                          </View>
+
+                          <View style={styles.dayModalTradeStat}>
+                            <Text style={styles.tableLabel}>P&L</Text>
+                            <Text
+                              style={[
+                                styles.tableValue,
+                                trade.result === "WIN" && styles.positiveText,
+                                trade.result === "LOSS" && styles.negativeText,
+                              ]}
+                            >
+                              {trade.status === "OPEN" ? "OPEN" : formatSignedCurrency(trade.netPnL)}
+                            </Text>
+                          </View>
+
+                          <View style={styles.dayModalTradeStat}>
+                            <Text style={styles.tableLabel}>RETURN</Text>
+                            <Text
+                              style={[
+                                styles.tableValue,
+                                trade.result === "WIN" && styles.positiveText,
+                                trade.result === "LOSS" && styles.negativeText,
+                              ]}
+                            >
+                              {trade.status === "OPEN" ? "—" : `${(trade.returnPercent || 0).toFixed(2)}%`}
+                            </Text>
+                          </View>
+
+                          {trade.status === "OPEN" ? (
+                            <Pressable
+                              onPress={() => {
+                                setClosingTrade(trade);
+                                setExitPrice("");
+                                setFees("");
+                                setExitNotes("");
+                                setCloseVisible(true);
+                              }}
+                              style={styles.closeTradeButton}
+                            >
+                              <Text style={styles.closeTradeText}>CLOSE</Text>
+                            </Pressable>
+                          ) : (
+                            <View style={styles.closedBadge}>
+                              <Text style={styles.closedBadgeText}>{trade.result}</Text>
+                            </View>
+                          )}
+                        </View>
+                      ))}
+                    </View>
+                  )}
+
+                  <View style={styles.dayModalFooterNote}>
+                    <Text style={styles.dayModalFooterNoteText}>
+                      Vault1 calculates realized P&L from entry/exit price, quantity and fees. Closing a trade updates this day's net P&L and closing capital, then rolls the result into the mission.
+                    </Text>
+                  </View>
+                </>
+              ) : (
+                <View style={styles.dayModalEmpty}>
+                  <Text style={styles.emptyTitle}>Select a mission day</Text>
+                </View>
+              )}
+            </ScrollView>
+          </View>
+        </View>
+      </Modal>
 
       <Modal visible={createVisible} animationType="fade" transparent onRequestClose={() => setCreateVisible(false)}>
         <View style={styles.modalBackdrop}>
@@ -1144,6 +1349,33 @@ function Choice({ label, selected, onPress }: { label: string; selected: boolean
     <Pressable onPress={onPress} style={[styles.choice, selected && styles.choiceSelected]}>
       <Text style={[styles.choiceText, selected && styles.choiceTextSelected]}>{label}</Text>
     </Pressable>
+  );
+}
+
+function DayModalMetric({
+  label,
+  value,
+  accent = false,
+  danger = false,
+}: {
+  label: string;
+  value: string;
+  accent?: boolean;
+  danger?: boolean;
+}) {
+  return (
+    <View style={styles.dayModalMetric}>
+      <Text style={styles.dayModalMetricLabel}>{label}</Text>
+      <Text
+        style={[
+          styles.dayModalMetricValue,
+          accent && styles.dayModalMetricValueAccent,
+          danger && styles.dayModalMetricValueDanger,
+        ]}
+      >
+        {value}
+      </Text>
+    </View>
   );
 }
 
@@ -1422,6 +1654,318 @@ const styles = StyleSheet.create({
   foundationPointText: { color: "#5F5F5B", fontSize: 12, lineHeight: 18, marginTop: 5 },
   footer: { flexDirection: "row", justifyContent: "space-between", marginTop: 30, paddingTop: 20, borderTopWidth: 1, borderTopColor: COLORS.glassBorder },
   footerText: { color: "#FFFFFF", fontSize: 9, fontFamily: FONT.extraBold, letterSpacing: 1.3 },
+  missionCountdownLayer: {
+    position: "absolute",
+    right: 28,
+    bottom: 28,
+    zIndex: 50,
+  },
+  missionCountdown: {
+    minWidth: 270,
+    minHeight: 108,
+    borderRadius: 22,
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#DCDCD7",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 15,
+    paddingVertical: 13,
+    shadowColor: "#000000",
+    shadowOpacity: 0.16,
+    shadowRadius: 18,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 10,
+  },
+  missionCountdownIcon: {
+    width: 62,
+    height: 62,
+    borderRadius: 31,
+    backgroundColor: "#F1FBF5",
+    borderWidth: 2,
+    borderColor: "#21864B",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 13,
+  },
+  missionCountdownIconText: {
+    color: "#21864B",
+    fontSize: 27,
+    fontFamily: FONT.black,
+  },
+  missionCountdownMain: {
+    minWidth: 76,
+  },
+  missionCountdownEyebrow: {
+    color: "#5F5F5B",
+    fontSize: 8,
+    fontFamily: FONT.black,
+    letterSpacing: 1.25,
+  },
+  missionCountdownDays: {
+    color: "#111111",
+    fontSize: 31,
+    lineHeight: 34,
+    fontFamily: FONT.black,
+    marginTop: 2,
+  },
+  missionCountdownDaysLabel: {
+    color: "#21864B",
+    fontSize: 8,
+    fontFamily: FONT.black,
+    letterSpacing: 1.1,
+  },
+  missionCountdownDivider: {
+    width: 1,
+    height: 55,
+    backgroundColor: "#E5E5E2",
+    marginHorizontal: 14,
+  },
+  missionCountdownTrades: {
+    minWidth: 52,
+    alignItems: "center",
+  },
+  missionCountdownTradeValue: {
+    color: "#111111",
+    fontSize: 23,
+    lineHeight: 27,
+    fontFamily: FONT.black,
+  },
+  missionCountdownTradeLabel: {
+    color: "#5F5F5B",
+    fontSize: 8,
+    fontFamily: FONT.black,
+    letterSpacing: 1,
+    marginTop: 2,
+  },
+  dayModalCard: {
+    width: "min(1120px, 100%)" as any,
+    maxHeight: "94%",
+    borderRadius: 16,
+    backgroundColor: COLORS.glassBg,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+  },
+  dayModalContent: {
+    padding: 32,
+  },
+  dayCurrentBanner: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "#FAF8FF",
+    borderWidth: 1,
+    borderColor: "#DCD4F1",
+    borderRadius: 10,
+    padding: 18,
+    marginBottom: 18,
+  },
+  dayCurrentEyebrow: {
+    color: "#5F5F5B",
+    fontSize: 8,
+    fontFamily: FONT.black,
+    letterSpacing: 1.4,
+  },
+  dayCurrentTitle: {
+    color: "#111111",
+    fontSize: 20,
+    fontFamily: FONT.black,
+    marginTop: 5,
+  },
+  dayCurrentSubtitle: {
+    color: "#5F5F5B",
+    fontSize: 12,
+    marginTop: 4,
+  },
+  dayCurrentTarget: {
+    alignItems: "flex-end",
+    paddingLeft: 20,
+  },
+  dayCurrentTargetLabel: {
+    color: "#5F5F5B",
+    fontSize: 8,
+    fontFamily: FONT.black,
+    letterSpacing: 1.2,
+  },
+  dayCurrentTargetValue: {
+    color: "#111111",
+    fontSize: 24,
+    fontFamily: FONT.black,
+    marginTop: 4,
+  },
+  dayModalMetricGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+    marginBottom: 18,
+  },
+  dayModalMetric: {
+    width: "calc(25% - 8px)" as any,
+    minWidth: 180,
+    minHeight: 92,
+    backgroundColor: "#FAFAF8",
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    borderRadius: 9,
+    padding: 15,
+    justifyContent: "space-between",
+  },
+  dayModalMetricLabel: {
+    color: "#5F5F5B",
+    fontSize: 8,
+    fontFamily: FONT.black,
+    letterSpacing: 1.05,
+  },
+  dayModalMetricValue: {
+    color: "#111111",
+    fontSize: 19,
+    fontFamily: FONT.black,
+    marginTop: 10,
+  },
+  dayModalMetricValueAccent: {
+    color: "#21864B",
+  },
+  dayModalMetricValueDanger: {
+    color: "#D93636",
+  },
+  dayModalProgress: {
+    backgroundColor: "#FAFAF8",
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    borderRadius: 9,
+    padding: 17,
+    marginBottom: 22,
+  },
+  dayModalProgressHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+    marginBottom: 9,
+  },
+  dayModalProgressLabel: {
+    color: "#111111",
+    fontSize: 9,
+    fontFamily: FONT.black,
+    letterSpacing: 1.2,
+  },
+  dayModalProgressSub: {
+    color: "#5F5F5B",
+    fontSize: 11,
+    marginTop: 4,
+  },
+  dayModalProgressPercent: {
+    color: "#21864B",
+    fontSize: 20,
+    fontFamily: FONT.black,
+  },
+  dayModalProgressTrack: {
+    height: 8,
+    backgroundColor: "#ECECE8",
+    borderRadius: 4,
+    overflow: "hidden",
+  },
+  dayModalProgressFill: {
+    height: 8,
+    backgroundColor: COLORS.bull,
+    borderRadius: 4,
+  },
+  dayModalActionRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 17,
+  },
+  dayModalSectionTitle: {
+    color: "#111111",
+    fontSize: 12,
+    fontFamily: FONT.black,
+    letterSpacing: 1.15,
+  },
+  dayModalSectionSubtitle: {
+    color: "#5F5F5B",
+    fontSize: 11,
+    marginTop: 5,
+  },
+  dayModalLedgerHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
+    paddingTop: 18,
+    borderTopWidth: 1,
+    borderTopColor: COLORS.glassBorder,
+  },
+  dayModalLoading: {
+    minHeight: 150,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  dayModalLoadingText: {
+    color: "#5F5F5B",
+    fontSize: 11,
+    marginTop: 9,
+  },
+  dayModalEmpty: {
+    minHeight: 180,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#FAFAF8",
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    borderRadius: 9,
+    padding: 25,
+  },
+  dayModalTradeTable: {
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    borderRadius: 9,
+    overflow: "hidden",
+  },
+  dayModalTradeRow: {
+    minHeight: 78,
+    paddingHorizontal: 15,
+    paddingVertical: 11,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "#EEEEEA",
+  },
+  dayModalTradeIdentity: {
+    flex: 2.2,
+    minWidth: 220,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 11,
+  },
+  dayModalTradeStat: {
+    minWidth: 82,
+  },
+  closedBadge: {
+    paddingHorizontal: 9,
+    paddingVertical: 6,
+    borderRadius: 6,
+    backgroundColor: "#F2F8F4",
+    borderWidth: 1,
+    borderColor: "#CDE3D5",
+  },
+  closedBadgeText: {
+    color: "#21864B",
+    fontSize: 8,
+    fontFamily: FONT.black,
+    letterSpacing: 0.8,
+  },
+  dayModalFooterNote: {
+    marginTop: 16,
+    paddingTop: 15,
+    borderTopWidth: 1,
+    borderTopColor: COLORS.glassBorder,
+  },
+  dayModalFooterNoteText: {
+    color: "#5F5F5B",
+    fontSize: 10,
+    lineHeight: 16,
+  },
   modalBackdrop: { flex: 1, backgroundColor: "rgba(0,0,0,0.78)", alignItems: "center", justifyContent: "center", padding: 24 },
   modalCard: { width: "min(720px, 100%)" as any, maxHeight: "92%", borderRadius: 14, backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: COLORS.glassBorder },
   tradeModalCard: { width: "min(850px, 100%)" as any, maxHeight: "94%", borderRadius: 14, backgroundColor: COLORS.glassBg, borderWidth: 1, borderColor: COLORS.glassBorder },
